@@ -45,7 +45,6 @@
 - (void)initData{
     self.maxItem = 1;
     self.videoMaximumDuration = 15;
-    self.videoMaxSize = 20;
 }
 
 - (void)viewDidLoad {
@@ -62,11 +61,6 @@
 - (void)setMaxItem:(NSUInteger)maxItem{
     _maxItem = maxItem;
     [SRAlbumData singleton].maxItem = maxItem;
-}
-
-- (void)setVideoMaxSize:(NSUInteger)videoMaxSize{
-    _videoMaxSize = videoMaxSize;
-    [SRAlbumData singleton].videoMaxSize = videoMaxSize;
 }
 
 - (void)setVideoMaximumDuration:(NSUInteger)videoMaximumDuration{
@@ -460,6 +454,7 @@
             SRVideoCaptureViewController *viewController = [[SRVideoCaptureViewController alloc] init];
             viewController.type = [SRAlbumData singleton].resourceType;
             viewController.delegate = self;
+            viewController.maxTime = [SRAlbumData singleton].videoMaximumDuration;
             viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [self presentViewController:viewController animated:YES completion:nil];
         } else {
@@ -537,7 +532,7 @@
 
 #pragma mark - PHPhotoLibraryChangeObserver
 - (void)photoLibraryDidChange:(PHChange *)changeInstance{
-    NSLog(@"%@",changeInstance);
+//    NSLog(@"%@",changeInstance);
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self assetsLibraryDidChange];
     });
@@ -592,33 +587,6 @@
 - (void)didClickFinishAction{
     [self nextOperation];
 }
-
-
-/**
- TODO:检查视频文件是否达标
- 
- @param asset 视频文件
- @param contentBlock 回调
- */
-- (void)checkVedioSize:(id)asset contentBlock:(void(^)(BOOL success))contentBlock{
-    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
-    options.version = PHVideoRequestOptionsVersionOriginal;
-    if (ISIOS8) {
-        [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset *asset, AVAudioMix *audioMix, NSDictionary *info) {
-            if ([asset isKindOfClass:[AVURLAsset class]]) {
-                AVURLAsset* urlAsset = (AVURLAsset*)asset;
-                NSUInteger second = urlAsset.duration.value / urlAsset.duration.timescale;
-                NSNumber *size;
-                [urlAsset.URL getResourceValue:&size forKey:NSURLFileSizeKey error:nil];
-                double filesize = [size doubleValue]/(1024.0*1024.0);
-                if (contentBlock) {
-                    contentBlock((second < [SRAlbumData singleton].videoMaximumDuration&&filesize < [SRAlbumData singleton].videoMaxSize));
-                }
-            }
-        }];
-    }
-}
-
 
 
 /**

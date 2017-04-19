@@ -32,6 +32,7 @@
     vc.resourceType = sender.tag;
     vc.albumDelegate = self;
     vc.maxItem = 9;
+    vc.videoMaximumDuration = 5;
     //编辑页的对象名,可以自定义
     vc.eidtClass = [SRPhotoEidtViewController class];
     //编辑页接收图片的对象名

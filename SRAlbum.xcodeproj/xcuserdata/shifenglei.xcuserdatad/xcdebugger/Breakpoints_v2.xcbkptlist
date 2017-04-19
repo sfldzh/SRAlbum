@@ -36,13 +36,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SRAlbumClass/SRAlbumViewController.m"
-            timestampString = "514257242.182807"
+            timestampString = "514261798.010373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "-photoLibraryDidChange:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SRAlbumController photoLibraryDidChange:]"
+                  moduleName = "SRAlbum"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shifenglei/Documents/GITHUB/SRAlbum/SRAlbumClass/SRAlbumViewController.m"
+                  timestampString = "514262131.482267"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "536"
+                  endingLineNumber = "536"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[SRAlbumController photoLibraryDidChange:]_block_invoke"
+                  moduleName = "SRAlbum"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shifenglei/Documents/GITHUB/SRAlbum/SRAlbumClass/SRAlbumViewController.m"
+                  timestampString = "514262131.483564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "536"
+                  endingLineNumber = "536"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

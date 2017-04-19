@@ -59,10 +59,17 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(swithCamera) object:nil];
 }
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self initData];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initData];
     [self addViews];
     [self configerView];
     [self addNotification];
@@ -755,13 +762,11 @@
         //开始录制视频使用到了代理 AVCaptureFileOutputRecordingDelegate 同时还有录制视频保存的文件地址的
         [self.movieFileOutput startRecordingToOutputFileURL:fileURL recordingDelegate:self];
         self.currentTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            if (self.currentTime>=self.maxTime) {
-                [self stopCurrentVideoRecording];
-            }else{
                 self.currentTime++;
                 self.cameraButton.progress = self.currentTime/(CGFloat)self.maxTime;
-            }
-            
+                if (self.currentTime>=self.maxTime) {
+                    [self stopCurrentVideoRecording];
+                }
         }];
 //            [self.currentTimer fire];
     }

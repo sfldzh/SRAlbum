@@ -29,8 +29,6 @@
 @property (nonatomic, assign) NSUInteger    maxItem;
 //拍摄视频最多时间
 @property (nonatomic, assign) NSUInteger    videoMaximumDuration;
-//拍摄视频大小限制
-@property (nonatomic, assign) NSUInteger    videoMaxSize;
 //编辑页面
 @property (nonatomic, weak) Class         eidtClass;
 //图片接收数据的名字
