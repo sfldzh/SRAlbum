@@ -15,5 +15,9 @@
 @property (nonatomic, strong) ALAsset                       *alAsset;
 @property (nonatomic, strong) UIImageView                   *imgView;
 @property (nonatomic, strong) NSIndexPath                   *indexpath;
-
+/**
+ TODO:停止播放
+ */
+- (void)stopPlay;
 @end
+

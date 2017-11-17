@@ -12,6 +12,8 @@
 @interface SRAlbumViewController : UINavigationController
 //资源类型 0：全部 1：照片 2：视频
 @property (nonatomic, assign) NSInteger     resourceType;
+//是否可以拍摄功能
+@property (nonatomic, assign) BOOL          isCanShot;
 //只有在选择照片时有用。
 @property (nonatomic, assign) NSUInteger    maxItem;
 //拍摄视频最多时间

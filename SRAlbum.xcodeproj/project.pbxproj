@@ -10,6 +10,8 @@
 		1345173B1E98627E002043B8 /* SR_WhiteBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 134517391E98627E002043B8 /* SR_WhiteBack@2x.png */; };
 		1345173C1E98627E002043B8 /* SR_WhiteBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1345173A1E98627E002043B8 /* SR_WhiteBack@3x.png */; };
 		1345173F1E9891E6002043B8 /* SRBrowseImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1345173E1E9891E6002043B8 /* SRBrowseImageCollectionCell.m */; };
+		136B314C1FBE6F96009E2A64 /* SRAlbum_Play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 136B314A1FBE6F96009E2A64 /* SRAlbum_Play@3x.png */; };
+		136B314D1FBE6F96009E2A64 /* SRAlbum_Play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 136B314B1FBE6F96009E2A64 /* SRAlbum_Play@2x.png */; };
 		13D7C9481E97F94A0055E904 /* SRPhotoBrowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D7C9471E97F94A0055E904 /* SRPhotoBrowsViewController.m */; };
 		D641E3AE1EA096A800F5F271 /* EffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D641E39E1EA096A800F5F271 /* EffectView.m */; };
 		D641E3AF1EA096A800F5F271 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D641E3A01EA096A800F5F271 /* ProgressView.m */; };
@@ -294,6 +296,8 @@
 		1345173A1E98627E002043B8 /* SR_WhiteBack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SR_WhiteBack@3x.png"; sourceTree = "<group>"; };
 		1345173D1E9891E6002043B8 /* SRBrowseImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRBrowseImageCollectionCell.h; sourceTree = "<group>"; };
 		1345173E1E9891E6002043B8 /* SRBrowseImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRBrowseImageCollectionCell.m; sourceTree = "<group>"; };
+		136B314A1FBE6F96009E2A64 /* SRAlbum_Play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SRAlbum_Play@3x.png"; sourceTree = "<group>"; };
+		136B314B1FBE6F96009E2A64 /* SRAlbum_Play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SRAlbum_Play@2x.png"; sourceTree = "<group>"; };
 		13D7C9461E97F94A0055E904 /* SRPhotoBrowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRPhotoBrowsViewController.h; sourceTree = "<group>"; };
 		13D7C9471E97F94A0055E904 /* SRPhotoBrowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRPhotoBrowsViewController.m; sourceTree = "<group>"; };
 		D641E39D1EA096A800F5F271 /* EffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectView.h; sourceTree = "<group>"; };
@@ -967,6 +971,8 @@
 		D654971C1E9656D0002D58A3 /* SRAlbumImages */ = {
 			isa = PBXGroup;
 			children = (
+				136B314B1FBE6F96009E2A64 /* SRAlbum_Play@2x.png */,
+				136B314A1FBE6F96009E2A64 /* SRAlbum_Play@3x.png */,
 				D6B4F5841E97798E001B8245 /* SRAlbum_Photo@2x.png */,
 				D6B4F5851E97798E001B8245 /* SRAlbum_Photo@3x.png */,
 				D6B4F5801E977988001B8245 /* SRAlbum_Vedio@2x.png */,
@@ -1554,9 +1560,11 @@
 				D6BBD8461EA4CF3C00E0F462 /* SRContrast_Select@2x.png in Resources */,
 				D641E3B41EA096A800F5F271 /* SR_Camera_Selected@2x.png in Resources */,
 				D6B4F56C1E973955001B8245 /* BadgeSlomoSmall.png in Resources */,
+				136B314C1FBE6F96009E2A64 /* SRAlbum_Play@3x.png in Resources */,
 				D6BBD85F1EA59AE500E0F462 /* SRPhoto_Eidt_Black_Icon@2x.png in Resources */,
 				D6BBD8301EA4C8CB00E0F462 /* SRBrightness_Ordinary@2x.png in Resources */,
 				D641E3C11EA0AF5700F5F271 /* Hud_Checkmark@2x.png in Resources */,
+				136B314D1FBE6F96009E2A64 /* SRAlbum_Play@2x.png in Resources */,
 				D6BBD8271EA4A9C000E0F462 /* SRPhoto_Eidt_Original_Icon@2x.png in Resources */,
 				D6BBD82D1EA4C8CB00E0F462 /* SRBrightness_Select@3x.png in Resources */,
 				D6B4F57F1E9774F6001B8245 /* SRAlbum_selected@3x.png in Resources */,
@@ -1969,7 +1977,7 @@
 				INFOPLIST_FILE = SRAlbum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SRAlbum;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SRAlbum.S;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1982,7 +1990,7 @@
 				INFOPLIST_FILE = SRAlbum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SRAlbum;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SRAlbum.S;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

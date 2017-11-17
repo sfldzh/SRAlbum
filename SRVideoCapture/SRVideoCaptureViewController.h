@@ -13,7 +13,7 @@
 
 /**
  TODO:拍照或者录像已经确定完成和选择
-
+ 
  @param content 照片或者视频地址
  @param isVedio 是否是视频
  */
@@ -23,7 +23,9 @@
 @interface SRVideoCaptureViewController : UIViewController
 @property (nonatomic, assign) NSUInteger    maxTime;
 @property (nonatomic, assign) NSUInteger    type;//0:录像和拍照 1：拍照 2：录像
+@property (nonatomic, assign) BOOL iscompress;//是否压缩
 @property (nonatomic, weak) id<SRVideoCaptureViewControllerDelegate>delegate;
 
 
 @end
+

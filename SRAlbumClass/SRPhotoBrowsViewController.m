@@ -200,20 +200,51 @@
  @param data 内容
  */
 - (void)selectOrDeleteWithData:(id)data{
+    for (SRBrowseImageCollectionCell *cell in [self.collectionView visibleCells]) {
+        [cell stopPlay];
+    }
+    if ([data isKindOfClass:[PHAsset class]]) {
+        PHAsset *phAsset = data;
+        if (![phAsset ctassetsPickerIsPhoto]) {
+            if (self.selectPics.count>0) {
+                [self showAlertWithMessage:@"图片和视频不能同时选择。" tager:self];
+                return;
+            }else{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(selectDidChangeIndexpath:)]) {
+                    [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+([SRAlbumData singleton].isCanShot?1:0) inSection:0]];
+                }
+                return;
+            }
+        }
+    }else{
+        ALAsset *alAsset = data;
+        if (![alAsset ctassetsPickerIsPhoto]) {
+            if (self.selectPics.count>0) {
+                [self showAlertWithMessage:@"图片和视频不能同时选择。" tager:self];
+                return;
+            }else{
+                if (self.delegate && [self.delegate respondsToSelector:@selector(selectDidChangeIndexpath:)]) {
+                    [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+([SRAlbumData singleton].isCanShot?1:0) inSection:0]];
+                }
+                return;
+            }
+        }
+    }
+    
     if ([self.selectPics containsObject:data]) {
         if (self.selectPics.count <= [SRAlbumData singleton].maxItem) {
             [self.selectPics removeObject:data];
             if (self.delegate && [self.delegate respondsToSelector:@selector(selectDidChangeIndexpath:)]) {
-                [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+1 inSection:0]];
+                [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+([SRAlbumData singleton].isCanShot?1:0) inSection:0]];
             }
         }
     }else{
         if (self.selectPics.count < [SRAlbumData singleton].maxItem) {
             [self.selectPics addObject:data];
             if (self.delegate && [self.delegate respondsToSelector:@selector(selectDidChangeIndexpath:)]) {
-                [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+1 inSection:0]];
+                [self.delegate selectDidChangeIndexpath:[NSIndexPath indexPathForRow:self.showIndexPath.row+([SRAlbumData singleton].isCanShot?1:0) inSection:0]];
             }
-
+            
         }else{
             [self showAlertWithMessage:[NSString stringWithFormat:@"最多选取%@张图片",@([SRAlbumData singleton].maxItem)] tager:self];
         }
@@ -267,12 +298,17 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    [(SRBrowseImageCollectionCell *)cell stopPlay];
+}
+
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     int page = (int)(scrollView.contentOffset.x/scrollView.frame.size.width);
     self.showIndexPath = [NSIndexPath indexPathForRow:page inSection:0];
     [self checkIsSelected];
+    
 }
 
 
@@ -294,13 +330,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

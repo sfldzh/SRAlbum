@@ -8,8 +8,10 @@
 
 #import "SRVideoCaptureViewController.h"
 #import "SRCameraButton.h"
+#import "SRAlbumHelper.h"
+#import "MBProgressHUD.h"
 
-#define ISIOS10  ([UIDevice currentDevice].systemVersion.floatValue >= 11.0f)
+#define ISIOS10  ([UIDevice currentDevice].systemVersion.floatValue >= 10.0f)
 
 @interface SRVideoCaptureViewController ()<SRCameraButtonDelegate,AVCapturePhotoCaptureDelegate,AVCaptureFileOutputRecordingDelegate,CAAnimationDelegate,UIGestureRecognizerDelegate>
 //视频和照片组件
@@ -35,7 +37,8 @@
 @property (nonatomic, strong) UILabel                       *titleLabel;//提示
 @property (nonatomic, strong) UIButton                      *flipButton;//翻转按钮
 @property (strong, nonatomic) UIImageView                   *focusRectView;//对焦显示界面
-@property (nonatomic, strong) NSTimer                       *currentTimer;
+@property (nonatomic, strong) CADisplayLink                 *currentTimer;
+@property (nonatomic, strong) MBProgressHUD                 *progressHud;
 
 //数据
 @property (nonatomic, assign) BOOL                          isShow;
@@ -59,6 +62,11 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(swithCamera) object:nil];
 }
 
+- (void)loadView{
+    self.view = [UIView new];
+    self.view.backgroundColor = [UIColor blackColor];
+}
+
 - (instancetype)init{
     self = [super init];
     if (self) {
@@ -73,7 +81,7 @@
     [self addViews];
     [self configerView];
     [self addNotification];
-//    [self addGestureRecognizer];
+    //    [self addGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -94,7 +102,7 @@
 }
 
 /**
-  TODO: 添加通知
+ TODO: 添加通知
  */
 - (void)addNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationChange:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -118,7 +126,8 @@
     if (self.type != 1) {
         [self.captureSession addInput:[AVCaptureDeviceInput deviceInputWithDevice:[AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio] error:nil]];
         [self.captureSession addOutput:self.movieFileOutput];
-    }else if (self.type != 2){
+    }
+    if (self.type != 2){
         if (ISIOS10) {
             [self.captureSession addOutput:self.stillImageOutput];
         }else{
@@ -135,7 +144,7 @@
     [self.view addSubview:self.showImageView];
     [self.showImageView addSubview:self.selectButton];
     [self.showImageView addSubview:self.visualEffectView];
-    [self.visualEffectView addSubview:self.backShowButton];
+    [self.visualEffectView.contentView addSubview:self.backShowButton];
 }
 
 - (void)initData{
@@ -153,10 +162,10 @@
         }
         [self.backCamera unlockForConfiguration];
     }else{
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-        #pragma clang diagnostic pop
+#pragma clang diagnostic pop
         for (AVCaptureDevice *camera in cameras) {
             if (camera.position == AVCaptureDevicePositionFront) {
                 self.frontCamera = camera;
@@ -349,11 +358,11 @@
         }
         self.urlAsset = [AVURLAsset assetWithURL:playUrl];
         self.playerItem = [AVPlayerItem playerItemWithAsset:self.urlAsset];
-//        //填充方式的设置
-//        [self.urlAsset loadValuesAsynchronouslyForKeys:@[@"tracks"] completionHandler:^{
-//            if (self.urlAsset.playable) {
-//            }
-//        }];
+        //        //填充方式的设置
+        //        [self.urlAsset loadValuesAsynchronouslyForKeys:@[@"tracks"] completionHandler:^{
+        //            if (self.urlAsset.playable) {
+        //            }
+        //        }];
         self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
         self.playerLayer.player = self.player;
         [self.player play];
@@ -375,7 +384,7 @@
 
 /**
  TODO:放大缩小屏幕
-
+ 
  @param recognizer 手势
  */
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)recognizer{
@@ -395,12 +404,12 @@
         if (self.effectiveScale < 1.0){
             self.effectiveScale = 1.0;
         }
-
+        
         NSLog(@"%f-------------->%f------------recognizerScale%f",self.effectiveScale,self.beginGestureScale,recognizer.scale);
         CGFloat maxScaleAndCropFactor = [[self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo] videoMaxScaleAndCropFactor];
         NSLog(@"%f",maxScaleAndCropFactor);
         //5.f为写死的最大放大倍数
-
+        
         if (self.effectiveScale > 5.f)
             self.effectiveScale = 5.f;
         [CATransaction begin];
@@ -413,7 +422,7 @@
 
 /**
  TODO:对焦界面提示动画
-
+ 
  @param point 位置
  */
 - (void)showFocusRectAtPoint:(CGPoint)point{
@@ -479,10 +488,111 @@
  TODO:确定选择文件
  */
 - (void)selectFile{
-    if (self.content && self.delegate && [self.delegate respondsToSelector:@selector(videoCaptureViewDidFinishWithContent:isVedio:)]) {
-        [self.delegate videoCaptureViewDidFinishWithContent:self.content isVedio:self.isVideotape];
-        [self backDismissView];
+    if (self.iscompress) {
+        if (self.isVideotape) {
+            [self showLoadingWithMessage:@"视频压缩中"];
+            [SRAlbumHelper compressedVideoWithPath:self.content CompletionHandler:^(AVAssetExportSession *exportSession, NSURL *path) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    switch (exportSession.status) {
+                        case AVAssetExportSessionStatusCompleted:
+                            [self deleteFileByPath:self.content];
+                            self.content = nil;
+                            if (self.delegate && [self.delegate respondsToSelector:@selector(videoCaptureViewDidFinishWithContent:isVedio:)]) {
+                                [self.delegate videoCaptureViewDidFinishWithContent:path isVedio:self.isVideotape];
+                                [self backDismissView];
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    [self hideHUB];
+                });
+            }];
+        }else{
+            if (self.content && self.delegate && [self.delegate respondsToSelector:@selector(videoCaptureViewDidFinishWithContent:isVedio:)]) {
+                [self.delegate videoCaptureViewDidFinishWithContent:[self imageCompressForWidth:self.content targetWidth:600] isVedio:self.isVideotape];
+                [self backDismissView];
+            }
+        }
+    }else{
+        if (self.content && self.delegate && [self.delegate respondsToSelector:@selector(videoCaptureViewDidFinishWithContent:isVedio:)]) {
+            [self.delegate videoCaptureViewDidFinishWithContent:self.content isVedio:self.isVideotape];
+            [self backDismissView];
+        }
     }
+}
+
+
+-(UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth{
+    UIImage *newImage = nil;
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat targetWidth = defineWidth;
+    CGFloat targetHeight = height / (width / targetWidth);
+    CGSize size = CGSizeMake(targetWidth, targetHeight);
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    CGPoint thumbnailPoint = CGPointMake(0.0, 0.0);
+    if(CGSizeEqualToSize(imageSize, size) == NO){
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        if(widthFactor > heightFactor){
+            scaleFactor = widthFactor;
+        }
+        else{
+            scaleFactor = heightFactor;
+        }
+        scaledWidth = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        if(widthFactor > heightFactor){
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
+        }else if(widthFactor < heightFactor){
+            thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+        }
+    }
+    UIGraphicsBeginImageContext(size);
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    [sourceImage drawInRect:thumbnailRect];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    if(newImage == nil){
+        NSLog(@"scale image fail");
+    }
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+/**
+ *    @author 施峰磊, 16-06-01 10:06:27
+ *
+ *    TODO:显示加载信息
+ *
+ *    @param message    加载信息
+ *
+ *    @since 1.0
+ */
+- (void)showLoadingWithMessage:(NSString *)message{
+    if (self.progressHud.superview ||self.progressHud) {
+        [self.progressHud hide:NO];
+    }
+    self.progressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.progressHud.labelText = message;
+}
+
+/**
+ *    @author 施峰磊, 16-06-01 10:06:03
+ *
+ *    TODO:隐藏
+ *
+ *    @since 1.0
+ */
+- (void)hideHUB{
+    [self.progressHud hide:NO];
 }
 
 
@@ -573,7 +683,7 @@
 
 /**
  TODO:屏幕旋转通知
-
+ 
  @param notification 通知
  */
 - (void)statusBarOrientationChange:(NSNotification *)notification{
@@ -619,7 +729,7 @@
 
 /**
  TODO:设置图片选择按钮的位置
-
+ 
  @param isShow 是否显示
  */
 - (void)setViewFrameByIsShow:(BOOL)isShow{
@@ -632,7 +742,7 @@
 
 /**
  TODO:显示图片
-
+ 
  @param isShow 是否显示
  */
 - (void)showPhotoIsShow:(BOOL)isShow{
@@ -678,11 +788,11 @@
         videoConnection.videoOrientation = Orientation;
         if (videoConnection) {
             AVCapturePhotoSettings *settings = [AVCapturePhotoSettings new];
-//            id previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.firstObject;
-//            NSDictionary *previewFormat = @{kCVPixelBufferPixelFormatTypeKey:previewPixelType,
-//                                            kCVPixelBufferWidthKey:@(160),
-//                                            kCVPixelBufferHeightKey:@(160)};
-//            settings.previewPhotoFormat = previewFormat;
+            //            id previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.firstObject;
+            //            NSDictionary *previewFormat = @{kCVPixelBufferPixelFormatTypeKey:previewPixelType,
+            //                                            kCVPixelBufferWidthKey:@(160),
+            //                                            kCVPixelBufferHeightKey:@(160)};
+            //            settings.previewPhotoFormat = previewFormat;
             [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
         }
     }else{
@@ -710,10 +820,10 @@
                 if (imageDataSampleBuffer == NULL) {
                     return;
                 }
-                #pragma clang diagnostic push
-                #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
                 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                #pragma clang diagnostic pop
+#pragma clang diagnostic pop
                 UIImage *image = [UIImage imageWithData:imageData];
                 [self showPhotoIsShow:YES];
                 self.showImageView.image = image;
@@ -735,7 +845,7 @@
 
 /**
  TODO:开始录制视频
-
+ 
  @param fileURL 文件路径
  */
 - (void)startRecordingToOutputFileURL:(NSURL *)fileURL{
@@ -758,17 +868,20 @@
                 break;
         }
         //预览图层和视频方向保持一致
-        videoConnection.videoOrientation = Orientation;
+        videoConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
         //开始录制视频使用到了代理 AVCaptureFileOutputRecordingDelegate 同时还有录制视频保存的文件地址的
         [self.movieFileOutput startRecordingToOutputFileURL:fileURL recordingDelegate:self];
-        self.currentTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-                self.currentTime++;
-                self.cameraButton.progress = self.currentTime/(CGFloat)self.maxTime;
-                if (self.currentTime>=self.maxTime) {
-                    [self stopCurrentVideoRecording];
-                }
-        }];
-//            [self.currentTimer fire];
+        
+        self.currentTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkTriggered)];
+        [self.currentTimer addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)displayLinkTriggered{
+    self.currentTime++;
+    self.cameraButton.progress = (self.currentTime/60.0f)/(CGFloat)self.maxTime;
+    if ((self.currentTime/60.0f)>=self.maxTime) {
+        [self stopCurrentVideoRecording];
     }
 }
 
@@ -777,14 +890,16 @@
  TODO:结束录制视频
  */
 - (void)stopCurrentVideoRecording{
+    self.currentTime = 0;
     [self.currentTimer invalidate];
+    self.currentTimer = nil;
     [self.movieFileOutput stopRecording];
 }
 
 
 /**
  TODO:对焦
-
+ 
  @param touchPoint 点击位置
  */
 - (void)focusInPoint:(CGPoint)touchPoint{
@@ -795,7 +910,7 @@
 
 /**
  TODOD:焦距设置
-
+ 
  @param focusMode 对焦模式
  @param exposureMode 曝光模式
  @param point 位置
@@ -833,7 +948,7 @@
 
 /**
  TODO:文件路径获取
-
+ 
  @return 文件路径
  */
 - (NSString *)getVideoSaveFilePathString{
@@ -908,7 +1023,6 @@
     self.content = outputFileURL;
     [self setVedioPlayUrl:outputFileURL];
     [self.showImageView.layer insertSublayer:self.playerLayer atIndex:0];
-    self.cameraButton.progress = 0.0;
     [self showPhotoIsShow:YES];
 }
 
@@ -918,13 +1032,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

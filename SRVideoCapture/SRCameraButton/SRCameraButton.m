@@ -41,7 +41,7 @@
 
 - (void)addViews{
     [self addSubview:self.effectview];
-    [self.effectview addSubview:self.progressView];
+    [self.effectview.contentView addSubview:self.progressView];
     [self addSubview:self.whiteLayer];
 }
 
@@ -50,7 +50,6 @@
         _whiteLayer = [TransparentView new];
         _whiteLayer.backgroundColor = [UIColor whiteColor];
         _whiteLayer.userInteractionEnabled = YES;
-        
     }
     return _whiteLayer;
 }
@@ -83,6 +82,7 @@
 - (void)configerView{
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
     [self addGestureRecognizer:longPressGesture];
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapClick)]];
     [self addTarget:self action:@selector(didTapClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -107,7 +107,7 @@
     self.isVideotape = YES;
     self.videotapeing = YES;
     self.progressView.hidden = NO;
-    self.progressView.progress =  self.progressView.progress+0.06;
+    self.progressView.progress =  0.0;
     [self setNeedsLayout];
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickCameraButtonIsVideotape:isStart:)]) {
         [self.delegate didClickCameraButtonIsVideotape:YES isStart:YES];
@@ -116,6 +116,7 @@
 
 - (void)endVideotape{
     self.videotapeing = NO;
+    self.progressView.progress = 0.0f;
     self.progressView.hidden = YES;
     [self setNeedsLayout];
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickCameraButtonIsVideotape:isStart:)]) {

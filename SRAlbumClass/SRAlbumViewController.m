@@ -68,8 +68,12 @@
     [SRAlbumData singleton].videoMaximumDuration = videoMaximumDuration;
 }
 
+- (void)setIsCanShot:(BOOL)isCanShot{
+    [SRAlbumData singleton].isCanShot = isCanShot;
+}
+
 - (void)setAlbumDelegate:(id<SRAlbumControllerDelegate>)albumDelegate{
-//    _albumDelegate = albumDelegate;
+    //    _albumDelegate = albumDelegate;
     [SRAlbumData singleton].albumDelegate = albumDelegate;
 }
 
@@ -170,7 +174,7 @@
 }
 
 - (void)addHeadView{
-    self.headerView.title = [SRAlbumData singleton].resourceType==2?@"所有视频":@"所有照片";
+    self.headerView.title = [SRAlbumData singleton].resourceType==0?@"所有内容":[SRAlbumData singleton].resourceType==2?@"所有视频":@"所有照片";
     [self.headerView leftBtnSetImage:[UIImage imageNamed:@"SR_Back"] forState:UIControlStateNormal];
     [self.headerView changRightBtnEnable:NO];
     [self.headerView leftBtnAddTarget:self selector:@selector(backViewController)];
@@ -235,7 +239,7 @@
             if (ISIOS8) {
                 self.fetchResult = content;
                 if(isCamera){
-                    [self.selectPics addObject:[self assetAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]]];
+                    [self.selectPics addObject:[self assetAtIndexPath:0]];
                     [self changeRightButtonStatu];
                 }
             }else{
@@ -338,8 +342,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (PHAsset *)assetAtIndexPath:(NSIndexPath *)indexPath{
-    return (self.fetchResult.count > 0) ? self.fetchResult[indexPath.item-1] : nil;
+- (PHAsset *)assetAtIndexPath:(NSInteger )index{
+    return (self.fetchResult.count > index) ? self.fetchResult[index] : nil;
 }
 
 /**
@@ -372,13 +376,13 @@
 }
 
 /**
- *	@author 施峰磊, 16-06-01 10:06:27
+ *    @author 施峰磊, 16-06-01 10:06:27
  *
- *	TODO:显示加载信息
+ *    TODO:显示加载信息
  *
- *	@param message	加载信息
+ *    @param message    加载信息
  *
- *	@since 1.0
+ *    @since 1.0
  */
 - (void)showLoadingWithMessage:(NSString *)message{
     if (self.progressHud.superview ||self.progressHud) {
@@ -389,11 +393,11 @@
 }
 
 /**
- *	@author 施峰磊, 16-06-01 10:06:03
+ *    @author 施峰磊, 16-06-01 10:06:03
  *
- *	TODO:隐藏
+ *    TODO:隐藏
  *
- *	@since 1.0
+ *    @since 1.0
  */
 - (void)hideHUB{
     [self.progressHud hideAnimated:NO];
@@ -503,7 +507,7 @@
 
 /**
  TODO:判断并保存数据到该属性
-
+ 
  @param attributeName 属性名
  @param attribute 值
  @param class 对象的class
@@ -532,7 +536,7 @@
 
 #pragma mark - PHPhotoLibraryChangeObserver
 - (void)photoLibraryDidChange:(PHChange *)changeInstance{
-//    NSLog(@"%@",changeInstance);
+    //    NSLog(@"%@",changeInstance);
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self assetsLibraryDidChange];
     });
@@ -548,10 +552,20 @@
     NSArray *cells = [self.collectionView visibleCells];
     id data;
     if (ISIOS8) {
-        data = [self assetAtIndexPath:indexpath];
+        data = [self assetAtIndexPath:indexpath.item-([SRAlbumData singleton].isCanShot?1:0)];
+        if (![(PHAsset *)data ctassetsPickerIsPhoto]) {
+            [self didSelectedFiles:data isVedio:YES];
+            return;
+        }
     }else{
-        data = self.fetchAlResult[indexpath.row-1];
+        data = self.fetchAlResult[indexpath.row-([SRAlbumData singleton].isCanShot?1:0)];
+        if (![(ALAsset *)data ctassetsPickerIsPhoto]) {
+            [self didSelectedFiles:data isVedio:YES];
+            return;
+        }
     }
+    
+    
     if ([self.selectPics containsObject:data]) {
         for (id cell in cells) {
             if ([cell isKindOfClass:[SRAlbumImageCollectionViewCell class]]) {
@@ -562,6 +576,20 @@
                     if (self.selectPics.count == [SRAlbumData singleton].maxItem && !((SRAlbumImageCollectionViewCell*)cell).isSelectd) {
                         ((SRAlbumImageCollectionViewCell*)cell).isShowMask = YES;
                     }
+                    
+                    BOOL isMovie;
+                    if (((SRAlbumImageCollectionViewCell*)cell).phAsset) {
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).phAsset ctassetsPickerIsPhoto];
+                    }else{
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).alAsset ctassetsPickerIsPhoto];
+                    }
+                    if (isMovie) {
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = self.selectPics.count>0;
+                    }else{
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = ((SRAlbumImageCollectionViewCell*)cell).isSelectd?NO:self.selectPics.count == [SRAlbumData singleton].maxItem;
+                    }
+                    
+                    
                 }
                 
             }
@@ -572,7 +600,19 @@
                 if (((SRAlbumImageCollectionViewCell*)cell).phAsset == data || ((SRAlbumImageCollectionViewCell*)cell).alAsset == data) {
                     ((SRAlbumImageCollectionViewCell*)cell).isSelectd = NO;
                 }else{
-                    ((SRAlbumImageCollectionViewCell*)cell).isShowMask = NO;
+                    //                    ((SRAlbumImageCollectionViewCell*)cell).isShowMask = NO;
+                    BOOL isMovie;
+                    if (((SRAlbumImageCollectionViewCell*)cell).phAsset) {
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).phAsset ctassetsPickerIsPhoto];
+                    }else{
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).alAsset ctassetsPickerIsPhoto];
+                    }
+                    if (isMovie) {
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = self.selectPics.count>0;
+                    }else{
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = NO;
+                    }
+                    
                 }
             }
         }
@@ -591,7 +631,7 @@
 
 /**
  TODO:压缩视频
-
+ 
  @param asset asset
  @param contentBlock 完成回调
  */
@@ -647,7 +687,7 @@
 
 /**
  TODO:确定是否包含
-
+ 
  @param datas 数组
  @param alasset 视频信息
  @return 是否包含
@@ -672,10 +712,10 @@
  */
 - (void)didClickSelectActionIndexpath:(NSIndexPath *)indexpath{
     if (ISIOS8) {
-        PHAsset *phAsset = [self assetAtIndexPath:indexpath];
+        PHAsset *phAsset = [self assetAtIndexPath:indexpath.item-([SRAlbumData singleton].isCanShot?1:0)];
         [self selectOrDeleteWithData:phAsset withCollectionView:self.collectionView indexPath:indexpath];
     }else{
-        ALAsset *alAsset = self.fetchAlResult[indexpath.row-1];
+        ALAsset *alAsset = self.fetchAlResult[indexpath.row-([SRAlbumData singleton].isCanShot?1:0)];
         [self selectOrDeleteWithData:alAsset withCollectionView:self.collectionView indexPath:indexpath];
     }
     [self changeRightButtonStatu];
@@ -697,7 +737,7 @@
                     [self getAlbumDatasByCamera:NO contentBlock:^(BOOL success) {
                         if (success) {
                             if (ISIOS8) {
-                                PHAsset *phAsset = [self assetAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+                                PHAsset *phAsset = [self assetAtIndexPath:0];
                                 [self didSelectedFiles:phAsset isVedio:YES];
                             }else{
                                 ALAsset *alAsset = self.fetchAlResult[0];
@@ -732,60 +772,68 @@
     }else{
         count = self.fetchAlResult.count;
     }
-    return count+1;
+    return count+([SRAlbumData singleton].isCanShot?1:0);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        SRCameraView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SRCameraView" forIndexPath:indexPath];
-        cell.imageView.image = [UIImage imageNamed:[SRAlbumData singleton].resourceType != 2?@"SRAlbum_Photo":@"SRAlbum_Vedio"];
-        return cell;
-    }else{
-        SRAlbumImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SRAlbumImageCollectionViewCell" forIndexPath:indexPath];
-        cell.indexpath = indexPath;
-        cell.delegate = self;
-        if (ISIOS8) {
-            PHAsset *phAsset = [self assetAtIndexPath:indexPath];
-            if (!self.selectIng) {
-                cell.phAsset = phAsset;
-            }
-            
-            if ([SRAlbumData singleton].resourceType == 1) {
-                cell.isSelectd = [self.selectPics containsObject:phAsset];
-            }
-        }else{
-            ALAsset *alAsset = self.fetchAlResult[indexPath.row-1];
-            if (!self.selectIng) {
-                cell.alAsset = alAsset;
-            }
-            if ([SRAlbumData singleton].resourceType == 1) {
-                cell.isSelectd = [self isContainWithDatas:self.selectPics alasset:alAsset];
-            }
+    if ([SRAlbumData singleton].isCanShot){
+        if (indexPath.row == 0) {
+            SRCameraView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SRCameraView" forIndexPath:indexPath];
+            cell.imageView.image = [UIImage imageNamed:[SRAlbumData singleton].resourceType != 2?@"SRAlbum_Photo":@"SRAlbum_Vedio"];
+            return cell;
         }
-        if (cell.isSelectd) {
-            cell.isShowMask = NO;
-        }else{
-            cell.isShowMask = [SRAlbumData singleton].maxItem<=self.selectPics.count;
-        }
-//        cell.showSelect = [SRAlbumData singleton].resourceType != 2;
-        
-        return cell;
     }
-    return nil;
+    
+    BOOL isMovie;
+    SRAlbumImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SRAlbumImageCollectionViewCell" forIndexPath:indexPath];
+    cell.indexpath = indexPath;
+    cell.delegate = self;
+    if (ISIOS8) {
+        PHAsset *phAsset = [self assetAtIndexPath:indexPath.item- ([SRAlbumData singleton].isCanShot?1:0)];
+        isMovie = ![phAsset ctassetsPickerIsPhoto];
+        if (!self.selectIng) {
+            cell.phAsset = phAsset;
+        }
+        
+        if ([SRAlbumData singleton].resourceType != 2) {
+            cell.isSelectd = [self.selectPics containsObject:phAsset];
+        }
+    }else{
+        ALAsset *alAsset = self.fetchAlResult[indexPath.row-([SRAlbumData singleton].isCanShot?1:0)];
+        isMovie = ![alAsset ctassetsPickerIsPhoto];
+        if (!self.selectIng) {
+            cell.alAsset = alAsset;
+        }
+        if ([SRAlbumData singleton].resourceType != 2) {
+            cell.isSelectd = [self isContainWithDatas:self.selectPics alasset:alAsset];
+        }
+    }
+    if (isMovie) {
+        cell.isShowMask = self.selectPics.count>0;
+    }else{
+        cell.isShowMask = cell.isSelectd?NO:[SRAlbumData singleton].maxItem<=self.selectPics.count;
+    }
+    
+    
+    //        cell.showSelect = [SRAlbumData singleton].resourceType != 2;
+    
+    return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        if (self.selectPics.count < [SRAlbumData singleton].maxItem) {
-            [self openVideoCaptureView];
-        }else{
-            [self showAlertWithMessage:[NSString stringWithFormat:@"最多选取%@张图片",@([SRAlbumData singleton].maxItem)] tager:self];
+    if ([SRAlbumData singleton].isCanShot){
+        if (indexPath.row == 0) {
+            if (self.selectPics.count < [SRAlbumData singleton].maxItem) {
+                [self openVideoCaptureView];
+            }else{
+                [self showAlertWithMessage:[NSString stringWithFormat:@"最多选取%@张图片",@([SRAlbumData singleton].maxItem)] tager:self];
+            }
         }
     }else{
         if ([SRAlbumData singleton].resourceType == 2) {//选择了视频
             if (ISIOS8) {
-                PHAsset *phAsset = [self assetAtIndexPath:indexPath];
+                PHAsset *phAsset = [self assetAtIndexPath:indexPath.item-([SRAlbumData singleton].isCanShot?1:0)];
                 typeof(self) __weak weakSelf = self;
                 [self showSheetWithMessage:@"选择或者浏览" firstTitle:@"选择" secondTitle:@"浏览" tager:self firstHandler:^(UIAlertAction *action) {
                     [weakSelf didSelectedFiles:phAsset isVedio:YES];
@@ -793,7 +841,7 @@
                     [weakSelf browsMoveWithAsset:phAsset];
                 }];
             }else{
-                ALAsset *alAsset = self.fetchAlResult[indexPath.row-1];
+                ALAsset *alAsset = self.fetchAlResult[indexPath.row-([SRAlbumData singleton].isCanShot?1:0)];
                 typeof(self) __weak weakSelf = self;
                 [self showSheetWithMessage:@"选择或者浏览" firstTitle:@"选择" secondTitle:@"浏览" tager:self firstHandler:^(UIAlertAction *action) {
                     [weakSelf didSelectedFiles:alAsset isVedio:YES];
@@ -801,28 +849,27 @@
                     [weakSelf browsMoveWithAsset:alAsset];
                 }];
             }
-            
         }else if ([SRAlbumData singleton].resourceType == 1){//图片
             SRPhotoBrowsViewController *viewController = [[SRPhotoBrowsViewController alloc] init];
             viewController.delegate = self;
             viewController.fetchAlResult = self.fetchAlResult;
             viewController.fetchResult = self.fetchResult;
             viewController.selectPics = self.selectPics;
-            viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0];
+            viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-([SRAlbumData singleton].isCanShot?1:0) inSection:0];
             [self.navigationController pushViewController:viewController animated:YES];
         }else{//图片和视频混合
+            
             if (ISIOS8) {
-                PHAsset *phAsset = [self assetAtIndexPath:indexPath];
+                PHAsset *phAsset = [self assetAtIndexPath:indexPath.item-([SRAlbumData singleton].isCanShot?1:0)];
                 if (![phAsset ctassetsPickerIsPhoto]) {
                     if (self.selectPics.count == 0) {
-                        typeof(self) __weak weakSelf = self;
-                        [self showSheetWithMessage:@"选择或者浏览" firstTitle:@"选择" secondTitle:@"浏览" tager:self firstHandler:^(UIAlertAction *action) {
-                            [weakSelf didSelectedFiles:phAsset isVedio:YES];
-                        } secondHandler:^(UIAlertAction *action) {
-                            [weakSelf browsMoveWithAsset:phAsset];
-                        }];
-                    }else{
-                        [self showAlertWithMessage:@"你已经选择了图片，视频不能选择。" tager:self];
+                        SRPhotoBrowsViewController *viewController = [[SRPhotoBrowsViewController alloc] init];
+                        viewController.delegate = self;
+                        viewController.fetchAlResult = self.fetchAlResult;
+                        viewController.fetchResult = self.fetchResult;
+                        viewController.selectPics = self.selectPics;
+                        viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-([SRAlbumData singleton].isCanShot?1:0) inSection:0];
+                        [self.navigationController pushViewController:viewController animated:YES];
                     }
                 }else{
                     SRPhotoBrowsViewController *viewController = [[SRPhotoBrowsViewController alloc] init];
@@ -830,21 +877,20 @@
                     viewController.fetchAlResult = self.fetchAlResult;
                     viewController.fetchResult = self.fetchResult;
                     viewController.selectPics = self.selectPics;
-                    viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0];
+                    viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-([SRAlbumData singleton].isCanShot?1:0) inSection:0];
                     [self.navigationController pushViewController:viewController animated:YES];
                 }
             }else{
-                ALAsset *alAsset = self.fetchAlResult[indexPath.row-1];
+                ALAsset *alAsset = self.fetchAlResult[indexPath.row-([SRAlbumData singleton].isCanShot?1:0)];
                 if (![alAsset ctassetsPickerIsPhoto]) {
                     if (self.selectPics.count == 0) {
-                        typeof(self) __weak weakSelf = self;
-                        [self showSheetWithMessage:@"选择或者浏览" firstTitle:@"选择" secondTitle:@"浏览" tager:self firstHandler:^(UIAlertAction *action) {
-                            [weakSelf didSelectedFiles:alAsset isVedio:YES];
-                        } secondHandler:^(UIAlertAction *action) {
-                            [weakSelf browsMoveWithAsset:alAsset];
-                        }];
-                    }else{
-                        [self showAlertWithMessage:@"你已经选择了图片，视频不能选择。" tager:self];
+                        SRPhotoBrowsViewController *viewController = [[SRPhotoBrowsViewController alloc] init];
+                        viewController.delegate = self;
+                        viewController.fetchAlResult = self.fetchAlResult;
+                        viewController.fetchResult = self.fetchResult;
+                        viewController.selectPics = self.selectPics;
+                        viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-([SRAlbumData singleton].isCanShot?1:0) inSection:0];
+                        [self.navigationController pushViewController:viewController animated:YES];
                     }
                 }else{
                     SRPhotoBrowsViewController *viewController = [[SRPhotoBrowsViewController alloc] init];
@@ -852,7 +898,7 @@
                     viewController.fetchAlResult = self.fetchAlResult;
                     viewController.fetchResult = self.fetchResult;
                     viewController.selectPics = self.selectPics;
-                    viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0];
+                    viewController.showIndexPath = [NSIndexPath indexPathForRow:indexPath.row-([SRAlbumData singleton].isCanShot?1:0) inSection:0];
                     [self.navigationController pushViewController:viewController animated:YES];
                 }
             }
@@ -863,7 +909,7 @@
 
 /**
  TODO:浏览视频
-
+ 
  @param asset 视屏源
  */
 - (void)browsMoveWithAsset:(id)asset{
@@ -907,7 +953,17 @@
                     if (((SRAlbumImageCollectionViewCell*)cell).phAsset == data || ((SRAlbumImageCollectionViewCell*)cell).alAsset == data) {
                         ((SRAlbumImageCollectionViewCell*)cell).isSelectd = NO;
                     }else{
-                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = NO;
+                        BOOL isMovie;
+                        if (((SRAlbumImageCollectionViewCell*)cell).phAsset) {
+                            isMovie = ![((SRAlbumImageCollectionViewCell*)cell).phAsset ctassetsPickerIsPhoto];
+                        }else{
+                            isMovie = ![((SRAlbumImageCollectionViewCell*)cell).alAsset ctassetsPickerIsPhoto];
+                        }
+                        if (isMovie) {
+                            ((SRAlbumImageCollectionViewCell*)cell).isShowMask = self.selectPics.count>0;
+                        }else{
+                            ((SRAlbumImageCollectionViewCell*)cell).isShowMask = NO;
+                        }
                     }
                 }
             }
@@ -919,13 +975,18 @@
                 if ([cell isKindOfClass:[SRAlbumImageCollectionViewCell class]]) {
                     if (((SRAlbumImageCollectionViewCell*)cell).phAsset == data || ((SRAlbumImageCollectionViewCell*)cell).alAsset == data) {
                         ((SRAlbumImageCollectionViewCell*)cell).isSelectd = YES;
-                        continue;
-                    }else{
-                        if (self.selectPics.count == [SRAlbumData singleton].maxItem && !((SRAlbumImageCollectionViewCell*)cell).isSelectd) {
-                            ((SRAlbumImageCollectionViewCell*)cell).isShowMask = YES;
-                        }
                     }
-                    
+                    BOOL isMovie;
+                    if (((SRAlbumImageCollectionViewCell*)cell).phAsset) {
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).phAsset ctassetsPickerIsPhoto];
+                    }else{
+                        isMovie = ![((SRAlbumImageCollectionViewCell*)cell).alAsset ctassetsPickerIsPhoto];
+                    }
+                    if (isMovie) {
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = self.selectPics.count>0;
+                    }else{
+                        ((SRAlbumImageCollectionViewCell*)cell).isShowMask = ((SRAlbumImageCollectionViewCell*)cell).isSelectd?NO:self.selectPics.count == [SRAlbumData singleton].maxItem;
+                    }
                 }
             }
         }else{
@@ -965,8 +1026,5 @@
 }
 
 
-
-
-
-
 @end
+
