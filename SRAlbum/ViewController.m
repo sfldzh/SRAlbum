@@ -8,13 +8,12 @@
 
 #import "ViewController.h"
 #import "SRAlbumViewController.h"
-#import <Photos/Photos.h>
-#import "SRPhotoEidtViewController.h"//编辑
-#import "SRAlbumHelper.h"
-#import "SRVideoCaptureViewController.h"
+#import "ShowViewController.h"
 
-@interface ViewController ()<SRAlbumControllerDelegate,SRPhotoEidtViewDelegate,SRVideoCaptureViewControllerDelegate>
 
+@interface ViewController ()<SRAlbumViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *menuList;
 @end
 
 
@@ -22,90 +21,128 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-//    if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(@"/Users/shifenglei/Desktop/20170414145825.mp4")) {
-//        UISaveVideoAtPathToSavedPhotosAlbum(@"/Users/shifenglei/Desktop/20170414145825.mp4", self, nil, nil);
-//    }
+    [self initData];
+    [self configerView];
 }
 
-- (IBAction)action:(UIButton *)sender {
-    SRAlbumViewController *vc = [[SRAlbumViewController alloc] init];
-    vc.resourceType = sender.tag;
-    vc.albumDelegate = self;
-    vc.maxItem = 9;
-    vc.videoMaximumDuration = 5;
-//    vc.isCanShot = YES;
-    //编辑页的对象名,可以自定义
-    vc.eidtClass = [SRPhotoEidtViewController class];
-    //编辑页接收图片的对象名
-    vc.eidtSourceName = @"imageSource";
-    [self presentViewController:vc animated:YES completion:nil];
+
+- (void)initData{
+    self.title = @"首页";
+    self.menuList = @[@"相册任意资源类型不用编辑",
+                      @"相册图片类型不用编辑",
+                      @"相册视频类型不用编辑",
+                      @"相册任意资源类型编辑",
+                      @"相册图片类型编辑",
+                      @"相册视频类型编辑",
+                      @"相机任意资源类型不用编辑",
+                      @"相机图片类型不用编辑",
+                      @"相机视频类型",
+                      @"相机任意资源类型编辑",
+                      @"相机图片类型编辑"];
 }
 
-- (IBAction)vedioAction:(UIButton *)sender {
-    SRVideoCaptureViewController *viewController = [[SRVideoCaptureViewController alloc] init];
-    viewController.maxTime = 10;
-    viewController.delegate = self;
-    [self presentViewController:viewController animated:YES completion:nil];
-    
-}
-- (IBAction)selectMedia:(UIButton *)sender {
-    SRAlbumViewController *vc = [[SRAlbumViewController alloc] init];
-    vc.resourceType = 0;
-    vc.albumDelegate = self;
-    vc.maxItem = 9;
-    vc.videoMaximumDuration = 5;
-    //    //编辑页的对象名,可以自定义
-    //    vc.eidtClass = [SRPhotoEidtViewController class];
-    //    //编辑页接收图片的对象名
-    //    vc.eidtSourceName = @"imageSource";
-    [self presentViewController:vc animated:YES completion:nil];
+- (void)configerView{
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"AlbumTableViewCell"];
 }
 
-#pragma mark - SRVideoCaptureViewControllerDelegate
-/**
- TODO:拍照或者录像已经确定完成和选择
- 
- @param content 照片或者视频地址
- @param isVedio 是否是视频
- */
-- (void)videoCaptureViewDidFinishWithContent:(id)content isVedio:(BOOL)isVedio{
-    NSLog(@"%@ %@",content,isVedio?@"视频":@"图片");
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.menuList.count;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *title = [self.menuList objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlbumTableViewCell" forIndexPath:indexPath];
+    cell.textLabel.text = title;
+    return cell;
 }
 
-#pragma mark - SRAlbumControllerDelegate
-
-/**
- TODO:已经选择了视频或者照片
- 
- @param content 视频或者照片
- @param isVedio 是否是视频
- @param viewController 相册
- */
-- (void)srAlbumDidSeletedFinishWithContent:(id)content isVedio:(BOOL)isVedio viewController:(SRAlbumController *)viewController{
-    if ([content isKindOfClass:[NSURL class]]) {
-        NSLog(@"%@",[SRAlbumHelper thumbnailImageForVideo:content atTime:1]);
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row < 11) {//相册操作
+        SRDeviceType deviceType;
+        SRAssetType assetType;
+        BOOL isEidt = NO;
+        if (indexPath.row == 0) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypeNone;
+            isEidt = NO;
+        } else if (indexPath.row == 1) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypePic;
+            isEidt = NO;
+        } else if (indexPath.row == 2) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypeVideo;
+            isEidt = NO;
+        } else if (indexPath.row == 3) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypeNone;
+            isEidt = YES;
+        } else if (indexPath.row == 4) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypePic;
+            isEidt = YES;
+        } else if (indexPath.row == 5) {
+            deviceType = SRDeviceTypeLibrary;
+            assetType = SRAssetTypeVideo;
+            isEidt = YES;
+        } else if (indexPath.row == 6) {
+            deviceType = SRDeviceTypeCamera;
+            assetType = SRAssetTypeNone;
+            isEidt = NO;
+        } else if (indexPath.row == 7) {
+            deviceType = SRDeviceTypeCamera;
+            assetType = SRAssetTypePic;
+            isEidt = NO;
+        } else if (indexPath.row == 8) {
+            deviceType = SRDeviceTypeCamera;
+            assetType = SRAssetTypeVideo;
+            isEidt = NO;
+        } else if (indexPath.row == 9) {
+            deviceType = SRDeviceTypeCamera;
+            assetType = SRAssetTypeNone;
+            isEidt = YES;
+        } else {
+            deviceType = SRDeviceTypeCamera;
+            assetType = SRAssetTypePic;
+            isEidt = YES;
+        }
+        
+        SRAlbumViewController *vc = [[SRAlbumViewController alloc] initWithDeviceType:deviceType];
+        vc.albumDelegate = self;
+        vc.assetType = assetType;
+        vc.maxItem = 9;
+        vc.maxlength = 500*1024;
+        vc.isEidt = isEidt;
+        vc.isShowPicList = YES;
+        [self presentViewController:vc animated:YES completion:nil];
     }
-    NSLog(@"%@",content);
-    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-#pragma mark - SRPhotoEidtViewDelegate
+#pragma mark - SRAlbumViewControllerDelegate
 /**
- TODO:图片编辑完成
+ TODO:相册照片获取
  
- @param datas 图片数组
- @param viewController 编辑页面
+ @param picker 相册
+ @param images 图片列表
  */
-- (void)didEidtEndWithDatas:(NSArray *)datas viewController:(SRPhotoEidtViewController *)viewController{
-    NSLog(@"%@",datas);
-    [viewController dismissViewControllerAnimated:YES completion:nil];
+- (void)srAlbumPickerController:(SRAlbumViewController *)picker didFinishPickingImages:(NSArray *)images{
+    ShowViewController *vc = [[ShowViewController alloc] initWithNibName:@"ShowViewController" bundle:nil];
+    vc.datas = images;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/**
+ TODO:相册视频获取
+ 
+ @param picker 相册
+ @param vedios 视频列表
+ */
+- (void)srAlbumPickerController:(SRAlbumViewController *)picker didFinishPickingVedios:(NSArray *)vedios{
+    NSLog(@"%@",vedios);
 }
 
 @end

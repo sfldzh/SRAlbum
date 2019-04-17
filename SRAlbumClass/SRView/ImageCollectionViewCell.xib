@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Jw-OY-ACN">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BadgeSlomoSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fwt-g5-ltG">
+                        <rect key="frame" x="128" y="128" width="12" height="12"/>
+                    </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SRAlbum_no_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="3n3-Kn-7qZ">
+                        <rect key="frame" x="115" y="10" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="I4D-hk-zdk"/>
+                            <constraint firstAttribute="width" constant="25" id="g9s-Nd-OkS"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65j-S7-gwL">
+                        <rect key="frame" x="115" y="10" width="25" height="25"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o5-jg-nwV">
+                        <rect key="frame" x="104" y="0.0" width="46" height="46"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="OgA-nj-086"/>
+                            <constraint firstAttribute="width" constant="46" id="VqD-vI-LPw"/>
+                        </constraints>
+                        <connections>
+                            <action selector="didClickAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="06i-F7-PRZ"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIb-Kh-xwO">
+                        <rect key="frame" x="10" y="127" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3n3-Kn-7qZ" secondAttribute="trailing" constant="10" id="30W-n7-Vcz"/>
+                <constraint firstItem="65j-S7-gwL" firstAttribute="width" secondItem="3n3-Kn-7qZ" secondAttribute="width" id="3FO-WF-HLA"/>
+                <constraint firstItem="65j-S7-gwL" firstAttribute="height" secondItem="3n3-Kn-7qZ" secondAttribute="height" id="60c-pn-j40"/>
+                <constraint firstItem="65j-S7-gwL" firstAttribute="top" secondItem="3n3-Kn-7qZ" secondAttribute="top" id="69n-xH-RZC"/>
+                <constraint firstItem="3n3-Kn-7qZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="8gY-8a-ncB"/>
+                <constraint firstAttribute="bottom" secondItem="3Jw-OY-ACN" secondAttribute="bottom" id="CdA-fs-f9c"/>
+                <constraint firstItem="3Jw-OY-ACN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Dzm-yQ-4AU"/>
+                <constraint firstItem="LIb-Kh-xwO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="MqA-53-fnA"/>
+                <constraint firstAttribute="trailing" secondItem="3Jw-OY-ACN" secondAttribute="trailing" id="Nl6-rL-u30"/>
+                <constraint firstItem="LIb-Kh-xwO" firstAttribute="centerY" secondItem="Fwt-g5-ltG" secondAttribute="centerY" id="deL-HJ-X0J"/>
+                <constraint firstItem="65j-S7-gwL" firstAttribute="leading" secondItem="3n3-Kn-7qZ" secondAttribute="leading" id="fgD-kl-sin"/>
+                <constraint firstItem="3Jw-OY-ACN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fxU-lg-1Gh"/>
+                <constraint firstAttribute="trailing" secondItem="3o5-jg-nwV" secondAttribute="trailing" id="nFu-8M-ybL"/>
+                <constraint firstAttribute="bottom" secondItem="Fwt-g5-ltG" secondAttribute="bottom" constant="10" id="o8u-rc-rxZ"/>
+                <constraint firstItem="3o5-jg-nwV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pfz-aq-lKi"/>
+                <constraint firstAttribute="trailing" secondItem="Fwt-g5-ltG" secondAttribute="trailing" constant="10" id="wqR-Vw-QW8"/>
+            </constraints>
+            <size key="customSize" width="193" height="174"/>
+            <connections>
+                <outlet property="flagImage" destination="Fwt-g5-ltG" id="OkW-VL-Yct"/>
+                <outlet property="imageView" destination="3Jw-OY-ACN" id="ZnZ-v4-Fqh"/>
+                <outlet property="numberLabel" destination="65j-S7-gwL" id="L42-yM-Va9"/>
+                <outlet property="selectImage" destination="3n3-Kn-7qZ" id="qdV-5V-a3D"/>
+                <outlet property="timeLabel" destination="LIb-Kh-xwO" id="2vD-mZ-KKY"/>
+            </connections>
+            <point key="canvasLocation" x="273.60000000000002" y="104.34782608695653"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="BadgeSlomoSmall.png" width="12" height="12"/>
+        <image name="SRAlbum_no_selected.png" width="23" height="23"/>
+    </resources>
+</document>
