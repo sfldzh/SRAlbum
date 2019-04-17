@@ -3,7 +3,6 @@
 
 
 ![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0630.PNG?raw=true)![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0631.PNG?raw=true)
-![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0611.PNG?raw=true)![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0612.PNG?raw=true)
 ![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0610.PNG?raw=true)![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0632.PNG?raw=true)
 
 
