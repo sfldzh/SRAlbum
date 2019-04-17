@@ -37,13 +37,16 @@ static SRAlbumConfiger *_albumConfiger;
 }
 
 - (void)initData{
-    _maxTime = 9;
+    _maxItem = 9;
+    _maxTime = 10;
     _maxlength = 2*1024*1024;
 }
 
 - (void)setIsEidt:(BOOL)isEidt{
     _isEidt = isEidt;
-    _maxItem = isEidt?1:9;
+    if(isEidt){
+        _maxItem = 1;
+    }
     if (isEidt) {
         _assetType = SRAssetTypePic;
     }
