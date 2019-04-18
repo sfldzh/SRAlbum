@@ -81,7 +81,7 @@
         if (!self.isLoaded)hub = [SRHub show];
         [SRHelper fetchAlbumsOption:0 contentBlock:^(PHFetchResult * _Nonnull content, BOOL success) {
             self.fetchResult = content;
-            [self loadViewIfNeeded];
+//            [self loadViewIfNeeded];
             if (hub)[SRHub hidden:hub];
             self.isLoaded = YES;
             [self.collectionView reloadData];
