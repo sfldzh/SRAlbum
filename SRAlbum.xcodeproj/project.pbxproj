@@ -303,7 +303,7 @@
 		D65496C51E9632F5002D58A3 = {
 			isa = PBXGroup;
 			children = (
-				D65497041E963329002D58A3 /* SRAlbumClass */,
+				D65497041E963329002D58A3 /* Class */,
 				D65496D01E9632F5002D58A3 /* SRAlbum */,
 				D65496EA1E9632F5002D58A3 /* SRAlbumTests */,
 				D65496F51E9632F5002D58A3 /* SRAlbumUITests */,
@@ -370,7 +370,7 @@
 			path = SRAlbumUITests;
 			sourceTree = "<group>";
 		};
-		D65497041E963329002D58A3 /* SRAlbumClass */ = {
+		D65497041E963329002D58A3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
 				FFDB01E52266D2B400D77B56 /* FLAnimatedImage */,
@@ -388,7 +388,7 @@
 				FFDB01CF2266D2B300D77B56 /* SRModel */,
 				FFDB01952266D2B300D77B56 /* SRView */,
 			);
-			path = SRAlbumClass;
+			path = Class;
 			sourceTree = "<group>";
 		};
 		D6BBD8041EA465EC00E0F462 /* Frameworks */ = {
