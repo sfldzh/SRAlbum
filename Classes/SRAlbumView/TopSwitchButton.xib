@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TopSwitchButton" customModule="SRAlbum" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="117" height="32"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sr_album_direction" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-11-NYX">
+                    <rect key="frame" x="85" y="5" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="bls-zN-IlU"/>
+                        <constraint firstAttribute="height" constant="22" id="msW-fg-ZWW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-qC-q1F">
+                    <rect key="frame" x="10" y="0.0" width="65" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="gR0-yb-j2w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.91117310520000006" green="0.91130417590000001" blue="0.91114443540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.29422217610000001" green="0.29032626750000001" blue="0.29022270439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="T9a-11-NYX" secondAttribute="trailing" constant="10" id="0gT-5I-d44"/>
+                <constraint firstItem="T9a-11-NYX" firstAttribute="leading" secondItem="1bd-qC-q1F" secondAttribute="trailing" constant="10" id="G0z-vf-W3m"/>
+                <constraint firstItem="T9a-11-NYX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="gM1-rP-MWQ"/>
+                <constraint firstItem="1bd-qC-q1F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="tXm-f4-xiK"/>
+                <constraint firstItem="1bd-qC-q1F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vhY-Bv-53x"/>
+                <constraint firstAttribute="bottom" secondItem="1bd-qC-q1F" secondAttribute="bottom" id="zuO-c8-IOZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageView" destination="T9a-11-NYX" id="tle-V5-vga"/>
+                <outlet property="titleLabel" destination="1bd-qC-q1F" id="QR7-g8-s0X"/>
+            </connections>
+            <point key="canvasLocation" x="42.753623188405797" y="81.521739130434796"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sr_album_direction" width="16" height="16"/>
+    </resources>
+</document>

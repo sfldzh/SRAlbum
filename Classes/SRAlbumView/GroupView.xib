@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GroupView" customModule="SRAlbum" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3W-N0-xim">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.90020333904109584" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="44a-52-OQ4" appends="YES" id="05w-SK-Bwb"/>
+                    </connections>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-2L-rab">
+                    <rect key="frame" x="0.0" y="-956" width="414" height="733"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0on-3A-ucF">
+                            <rect key="frame" x="0.0" y="10" width="414" height="723"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="separatorColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.19602152710000001" green="0.19605553149999999" blue="0.1960140467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="0on-3A-ucF" firstAttribute="leading" secondItem="dYb-2L-rab" secondAttribute="leading" id="8SR-UY-Cx5"/>
+                        <constraint firstAttribute="bottom" secondItem="0on-3A-ucF" secondAttribute="bottom" id="Kb2-WF-rMV"/>
+                        <constraint firstItem="0on-3A-ucF" firstAttribute="top" secondItem="dYb-2L-rab" secondAttribute="top" constant="10" id="ROk-5K-3Oe"/>
+                        <constraint firstAttribute="trailing" secondItem="0on-3A-ucF" secondAttribute="trailing" id="aJe-zR-ZAJ"/>
+                        <constraint firstAttribute="height" constant="733" id="cRY-n4-9T9"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dYb-2L-rab" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1Xc-bb-7t0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Z3W-N0-xim" secondAttribute="trailing" id="645-o6-bnX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dYb-2L-rab" secondAttribute="trailing" id="As5-PD-lIU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Z3W-N0-xim" secondAttribute="bottom" id="FGT-k0-Am7"/>
+                <constraint firstItem="Z3W-N0-xim" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Iby-Ok-Cda"/>
+                <constraint firstItem="dYb-2L-rab" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="750" constant="-1000" id="V1k-6L-vNF"/>
+                <constraint firstItem="dYb-2L-rab" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="500" constant="-10" id="e1J-93-bGS"/>
+                <constraint firstItem="Z3W-N0-xim" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qgV-Cw-mv8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backView" destination="Z3W-N0-xim" id="5Mg-LO-YEI"/>
+                <outlet property="contentConstraint" destination="V1k-6L-vNF" id="a6D-M3-2zs"/>
+                <outlet property="contentHeight" destination="cRY-n4-9T9" id="gnD-eC-9da"/>
+                <outlet property="tableView" destination="0on-3A-ucF" id="Dhi-U8-Fc9"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="152.67857142857142"/>
+        </view>
+        <tapGestureRecognizer id="44a-52-OQ4">
+            <connections>
+                <action selector="didClickBack:" destination="iN0-l3-epB" id="et2-hh-Myp"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

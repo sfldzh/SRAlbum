@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SRAlbum.xcscheme</key>
+		<key>SRAlbum.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D65496CD1E9632F5002D58A3</key>
+		<key>D697988623D19C3C0009E906</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D65496E61E9632F5002D58A3</key>
+		<key>D697989C23D19C3E0009E906</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D65496F11E9632F5002D58A3</key>
+		<key>D69798A723D19C3E0009E906</key>
 		<dict>
 			<key>primary</key>
 			<true/>
