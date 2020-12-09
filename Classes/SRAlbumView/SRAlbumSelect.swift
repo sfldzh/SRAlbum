@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class SRAlbumSelect: UIControl {
+class SRAlbumSelect: UIControl {
     //TODO: 普通状态图片
     @IBInspectable open var image:UIImage?{
         didSet{

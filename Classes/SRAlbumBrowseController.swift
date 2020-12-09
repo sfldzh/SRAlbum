@@ -84,7 +84,12 @@ class SRAlbumBrowseController: UIViewController, UICollectionViewDelegate, UICol
     func scrollToPage(indexPath:IndexPath?) -> Void {
         if indexPath != nil {
             DispatchQueue.main.async {
-                self.collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: false)
+                if #available(iOS 14.0, *) {
+                    let size = UIScreen.main.bounds.size
+                    self.collectionView.scrollRectToVisible(CGRect.init(x: CGFloat(indexPath!.row) * size.width, y: 0, width: size.width, height: size.height), animated: false);
+                }else{
+                    self.collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: false)
+                }
             }
         }
     }
