@@ -22,7 +22,7 @@ class SRAlbumEidtView: UIView {
     
     weak var imageView:JPImageresizerView?
     private var completeBlock:((UIImage?,SRAlbumEidtView)->Void)?
-    
+    private var cancelBlock:(()->Void)?
     deinit {
         print("编辑kill")
     }
@@ -49,17 +49,19 @@ class SRAlbumEidtView: UIView {
         }
     }
     
-    func show<T>(data:T, complete:((UIImage?, SRAlbumEidtView)->Void)?) -> Void {
+    func show<T>(data:T, complete:((UIImage?, SRAlbumEidtView)->Void)?, _ cancelBlock:(()->Void)?) -> Void {
         var canAdd = false
         if T.self == PHAsset.self {
             self.completeBlock = complete
-            (data as! PHAsset).requestOriginalImage { [weak self](imageData, info) in
+            self.cancelBlock = cancelBlock
+            _=(data as! PHAsset).requestOriginalImage { [weak self](imageData, info) in
                 let image = UIImage.init(data: imageData!)
                 self?.addImageConfiger(image: image)
             }
             canAdd = true
         }else if T.self == UIImage.self {
             self.completeBlock = complete
+            self.cancelBlock = cancelBlock
             self.addImageConfiger(image: data as? UIImage)
             canAdd = true
         }
@@ -82,7 +84,7 @@ class SRAlbumEidtView: UIView {
                     bottom = SRHelper.getWindow()?.safeAreaInsets.bottom ?? 0
                 }
                 
-                configure?.contentInsets = UIEdgeInsets.init(top: top+44, left: 0, bottom: bottom+50, right: 0)
+                configure?.contentInsets = UIEdgeInsets.init(top: top+46, left: 0, bottom: bottom+55, right: 0)
             }
             if let imageresizerView = JPImageresizerView.init(configure: configure, imageresizerIsCanRecovery: { [weak self](isCanRecovery) in
                 self?.resetButton.isHidden = !isCanRecovery
@@ -102,6 +104,7 @@ class SRAlbumEidtView: UIView {
     
     func dismiss() -> Void {
         self.removeFromSuperview();
+        self.cancelBlock?()
     }
     
     @IBAction func dissmissAction(_ sender: UIButton) {

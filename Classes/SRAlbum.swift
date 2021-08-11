@@ -30,10 +30,13 @@ func Appsize() -> CGSize {
 }
 
 var asset_type:SRAssetType = .None//.None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
+var camera_type:SRCameraType = .Photo//
 var max_count = 0;//取图片或者视频的数量；默认为1
 var max_size = 0;//限制图片的M数，；默认为2*1024*1024，也就是2M
 var is_eidt = false;//是否要编辑；默认为false
 var is_sort = false;//是否要排序输出图片；默认为false
+var is_rectangle_detection = false;//开启矩形检测
+
 
 public class SRAlbumWrapper:NSObject{
     
@@ -71,11 +74,33 @@ public class SRAlbumWrapper:NSObject{
                 //去c设置中修改权限
                 let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
                 if UIApplication.shared.canOpenURL(setUrl) {
-                    UIApplication.shared.openURL(setUrl)
+                    UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
                 }
             }
             alertController.addAction(sureAction);
             tager.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    @objc public func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
+        if #available(iOS 12, *) {
+            tager.checkCamera(cameraType: cameraType) { authorization in
+                camera_type = cameraType
+                is_eidt = isEidt
+                max_size = maxSize
+                is_rectangle_detection = isRectangleDetection
+                SRAlbumData.sharedInstance.completeHandle = completeHandle
+                SRAlbumData.sharedInstance.isZip = maxSize>0;
+                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+                let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                nv.navigationBar.tintColor = UIColor.white
+                nv.navigationBar.barStyle = .black
+                nv.modalPresentationStyle = .fullScreen
+                nv.isNavigationBarHidden = true
+                tager.present(nv, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -124,7 +149,7 @@ extension UIViewController{
                 //去c设置中修改权限
                 let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
                 if UIApplication.shared.canOpenURL(setUrl) {
-                    UIApplication.shared.openURL(setUrl)
+                    UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
                 }
             }
             alertController.addAction(sureAction);
@@ -132,14 +157,107 @@ extension UIViewController{
         }
     }
 
-    public func openCamera(assetType:SRAssetType = .None, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
-        
+    
+    /// 打开相机
+    /// - Parameters:
+    ///   - cameraType: .Photo 拍照，.Video 录像
+    ///   - isRectangleDetection: 是否矩形检测
+    ///   - isEidt: 是否编辑
+    ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
+    ///   - completeHandle: 回调结果
+    /// - Returns: 空
+    public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
+        if #available(iOS 12, *) {
+            self.checkCamera(cameraType: cameraType) {[weak self] authorization in
+                camera_type = cameraType
+                is_eidt = isEidt
+                max_size = maxSize
+                is_rectangle_detection = isRectangleDetection
+                SRAlbumData.sharedInstance.completeHandle = completeHandle
+                SRAlbumData.sharedInstance.isZip = maxSize>0;
+                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+                let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                nv.navigationBar.tintColor = UIColor.white
+                nv.navigationBar.barStyle = .black
+                nv.modalPresentationStyle = .fullScreen
+                nv.isNavigationBarHidden = true
+                self?.present(nv, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func checkCamera(cameraType:SRCameraType, result:@escaping((_ authorization:Bool)->Void)){
+        if self.isCanAccessVideoCapture() {
+            if cameraType == .Video {
+                if self.isCanOpenMic() {
+                    AVCaptureDevice.requestAccess(for: AVMediaType.audio) { granted in
+                        DispatchQueue.main.async {
+                            result(granted)
+                        }
+                    }
+                }else{
+                    result(false)
+                    let alertController = UIAlertController.init(title: "提示", message: "想要访问麦克风，需要你的允许。去设置？", preferredStyle: .alert);
+                    let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction);
+                    let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
+                        //去c设置中修改权限
+                        let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
+                        if UIApplication.shared.canOpenURL(setUrl) {
+                            UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
+                        }
+                    }
+                    alertController.addAction(sureAction);
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }else{
+                AVCaptureDevice.requestAccess(for: AVMediaType.video) { granted in
+                    DispatchQueue.main.async {
+                        result(granted)
+                    }
+                }
+            }
+        }else{
+            result(false)
+            let alertController = UIAlertController.init(title: "提示", message: "想要访问相机，需要你的允许。去设置？", preferredStyle: .alert);
+            let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction);
+            let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
+                //去c设置中修改权限
+                let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
+                if UIApplication.shared.canOpenURL(setUrl) {
+                    UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
+                }
+            }
+            alertController.addAction(sureAction);
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     /// TODO: 判断是否有相册权限
     func isCanOpenAlbums() -> Bool {
         let authorStatus = PHPhotoLibrary.authorizationStatus()
         if authorStatus == .restricted || authorStatus == .denied {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    /// TODO: 判断是否有麦克风权限
+    func isCanOpenMic() -> Bool {
+        let micStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.audio)
+        if micStatus == .restricted || micStatus == .denied {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    /// TODO: 判断是否有拍摄权限
+    func isCanAccessVideoCapture() -> Bool {
+        let micStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if micStatus == .restricted || micStatus == .denied {
             return false;
         }else{
             return true;

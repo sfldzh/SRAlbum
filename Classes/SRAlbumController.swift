@@ -131,7 +131,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     SRAlbumData.sharedInstance.completeHandle?([image!])
                     eideView.dismiss()
                     self.cancelAction()
-                })
+                }, nil)
             }else{
                 if SRAlbumData.sharedInstance.sList.count >= max_count {
                     SRAlbumTip.sharedInstance.show(content: "最多只能选\(max_count)个！")
@@ -193,7 +193,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     }
                 }else{
                     if asset.editedPic == nil {
-                        asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
+                        _=asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
                             if asset.isGif() {
                                 results.append(imageData!)
                             }else{
@@ -257,7 +257,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     }
                 }else{
                     if asset.editedPic == nil {
-                        asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
+                        _=asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
                             if asset.isGif() {
                                 results.append(imageData!)
                             }else{
@@ -410,7 +410,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                         SRAlbumData.sharedInstance.completeHandle?([image!])
                         eideView.dismiss();
                         self.cancelAction()
-                    })
+                    }, nil)
                     isAdd = true
                 }else{
                     if SRAlbumData.sharedInstance.sList.count >= max_count {

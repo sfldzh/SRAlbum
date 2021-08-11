@@ -46,9 +46,16 @@ class SRHelper {
         var window:UIWindow? = nil
         if #available(iOS 13.0, *) {
             for windowScene:UIWindowScene in ((UIApplication.shared.connectedScenes as? Set<UIWindowScene>)!) {
-                if windowScene.activationState == .foregroundActive {
-                    window = windowScene.windows.first
-                    break
+                if windowScene.activationState == .foregroundActive || windowScene.activationState == .foregroundInactive {
+                    for temp in windowScene.windows {
+                        if !temp.isHidden && NSStringFromClass(temp.classForCoder) == "UIWindow" {
+                            window = temp
+                            break
+                        }
+                    }
+                    if (window != nil) {
+                        break
+                    }
                 }
             }
         } else {

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		4EA06815DBC0DE8CC9718FED /* Pods_SRAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA766676E62E8093F18AF6A /* Pods_SRAlbum.framework */; };
 		D424EE41F2F8DE087C66D4E4 /* Pods_SRAlbumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F24416C4739FF9604DC0AA1 /* Pods_SRAlbumTests.framework */; };
+		D605F1F926B78F1B00C9391E /* SRCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */; };
+		D605F1FA26B78F1B00C9391E /* SRCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */; };
+		D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605F1FC26B7DAD200C9391E /* SRCameraView.swift */; };
+		D60ACBDB26B8C34A00914DAE /* CIFeatureRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */; };
+		D60ACBDF26B8E1A000914DAE /* CameraTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D60ACBDE26B8E1A000914DAE /* CameraTool.m */; };
 		D6400C3323FFA48600DF5639 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3123FFA48600DF5639 /* ResultViewController.swift */; };
 		D6400C3423FFA48600DF5639 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6400C3223FFA48600DF5639 /* ResultViewController.xib */; };
 		D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */; };
@@ -72,6 +77,13 @@
 		882758745B150110BA1F0916 /* Pods-SRAlbumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRAlbumTests.debug.xcconfig"; path = "Target Support Files/Pods-SRAlbumTests/Pods-SRAlbumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ABB47E96394799A9B9F518EC /* Pods-SRAlbum-SRAlbumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRAlbum-SRAlbumUITests.debug.xcconfig"; path = "Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB552FCE89BB7D6B95BEBB84 /* Pods-SRAlbum-SRAlbumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRAlbum-SRAlbumUITests.release.xcconfig"; path = "Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCameraViewController.swift; sourceTree = "<group>"; };
+		D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRCameraViewController.xib; sourceTree = "<group>"; };
+		D605F1FC26B7DAD200C9391E /* SRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCameraView.swift; sourceTree = "<group>"; };
+		D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIFeatureRect.swift; sourceTree = "<group>"; };
+		D60ACBDC26B8E19F00914DAE /* SRAlbum-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRAlbum-Bridging-Header.h"; sourceTree = "<group>"; };
+		D60ACBDD26B8E1A000914DAE /* CameraTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraTool.h; sourceTree = "<group>"; };
+		D60ACBDE26B8E1A000914DAE /* CameraTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraTool.m; sourceTree = "<group>"; };
 		D6400C3123FFA48600DF5639 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D6400C3223FFA48600DF5639 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +166,18 @@
 				2840AD6197AFE0FF7A987D8F /* Pods-SRAlbumTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D605F1FB26B7DA3900C9391E /* SRCameraView */ = {
+			isa = PBXGroup;
+			children = (
+				D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */,
+				D605F1FC26B7DAD200C9391E /* SRCameraView.swift */,
+				D60ACBDD26B8E1A000914DAE /* CameraTool.h */,
+				D60ACBDE26B8E1A000914DAE /* CameraTool.m */,
+				D60ACBDC26B8E19F00914DAE /* SRAlbum-Bridging-Header.h */,
+			);
+			path = SRCameraView;
 			sourceTree = "<group>";
 		};
 		D692B7A823D5786200015DE5 /* SRExtension */ = {
@@ -253,9 +277,12 @@
 				D69798CD23D1BA900009E906 /* SRAlbumController.xib */,
 				D6ED18A223D7CE8D0094C06E /* SRAlbumBrowseController.swift */,
 				D6ED18A323D7CE8D0094C06E /* SRAlbumBrowseController.xib */,
+				D605F1FB26B7DA3900C9391E /* SRCameraView */,
 				D692B7AB23D57EF200015DE5 /* SRAlbumView */,
 				D692B7A823D5786200015DE5 /* SRExtension */,
 				D697989323D19C3D0009E906 /* Assets.xcassets */,
+				D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */,
+				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -343,6 +370,7 @@
 				TargetAttributes = {
 					D697988623D19C3C0009E906 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1250;
 					};
 					D697989C23D19C3E0009E906 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -383,6 +411,7 @@
 				D692B7B523D58CB100015DE5 /* GroupView.xib in Resources */,
 				D69798CF23D1BA900009E906 /* SRAlbumController.xib in Resources */,
 				D697989723D19C3D0009E906 /* LaunchScreen.storyboard in Resources */,
+				D605F1FA26B78F1B00C9391E /* SRCameraViewController.xib in Resources */,
 				D6ED18A523D7CE8D0094C06E /* SRAlbumBrowseController.xib in Resources */,
 				D692B7B123D57F5E00015DE5 /* TopSwitchButton.xib in Resources */,
 				D697989423D19C3D0009E906 /* Assets.xcassets in Resources */,
@@ -527,10 +556,14 @@
 				D692B7BC23D5977600015DE5 /* SRAldumGroupTableViewCell.swift in Sources */,
 				D697988B23D19C3C0009E906 /* AppDelegate.swift in Sources */,
 				D692B7B323D58CA300015DE5 /* GroupView.swift in Sources */,
+				D605F1F926B78F1B00C9391E /* SRCameraViewController.swift in Sources */,
+				D60ACBDF26B8E1A000914DAE /* CameraTool.m in Sources */,
 				D6A51AD723F992B200295F3F /* SRAlbumEidtView.swift in Sources */,
+				D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */,
 				D692B7C123D59B7400015DE5 /* AssetImage.swift in Sources */,
 				D69798CE23D1BA900009E906 /* SRAlbumController.swift in Sources */,
 				D69798BC23D19C9E0009E906 /* SRAlbum.swift in Sources */,
+				D60ACBDB26B8C34A00914DAE /* CIFeatureRect.swift in Sources */,
 				D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */,
 				D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */,
 				D6ED18AC23D7FA6F0094C06E /* SRBrowseImageCell.swift in Sources */,
@@ -711,16 +744,21 @@
 			baseConfigurationReference = FB71F941A03ACE03EC2D8A23 /* Pods-SRAlbum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MN6K6JLYC4;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = SRAlbum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/SRCameraView/SRAlbum-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -731,16 +769,20 @@
 			baseConfigurationReference = 3A225E34E374B8104669844E /* Pods-SRAlbum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MN6K6JLYC4;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = SRAlbum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/SRCameraView/SRAlbum-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

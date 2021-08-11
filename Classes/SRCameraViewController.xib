@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRCameraViewController" customModule="SRAlbum" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraView" destination="3nx-HX-Qty" id="qB8-6A-w7M"/>
+                <outlet property="flashBtn" destination="MXc-HZ-2y5" id="u5O-jS-jtC"/>
+                <outlet property="qhBtn" destination="3FI-9o-jBS" id="Sjt-7d-tTx"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-HX-Qty" customClass="SRCameraView" customModule="SRAlbum" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3X-Ug-lLJ">
+                    <rect key="frame" x="324" y="792" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="FRf-W2-9yp"/>
+                        <constraint firstAttribute="height" constant="40" id="XmK-nP-Nz0"/>
+                    </constraints>
+                    <state key="normal" image="sr_close_camera_icon"/>
+                    <connections>
+                        <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="nhc-g0-1fN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXc-HZ-2y5">
+                    <rect key="frame" x="30" y="54" width="30" height="30"/>
+                    <state key="normal" image="sr_camera_flash_on_icon"/>
+                    <connections>
+                        <action selector="flashAction:" destination="-1" eventType="touchUpInside" id="HJ0-BY-xvf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FI-9o-jBS">
+                    <rect key="frame" x="349" y="54" width="35" height="30"/>
+                    <state key="normal" image="sr_camera_fz_icon"/>
+                    <connections>
+                        <action selector="swithCameraAction:" destination="-1" eventType="touchUpInside" id="j7X-5D-H6o"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bM-Ls-10r">
+                    <rect key="frame" x="167" y="772" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="CkT-Tz-EmT"/>
+                        <constraint firstAttribute="width" constant="80" id="TVX-cr-AWR"/>
+                    </constraints>
+                    <state key="normal" image="sr_photograph_icon"/>
+                    <connections>
+                        <action selector="pzAction:" destination="-1" eventType="touchUpInside" id="PVd-w5-P81"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3FI-9o-jBS" secondAttribute="trailing" constant="30" id="1V4-FA-puw"/>
+                <constraint firstItem="3nx-HX-Qty" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5lG-cp-YSS"/>
+                <constraint firstItem="3nx-HX-Qty" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="InQ-kU-Vau"/>
+                <constraint firstItem="3FI-9o-jBS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="L9q-8J-mIr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3nx-HX-Qty" secondAttribute="trailing" id="MUb-jm-I4c"/>
+                <constraint firstItem="n3X-Ug-lLJ" firstAttribute="centerY" secondItem="6bM-Ls-10r" secondAttribute="centerY" id="Qis-in-u5R"/>
+                <constraint firstItem="6bM-Ls-10r" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aTa-zI-R8v"/>
+                <constraint firstItem="MXc-HZ-2y5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="awd-3v-Yra"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6bM-Ls-10r" secondAttribute="bottom" constant="10" id="eEm-7Q-43U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n3X-Ug-lLJ" secondAttribute="trailing" constant="50" id="joV-9z-9vj"/>
+                <constraint firstItem="MXc-HZ-2y5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ooW-OB-CVR"/>
+                <constraint firstAttribute="bottom" secondItem="3nx-HX-Qty" secondAttribute="bottom" id="pzt-Lv-LH7"/>
+            </constraints>
+            <point key="canvasLocation" x="114" y="103"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sr_camera_flash_on_icon" width="29.5" height="29.5"/>
+        <image name="sr_camera_fz_icon" width="35" height="29.5"/>
+        <image name="sr_close_camera_icon" width="33.5" height="33.5"/>
+        <image name="sr_photograph_icon" width="133.5" height="133.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

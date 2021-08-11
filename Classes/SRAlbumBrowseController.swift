@@ -171,7 +171,7 @@ class SRAlbumBrowseController: UIViewController, UICollectionViewDelegate, UICol
             asset.editedPic = image
             self?.collectionView.reloadData();
             self?.delegate?.eidtFinish(data: asset)
-        })
+        }, nil)
     }
     
     // MARK:- UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout

@@ -23,13 +23,18 @@ class SRBrowseImageCell: UICollectionViewCell, UIScrollViewDelegate {
         imageView.backgroundColor = UIColor.clear
         return imageView
     }();
+    private var imgId:PHImageRequestID?
     
     var data:PHAsset?{
         didSet{
             self.playButton.isHidden = self.data?.isPhoto() ?? true
             if self.data?.editedPic == nil {
-                self.data?.requestOriginalImage(resultHandler: { [weak self](imageData, info) in
+                if self.imgId != nil {
+                    self.data?.cancelImageRequest(self.imgId!)
+                }
+                self.imgId = self.data?.requestOriginalImage(resultHandler: { [weak self](imageData, info) in
                     if imageData != nil {
+                        self?.imgId = nil
                         let maxSize = UIScreen.main.bounds.size
                         let image = UIImage.init(data: imageData!)
                         let size = image?.tagerSize(maxSize: maxSize) ?? CGSize.zero

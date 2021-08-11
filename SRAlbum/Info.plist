@@ -6,6 +6,10 @@
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>想要访问相册，来上传图片，需要你的允许。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>想要访问相机，来上传图片，需要你的允许。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>保存图片</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
