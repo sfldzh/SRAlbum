@@ -25,11 +25,15 @@ class ViewController: UIViewController {
 //            self?.navigationController?.pushViewController(vc, animated: true);
 //            print("assets")
 //        }
-        self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true) { [weak self](assets) in
-            let vc:ResultViewController = ResultViewController.init(nibName: "ResultViewController", bundle: bundle)
-            vc.images = assets as? Array<UIImage>;
-            self?.navigationController?.pushViewController(vc, animated: true);
-            print("assets")
+        self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true) { [weak self](img:UIImage?, url:URL?) in
+            if img != nil {
+                let vc:ResultViewController = ResultViewController.init(nibName: "ResultViewController", bundle: bundle)
+                vc.images = [img!];
+                self?.navigationController?.pushViewController(vc, animated: true);
+                print("assets")
+            }else{
+                
+            }
         }
     }
     

@@ -128,7 +128,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                 isAdd = true
                 SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
                     data.editedPic = image
-                    SRAlbumData.sharedInstance.completeHandle?([image!])
+                    SRAlbumData.sharedInstance.completeImageHandle?([image!])
                     eideView.dismiss()
                     self.cancelAction()
                 }, nil)
@@ -223,7 +223,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         workingGroup.notify(queue: concurrentQueue) {
             DispatchQueue.main.async {
                 SRHelper.hideHud(hud: hub)
-                SRAlbumData.sharedInstance.completeHandle?(results)
+                SRAlbumData.sharedInstance.completeImageHandle?(results)
                 self.cancelAction()
             }
         }
@@ -284,7 +284,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         workingGroup.notify(queue: workingQueue) {
             DispatchQueue.main.async {
                 SRHelper.hideHud(hud: hub)
-                SRAlbumData.sharedInstance.completeHandle?(results)
+                SRAlbumData.sharedInstance.completeImageHandle?(results)
                 self.cancelAction()
             }
         }
@@ -407,7 +407,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                 if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                     SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
                         data.editedPic = image;
-                        SRAlbumData.sharedInstance.completeHandle?([image!])
+                        SRAlbumData.sharedInstance.completeImageHandle?([image!])
                         eideView.dismiss();
                         self.cancelAction()
                     }, nil)

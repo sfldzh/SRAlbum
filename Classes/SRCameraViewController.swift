@@ -14,14 +14,21 @@ import UIKit
 
 class SRCameraViewController: UIViewController{
     @IBOutlet weak var cameraView: SRCameraView!
+    @IBOutlet weak var playerView: SRPlayerView!
     @IBOutlet weak var qhBtn: UIButton!
     @IBOutlet weak var flashBtn: UIButton!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var pzBtn: UIButton!
+    
+    
+    open var fileName:String?
+    private var vedioUrl:URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configerView()
         self.cameraView.install(isRectangleDetection: is_rectangle_detection)
         self.cameraView.startRunning()
-        self.configerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +37,17 @@ class SRCameraViewController: UIViewController{
     }
     
     private func configerView(){
-        self.qhBtn.isHidden = is_rectangle_detection
+        self.flashBtn.isHidden = camera_type == .Video
+        self.time.isHidden = camera_type == .Photo
+        if camera_type == .Video{
+            self.qhBtn.isHidden = false
+            self.cameraView.cameraModeType = .Video
+            self.pzBtn.setImage(UIImage.init(named: "sr_videotape_un_icon", in: bundle, compatibleWith: nil), for: .normal)
+        }else{
+            self.qhBtn.isHidden = is_rectangle_detection
+            self.cameraView.cameraModeType = .Photo
+            self.pzBtn.setImage(UIImage.init(named: "sr_photograph_icon", in: bundle, compatibleWith: nil), for: .normal)
+        }
         if self.cameraView.flashMode == .auto {
             self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_auto_icon", in: bundle, compatibleWith: nil), for: .normal)
         }else if self.cameraView.flashMode == .on {
@@ -38,7 +55,7 @@ class SRCameraViewController: UIViewController{
         }else if self.cameraView.flashMode == .off {
             self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_off_icon", in: bundle, compatibleWith: nil), for: .normal)
         }
-        self.cameraView.result = {[weak self](image:UIImage?, _error:Error?) in
+        self.cameraView.imageResult = {[weak self](image:UIImage?, _error:Error?) in
             if image != nil {
                 if is_eidt {
                     self?.cameraView.stopRunning()
@@ -49,7 +66,7 @@ class SRCameraViewController: UIViewController{
                             DispatchQueue.main.async {
                                 SRHelper.hideHud(hud: hub)
                                 eideView.dismiss()
-                                SRAlbumData.sharedInstance.completeHandle?([img])
+                                SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
                                 self?.dismiss(animated: true, completion: nil)
                             }
                         }
@@ -62,21 +79,39 @@ class SRCameraViewController: UIViewController{
                         let img:UIImage = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
                         DispatchQueue.main.async {
                             SRHelper.hideHud(hud: hub)
-                            SRAlbumData.sharedInstance.completeHandle?([img])
+                            SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
                         }
                     }
                 }
             }else{
-                SRAlbumData.sharedInstance.completeHandle?([])
+                SRAlbumData.sharedInstance.completeVedioHandle?(nil,nil)
             }
             if is_eidt == false {
                 self?.dismiss(animated: true, completion: nil)
             }
         }
+        self.cameraView.recordingResult = {[weak self](timeValue:Int, fileUrl:URL?) in
+            self?.time.text = SRHelper.convertTimeSecond(timeSecond: TimeInterval(timeValue))
+            if fileUrl != nil {
+                self?.vedioUrl = fileUrl
+                self?.playerView.isHidden = false
+                self?.playerView.play(playUrl: fileUrl!)
+            }
+        }
     }
 
     @IBAction func pzAction(_ sender: UIButton) {
-        self.cameraView.photographOperation()
+        if camera_type == .Video{
+            if self.cameraView.isRecording{
+                self.cameraView.stopRecording()
+                sender.isSelected = false
+            }else{
+                self.cameraView.startRecording(fileURL: URL.init(fileURLWithPath: videoTemporaryDirectory(fileName: nil)))
+                sender.isSelected = true
+            }
+        }else{
+            self.cameraView.photographOperation()
+        }
     }
     
     @IBAction func swithCameraAction(_ sender: UIButton) {
@@ -97,5 +132,18 @@ class SRCameraViewController: UIViewController{
     }
     @IBAction func closeAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelPlayAction(_ sender: UIButton) {
+        self.playerView.isHidden = true
+        SRHelper.cleanMov(url: self.vedioUrl!)
+        self.vedioUrl = nil
+    }
+    
+    @IBAction func selectPlayAction(_ sender: UIButton) {
+        SRAlbumData.sharedInstance.completeVedioHandle?(nil,self.vedioUrl!)
+        self.dismiss(animated: true) {[weak self] in
+            self?.vedioUrl = nil
+        }
     }
 }

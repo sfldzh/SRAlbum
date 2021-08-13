@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import AVFoundation
 
 class SRHelper {
     
@@ -15,8 +16,10 @@ class SRHelper {
     /// - Parameter timeSecond: 时间
     static func convertTimeSecond(timeSecond : TimeInterval) -> String {
         var string:String = "";
-        let sec:UInt64 = UInt64(timeSecond);
-        if sec < 60 {
+        let sec:Int = Int(timeSecond);
+        if sec <= 0 {
+            string = "00:00"
+        } else if sec < 60 {
             string = String(format: "00:%02zd",sec)
         } else if sec >= 60 && sec < 3600 {
             string = String(format: "%02zd:%02zd",sec/60, sec%60)
@@ -73,6 +76,12 @@ class SRHelper {
     
     static func hideHud(hud:MBProgressHUD?){
         hud?.hide(animated: true);
+    }
+    
+    static func cleanMov(url:URL){
+        if FileManager.default.fileExists(atPath: url.path) {
+            try? FileManager.default.removeItem(at: url)
+        }
     }
     
     
@@ -166,5 +175,30 @@ class SRHelper {
 //            }
         }
         
+    }
+    
+    
+    /// 压缩视频
+    /// - Parameters:
+    ///   - sourceUrl: 视频原地址
+    ///   - tagerUrl: 视频目标地址
+    ///   - result: 完成的回调
+    static func videoZip(sourceUrl:URL, tagerUrl:URL?, result:((URL)->Void)?){
+        let avAsset = AVAsset.init(url: sourceUrl)
+        let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
+        if compatiblePresets.contains(AVAssetExportPresetHighestQuality) {
+            if let exportSession = AVAssetExportSession.init(asset: avAsset, presetName: AVAssetExportPresetMediumQuality) {
+                let pathUrl = (tagerUrl==nil) ? URL.init(fileURLWithPath: videoTemporaryZipDirectory(fileName: sourceUrl.lastPathComponent)) : tagerUrl
+                exportSession.outputURL = pathUrl
+                exportSession.outputFileType = .mp4
+                exportSession.shouldOptimizeForNetworkUse = true
+                exportSession.exportAsynchronously {
+                    cleanMov(url: sourceUrl)
+                    if result != nil {
+                        result!(pathUrl!)
+                    }
+                }
+            }
+        }
     }
 }

@@ -25,6 +25,42 @@ var bundle:Bundle?{
     }
 }
 
+
+func videoTemporaryDirectory(fileName:String?) -> String{
+    let folderPath = NSTemporaryDirectory() + "SRVedioCapture/"
+    let fileManager = FileManager.default
+    if fileManager.fileExists(atPath: folderPath) == false {
+        try? fileManager.createDirectory(at: URL.init(fileURLWithPath: folderPath), withIntermediateDirectories: true, attributes: nil)
+    }
+    var name = ""
+    if fileName != nil {
+        name = fileName!
+    }else{
+        let formatter = DateFormatter.init()
+        formatter.dateFormat = "yyyyMMddHHmmssfff"
+        name = formatter.string(from: Date.init(timeIntervalSinceNow: 0))
+    }
+    return folderPath + name + ".mp4"
+}
+
+func videoTemporaryZipDirectory(fileName:String?) -> String{
+    let folderPath = NSTemporaryDirectory() + "SRVedioCaptureZip/"
+    let fileManager = FileManager.default
+    if fileManager.fileExists(atPath: folderPath) == false {
+        try? fileManager.createDirectory(at: URL.init(fileURLWithPath: folderPath), withIntermediateDirectories: true, attributes: nil)
+    }
+    var name = ""
+    if fileName != nil {
+        name = fileName!
+    }else{
+        let formatter = DateFormatter.init()
+        formatter.dateFormat = "yyyyMMddHHmmssfff"
+        name = formatter.string(from: Date.init(timeIntervalSinceNow: 0)) + ".mp4"
+    }
+    return folderPath + name
+}
+
+
 func Appsize() -> CGSize {
     return UIScreen.main.bounds.size;
 }
@@ -42,6 +78,7 @@ public class SRAlbumWrapper:NSObject{
     
     @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
         if tager.isCanOpenAlbums() {
+            
             PHPhotoLibrary.requestAuthorization { (status) in
                 DispatchQueue.main.async {
                     switch status{
@@ -51,7 +88,7 @@ public class SRAlbumWrapper:NSObject{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
-                        SRAlbumData.sharedInstance.completeHandle = completeHandle
+                        SRAlbumData.sharedInstance.completeImageHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
                         let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
@@ -82,14 +119,14 @@ public class SRAlbumWrapper:NSObject{
         }
     }
     
-    @objc public func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
+    @objc public func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
         if #available(iOS 12, *) {
             tager.checkCamera(cameraType: cameraType) { authorization in
                 camera_type = cameraType
                 is_eidt = isEidt
                 max_size = maxSize
                 is_rectangle_detection = isRectangleDetection
-                SRAlbumData.sharedInstance.completeHandle = completeHandle
+                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
                 let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
@@ -126,7 +163,7 @@ extension UIViewController{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
-                        SRAlbumData.sharedInstance.completeHandle = completeHandle
+                        SRAlbumData.sharedInstance.completeImageHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
                         let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
@@ -166,14 +203,14 @@ extension UIViewController{
     ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
     ///   - completeHandle: 回调结果
     /// - Returns: 空
-    public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
+    public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
         if #available(iOS 12, *) {
             self.checkCamera(cameraType: cameraType) {[weak self] authorization in
                 camera_type = cameraType
                 is_eidt = isEidt
                 max_size = maxSize
                 is_rectangle_detection = isRectangleDetection
-                SRAlbumData.sharedInstance.completeHandle = completeHandle
+                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
                 let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
@@ -271,8 +308,8 @@ class SRAlbumData: NSObject {
     //TODO: 是否压缩
     var isZip = false
     
-    var completeHandle:((Array<Any>)->Void)?
-    
+    var completeImageHandle:((Array<Any>)->Void)?
+    var completeVedioHandle:((UIImage?,URL?)->Void)?
     static let sharedInstance = SRAlbumData()
     
     static func free() -> Void {

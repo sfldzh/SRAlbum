@@ -13,6 +13,7 @@ import CoreVideo
 import CoreImage
 import ImageIO
 import GLKit
+import MBProgressHUD
 
 public enum SRFlashMode:Int{
     case off//关闭
@@ -20,10 +21,22 @@ public enum SRFlashMode:Int{
     case auto//自动
 }
 
+enum CameraModeType {
+    case Photo//普通拍照
+    case Video//视频
+}
+
 @available(iOS 10.0, *)
-class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
-    open var result:((_ image:UIImage?, _ error:Error?)->Void)?
+class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate, AVCaptureFileOutputRecordingDelegate {
+    open var imageResult:((_ image:UIImage?, _ error:Error?)->Void)?
+    open var recordingResult:((_ timeValue:Int, _ fileUrl:URL?)->Void)?
     open var flashMode: SRFlashMode = .off
+    open var cameraModeType:CameraModeType = .Photo
+    open var isRecording:Bool{
+        get{
+            return self.movieFileOutput.isRecording
+        }
+    }
     
     private lazy var videoLayer:AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.init()
     private lazy var captureSession = AVCaptureSession.init()
@@ -31,6 +44,16 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     private lazy var frontDevice:AVCaptureDevice? = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: AVCaptureDevice.Position.front)
     private lazy var stillImageOutput:AVCapturePhotoOutput = AVCapturePhotoOutput.init()
     private lazy var highDetector:CIDetector? = CIDetector.init(ofType: CIDetectorTypeRectangle, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])
+    private lazy var movieFileOutput:AVCaptureMovieFileOutput = {
+        let out:AVCaptureMovieFileOutput = AVCaptureMovieFileOutput.init()
+        if let videoConnection = out.connection(with: AVMediaType.video){
+            if videoConnection.isVideoStabilizationSupported {
+                videoConnection.preferredVideoStabilizationMode = .auto
+                videoConnection.videoOrientation = .portrait;
+            }
+        }
+        return out
+    }()
     private var inputDevice:AVCaptureDeviceInput?
     
     
@@ -41,6 +64,11 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     private let pathLineWidth:CGFloat = 2
     private var isRectangleDetection:Bool = false//开启矩形检测
     private var captureQueue:DispatchQueue?
+    private var timeValue:Int = -1{
+        didSet{
+            
+        }
+    }
     
     deinit {
         self.timer?.invalidate()
@@ -83,7 +111,11 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                         self.captureSession.addOutput(dataOutput)
                     }
                     
-                    self.captureSession.addOutput(self.stillImageOutput)
+                    if self.cameraModeType == .Video {
+                        self.captureSession.addOutput(self.movieFileOutput)
+                    }else{
+                        self.captureSession.addOutput(self.stillImageOutput)
+                    }
                     
                     try? self.backDevice!.lockForConfiguration()
                     if self.backDevice!.isExposureModeSupported(AVCaptureDevice.ExposureMode.continuousAutoExposure) {
@@ -204,7 +236,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     
     // MARK: - 操作
     
-    /// TODO:开始运行
+    /// 开始运行
     open func startRunning(){
         self.captureSession.startRunning()
         if self.isRectangleDetection {//开启矩形检测
@@ -215,12 +247,14 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         }
     }
     
+    /// 停止运行
     open func stopRunning(){
         self.captureSession.stopRunning()
         self.timer?.invalidate()
     }
     
-    /// TODO:拍照操作
+    
+    /// 拍照操作
     open func photographOperation(){
         let settings = AVCapturePhotoSettings.init()
         if !self.isRectangleDetection {
@@ -235,6 +269,28 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             }
         }
         self.stillImageOutput.capturePhoto(with: settings, delegate: self)
+    }
+    
+    /// 开始录制视频
+    /// - Parameter fileURL: 存放地址地址
+    open func startRecording(fileURL:URL){
+        if !self.movieFileOutput.isRecording {
+            self.movieFileOutput.startRecording(to: fileURL, recordingDelegate: self)
+            
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {[weak self] time in
+                self?.timeValue += 1;
+                self?.recordingResult?(self!.timeValue, nil)
+            }
+            self.timer?.fire()
+        }
+    }
+    
+    /// 停止录制视频
+    open func stopRecording(){
+        self.timeValue = -1
+        self.timer?.invalidate()
+        self.timer = nil
+        self.movieFileOutput.stopRecording()
     }
     
     /// TODO:切换摄像头
@@ -290,7 +346,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     // MARK: - AVCapturePhotoCaptureDelegate
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if error != nil {
-            self.result?(nil,error)
+            self.imageResult?(nil,error)
         }else{
             if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
                 if self.isRectangleDetection {//开启矩形检测
@@ -305,14 +361,30 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                     UIImage.init(ciImage: enhancedImage!, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
                     let image = UIGraphicsGetImageFromCurrentImageContext()
                     UIGraphicsEndImageContext()
-                    self.result?(image,nil)
+                    self.imageResult?(image,nil)
                 }else{
-                    self.result?(UIImage.init(data: imageData),nil)
+                    self.imageResult?(UIImage.init(data: imageData),nil)
                 }
             }else{
                 let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
-                self.result?(nil,err as Error)
+                self.imageResult?(nil,err as Error)
             }
         }
+    }
+    
+    // MARK: - AVCaptureFileOutputRecordingDelegate
+    func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
+        
+    }
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        let hub:MBProgressHUD = SRHelper.showHud(message: "压缩视频中...", addto: self)
+        SRHelper.videoZip(sourceUrl: outputFileURL, tagerUrl: nil) { [weak self] (url) in
+            DispatchQueue.main.async {
+                SRHelper.hideHud(hud: hub)
+                self?.recordingResult?(self?.timeValue ?? -1, url)
+            }
+        }
+//        self.recordingResult?(self.timeValue, outputFileURL)
     }
 }

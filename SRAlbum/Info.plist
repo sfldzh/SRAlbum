@@ -8,6 +8,8 @@
 	<string>想要访问相册，来上传图片，需要你的允许。</string>
 	<key>NSCameraUsageDescription</key>
 	<string>想要访问相机，来上传图片，需要你的允许。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>想要访问麦克风，来上传视频，需要你的允许。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>保存图片</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -68,5 +70,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
