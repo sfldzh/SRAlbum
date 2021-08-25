@@ -13,7 +13,6 @@
 		D605F1FA26B78F1B00C9391E /* SRCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */; };
 		D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D605F1FC26B7DAD200C9391E /* SRCameraView.swift */; };
 		D60ACBDB26B8C34A00914DAE /* CIFeatureRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */; };
-		D60ACBDF26B8E1A000914DAE /* CameraTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D60ACBDE26B8E1A000914DAE /* CameraTool.m */; };
 		D6400C3323FFA48600DF5639 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3123FFA48600DF5639 /* ResultViewController.swift */; };
 		D6400C3423FFA48600DF5639 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6400C3223FFA48600DF5639 /* ResultViewController.xib */; };
 		D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */; };
@@ -82,9 +81,6 @@
 		D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRCameraViewController.xib; sourceTree = "<group>"; };
 		D605F1FC26B7DAD200C9391E /* SRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCameraView.swift; sourceTree = "<group>"; };
 		D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIFeatureRect.swift; sourceTree = "<group>"; };
-		D60ACBDC26B8E19F00914DAE /* SRAlbum-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRAlbum-Bridging-Header.h"; sourceTree = "<group>"; };
-		D60ACBDD26B8E1A000914DAE /* CameraTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraTool.h; sourceTree = "<group>"; };
-		D60ACBDE26B8E1A000914DAE /* CameraTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraTool.m; sourceTree = "<group>"; };
 		D6400C3123FFA48600DF5639 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		D6400C3223FFA48600DF5639 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
@@ -176,9 +172,6 @@
 				D60ACBDA26B8C34A00914DAE /* CIFeatureRect.swift */,
 				D605F1FC26B7DAD200C9391E /* SRCameraView.swift */,
 				D64CC53426C6145100B025DB /* SRPlayerView.swift */,
-				D60ACBDD26B8E1A000914DAE /* CameraTool.h */,
-				D60ACBDE26B8E1A000914DAE /* CameraTool.m */,
-				D60ACBDC26B8E19F00914DAE /* SRAlbum-Bridging-Header.h */,
 			);
 			path = SRCameraView;
 			sourceTree = "<group>";
@@ -561,7 +554,6 @@
 				D697988B23D19C3C0009E906 /* AppDelegate.swift in Sources */,
 				D692B7B323D58CA300015DE5 /* GroupView.swift in Sources */,
 				D605F1F926B78F1B00C9391E /* SRCameraViewController.swift in Sources */,
-				D60ACBDF26B8E1A000914DAE /* CameraTool.m in Sources */,
 				D6A51AD723F992B200295F3F /* SRAlbumEidtView.swift in Sources */,
 				D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */,
 				D692B7C123D59B7400015DE5 /* AssetImage.swift in Sources */,
@@ -761,7 +753,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Classes/SRCameraView/SRAlbum-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -786,7 +778,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Classes/SRCameraView/SRAlbum-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
