@@ -58,7 +58,6 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     
     
     private var timer:Timer?;
-    private var imageDedectionConfidence:CGFloat = 0.0
     private var rectOverlay:CAShapeLayer?
     private var borderDetectFrame:Bool = true;
     private let pathLineWidth:CGFloat = 2
@@ -88,7 +87,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     
     private func configerGLView(){
         self.backgroundColor = UIColor.black
-        self.captureSession.sessionPreset = .hd1280x720
+//        self.captureSession.sessionPreset = .hd1280x720
         self.videoLayer.videoGravity = .resizeAspectFill
         self.videoLayer.session = self.captureSession;
         self.layer.insertSublayer(self.videoLayer, at: 0)
@@ -137,61 +136,60 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         self.videoLayer.frame = self.bounds
     }
     
-    private func angleFromPoint(value:NSValue,cen:CGPoint) -> NSNumber{
-        let point = value.cgPointValue
-        let theta = atan2f(Float(point.y - cen.y), Float(point.x - cen.x))
-        let angle = fmodf(Float(Float.pi - Float.pi/4 + theta), 2 * Float.pi)
-        return NSNumber.init(value: angle)
-    }
-    
-    private func queryBiggestRectangle(rectangles:[CIRectangleFeature]) -> CIRectangleFeature?{
+    private func queryBiggestRectangle(rectangles:[CIFeature]) -> CIRectangleFeature?{
         var halfPerimiterValue:Float = 0
-        var rectangle = rectangles.first
-        for rect:CIRectangleFeature in rectangles {
-            let width = hypotf(Float(rect.topLeft.x - rect.topRight.x), Float(rect.topLeft.y - rect.topRight.y))
-            let height = hypotf(Float(rect.topLeft.x - rect.bottomLeft.x), Float(rect.topLeft.y - rect.bottomLeft.y))
-            let currentHalfPerimiterValue = height + width
-            if halfPerimiterValue < currentHalfPerimiterValue {
-                halfPerimiterValue = currentHalfPerimiterValue
-                rectangle = rect;
+        var rectangle:CIRectangleFeature?
+        for rect:CIFeature in rectangles {
+            if rect.type == CIFeatureTypeRectangle{
+                let feature:CIRectangleFeature = rect as! CIRectangleFeature
+                let width = hypotf(Float(feature.topLeft.x - feature.topRight.x), Float(feature.topLeft.y - feature.topRight.y))
+                let height = hypotf(Float(feature.topLeft.x - feature.bottomLeft.x), Float(feature.topLeft.y - feature.bottomLeft.y))
+                let currentHalfPerimiterValue = height + width
+                if halfPerimiterValue < currentHalfPerimiterValue {
+                    halfPerimiterValue = currentHalfPerimiterValue
+                    rectangle = feature;
+                }
             }
         }
         return rectangle
     }
     
-    private func biggestRectangle(rectangles:[CIRectangleFeature]) -> CIFeatureRect?{
+    
+    private func transformationRectangles(rectangles:[CIFeature]) -> [CIRectangleFeature]?{
         if rectangles.count == 0 {
             print("没有检测到矩形")
             return nil
         }else{
             print("检测到矩形")
-            let rectangle = self.queryBiggestRectangle(rectangles: rectangles)
-            let points = [NSValue.init(cgPoint: rectangle!.topLeft),
-                          NSValue.init(cgPoint: rectangle!.topRight),
-                          NSValue.init(cgPoint: rectangle!.bottomLeft),
-                          NSValue.init(cgPoint: rectangle!.bottomRight)]
-            var min = points.first!.cgPointValue
-            var max = min
-            for value in points {
-                let point = value.cgPointValue
-                min.x = CGFloat(fminf(Float(point.x), Float(min.x)))
-                min.y = CGFloat(fminf(Float(point.y), Float(min.y)))
-                max.x = CGFloat(fmaxf(Float(point.x), Float(max.x)))
-                max.y = CGFloat(fmaxf(Float(point.y), Float(max.y)))
+            var list:[CIRectangleFeature] = Array.init();
+            for rect:CIFeature in rectangles {
+                if rect.type == CIFeatureTypeRectangle{
+                    let feature:CIRectangleFeature = rect as! CIRectangleFeature
+//                    let data:CIFeatureRect = CIFeatureRect.init(topLeft: feature.topLeft, topRight: feature.topRight, bottomRight: feature.bottomRight, bottomLeft: feature.bottomLeft)
+                    list.append(feature)
+                }
             }
-            let cen = CGPoint.init(x: 0.5 * min.x + max.x, y: 0.5 * (min.y + max.y))
-//            let sortedPoints = points.sorted { (a:NSValue, b:NSValue) -> Bool in
-//                let result = angleFromPoint(value: a,cen: cen).compare(angleFromPoint(value: b,cen: cen))
-//                return result == .orderedAscending
-//            }
-            let sortedPoints = CameraTool.sortedArray(usingComparator: points, center: cen)
-            return CIFeatureRect.init(topLeft: (sortedPoints[3] as AnyObject).cgPointValue, topRight: (sortedPoints[2] as AnyObject).cgPointValue, bottomRight: (sortedPoints[1] as AnyObject).cgPointValue, bottomLeft: (sortedPoints[0] as AnyObject).cgPointValue)
+            return list
         }
     }
     
-    private func drawBorderDetectRect(imageRect:CGRect,topLeft:CGPoint,topRight:CGPoint,bottomLeft:CGPoint,bottomRight:CGPoint){
+    private func drawBorder(imageRect:CGRect,topLeft:CGPoint,topRight:CGPoint,bottomLeft:CGPoint,bottomRight:CGPoint){
+        let sHeight = self.bounds.height
+        //获取Y轴比率
+        let ts = sHeight/imageRect.height
+        //获取按比例计算的框的总宽度
+        let rWidth = ((imageRect.width*sHeight)/imageRect.height)
+        let startX = (rWidth-self.bounds.width)/2
+        
+        //计算比率
+        let tl_x = topLeft.x/imageRect.width
+        let tr_x = topRight.x/imageRect.width
+        let bl_x = bottomLeft.x/imageRect.width
+        let br_x = bottomRight.x/imageRect.width
+        
         if self.rectOverlay == nil {
             self.rectOverlay = CAShapeLayer.init()
+            self.rectOverlay?.frame = CGRect.init(x: -startX, y: 0, width: rWidth, height: sHeight)
             self.rectOverlay?.fillRule = .evenOdd
             self.rectOverlay?.fillColor = UIColor.init(red: 73/255.0, green: 130/255.0, blue: 180/255.0, alpha: 0.3).cgColor
             self.rectOverlay?.strokeColor = UIColor.green.cgColor
@@ -201,14 +199,16 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             self.layer.masksToBounds = true;
             self.layer.addSublayer(self.rectOverlay!)
         }
-        let featureRect:CIFeatureRect = transfromRealRect(previewRect: self.bounds, imageRect: imageRect, isUICoordinate: true, topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
+        
         let path:UIBezierPath = UIBezierPath.init()
-        path.move(to: featureRect.topLeft)
-        path.addLine(to: featureRect.topRight)
-        path.addLine(to: featureRect.bottomRight)
-        path.addLine(to: featureRect.bottomLeft)
+        
+        path.move(to: CGPoint.init(x: rWidth*tl_x, y: sHeight - topLeft.y*ts))
+        path.addLine(to: CGPoint.init(x: rWidth*tr_x, y: sHeight - topRight.y*ts))
+        path.addLine(to: CGPoint.init(x: rWidth*br_x, y: sHeight - bottomRight.y*ts))
+        path.addLine(to: CGPoint.init(x: rWidth*bl_x, y: sHeight - bottomLeft.y*ts))
         path.close()
-        let rectPath:UIBezierPath = UIBezierPath.init(rect: CGRect.init(x: -pathLineWidth, y: -pathLineWidth, width: self.bounds.size.width + (2 * pathLineWidth), height: self.bounds.size.height + (2 * pathLineWidth)))
+        
+        let rectPath:UIBezierPath = UIBezierPath.init(rect: CGRect.init(x: -pathLineWidth-startX, y: -pathLineWidth, width: rWidth + (2 * pathLineWidth), height: sHeight + (2 * pathLineWidth)))
         rectPath.usesEvenOddFillRule = true
         rectPath.append(path)
         self.rectOverlay?.path = rectPath.cgPath
@@ -310,6 +310,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         }
     }
     
+    
     // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if !self.borderDetectFrame || !CMSampleBufferIsValid(sampleBuffer) {
@@ -322,21 +323,17 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             let rotation = NSValue.init(cgAffineTransform: CGAffineTransform.init(rotationAngle: -90*(CGFloat(Float.pi)/180.0)))
             transform.setValue(rotation, forKey: "inputTransform")
             image = transform.outputImage!
-            
             let features = self.highDetector?.features(in: image)
             self.borderDetectFrame = false
             
-            if let borderDetectLastRectangleFeature = self.biggestRectangle(rectangles: features as! [CIRectangleFeature]) {
-                self.imageDedectionConfidence += 0.5
-                if self.imageDedectionConfidence > 1.0 {
+            if let list = self.transformationRectangles(rectangles: features!){
+                if let rc:CIRectangleFeature = self.queryBiggestRectangle(rectangles: list) {
                     DispatchQueue.main.async {
-                        self.drawBorderDetectRect(imageRect: image.extent, topLeft: borderDetectLastRectangleFeature.topLeft, topRight: borderDetectLastRectangleFeature.topRight, bottomLeft: borderDetectLastRectangleFeature.bottomLeft, bottomRight: borderDetectLastRectangleFeature.bottomRight)
+                        self.drawBorder(imageRect: image.extent, topLeft: rc.topLeft, topRight: rc.topRight, bottomLeft: rc.bottomLeft, bottomRight: rc.bottomRight)
                     }
                 }
-                
             }else{
                 DispatchQueue.main.async {
-                    self.imageDedectionConfidence = 0
                     self.rectOverlay?.path = nil
                 }
             }
@@ -351,11 +348,9 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
                 if self.isRectangleDetection {//开启矩形检测
                     var enhancedImage = CIImage.init(data: imageData)
-                    if self.imageDedectionConfidence > 1.0 {
-                        let features = self.highDetector?.features(in: enhancedImage!)
-                        if let rectangle = self.queryBiggestRectangle(rectangles: features as! [CIRectangleFeature]) {
-                            enhancedImage = self.correctPerspective(image: enhancedImage!, rectangleFeature: rectangle)
-                        }
+                    let features = self.highDetector?.features(in: enhancedImage!)
+                    if let rectangle = self.queryBiggestRectangle(rectangles: features as! [CIRectangleFeature]) {
+                        enhancedImage = self.correctPerspective(image: enhancedImage!, rectangleFeature: rectangle)
                     }
                     UIGraphicsBeginImageContext(CGSize.init(width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
                     UIImage.init(ciImage: enhancedImage!, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
