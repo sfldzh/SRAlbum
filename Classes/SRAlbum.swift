@@ -76,6 +76,7 @@ var is_rectangle_detection = false;//开启矩形检测
 
 public class SRAlbumWrapper:NSObject{
     
+    @available(iOS 10, *)
     @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
         if tager.isCanOpenAlbums() {
             
@@ -118,26 +119,24 @@ public class SRAlbumWrapper:NSObject{
             tager.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    @objc public func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
-        if #available(iOS 12, *) {
-            tager.checkCamera(cameraType: cameraType) { authorization in
-                camera_type = cameraType
-                is_eidt = isEidt
-                max_size = maxSize
-                is_rectangle_detection = isRectangleDetection
-                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
-                SRAlbumData.sharedInstance.isZip = maxSize>0;
-                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
-                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
-                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-                nv.navigationBar.tintColor = UIColor.white
-                nv.navigationBar.barStyle = .black
-                nv.modalPresentationStyle = .fullScreen
-                nv.isNavigationBarHidden = true
-                tager.present(nv, animated: true, completion: nil)
-            }
+    @available(iOS 10, *)
+    @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
+        tager.checkCamera(cameraType: cameraType) { authorization in
+            camera_type = cameraType
+            is_eidt = isEidt
+            max_size = maxSize
+            is_rectangle_detection = isRectangleDetection
+            SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
+            SRAlbumData.sharedInstance.isZip = maxSize>0;
+            let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+            let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+            nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+            nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+            nv.navigationBar.tintColor = UIColor.white
+            nv.navigationBar.barStyle = .black
+            nv.modalPresentationStyle = .fullScreen
+            nv.isNavigationBarHidden = true
+            tager.present(nv, animated: true, completion: nil)
         }
     }
 }
@@ -152,6 +151,7 @@ extension UIViewController{
     ///   - isSort: 是否要排序输出图片；默认为false
     ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
     ///   - completeHandle: 回调结果
+    @available(iOS 10, *)
     @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
         if self.isCanOpenAlbums() {
             PHPhotoLibrary.requestAuthorization { (status) in
@@ -193,7 +193,6 @@ extension UIViewController{
             self.present(alertController, animated: true, completion: nil)
         }
     }
-
     
     /// 打开相机
     /// - Parameters:
@@ -203,25 +202,24 @@ extension UIViewController{
     ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
     ///   - completeHandle: 回调结果
     /// - Returns: 空
-    public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
-        if #available(iOS 12, *) {
-            self.checkCamera(cameraType: cameraType) {[weak self] authorization in
-                camera_type = cameraType
-                is_eidt = isEidt
-                max_size = maxSize
-                is_rectangle_detection = isRectangleDetection
-                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
-                SRAlbumData.sharedInstance.isZip = maxSize>0;
-                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
-                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
-                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-                nv.navigationBar.tintColor = UIColor.white
-                nv.navigationBar.barStyle = .black
-                nv.modalPresentationStyle = .fullScreen
-                nv.isNavigationBarHidden = true
-                self?.present(nv, animated: true, completion: nil)
-            }
+    @available(iOS 10, *)
+    @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
+        self.checkCamera(cameraType: cameraType) {[weak self] authorization in
+            camera_type = cameraType
+            is_eidt = isEidt
+            max_size = maxSize
+            is_rectangle_detection = isRectangleDetection
+            SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
+            SRAlbumData.sharedInstance.isZip = maxSize>0;
+            let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+            let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+            nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+            nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+            nv.navigationBar.tintColor = UIColor.white
+            nv.navigationBar.barStyle = .black
+            nv.modalPresentationStyle = .fullScreen
+            nv.isNavigationBarHidden = true
+            self?.present(nv, animated: true, completion: nil)
         }
     }
     
