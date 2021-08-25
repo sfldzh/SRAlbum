@@ -255,16 +255,14 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     /// 拍照操作
     open func photographOperation(){
         let settings = AVCapturePhotoSettings.init()
-        if !self.isRectangleDetection {
-            if self.flashMode == .on {
-                settings.flashMode = .on
-            }else if self.flashMode == .off{
-                settings.flashMode = .off
-            }else if self.flashMode == .auto{
-                settings.flashMode = .auto
-            }else{
-                settings.flashMode = .off
-            }
+        if self.flashMode == .on {
+            settings.flashMode = .on
+        }else if self.flashMode == .off{
+            settings.flashMode = .off
+        }else if self.flashMode == .auto{
+            settings.flashMode = .auto
+        }else{
+            settings.flashMode = .off
         }
         self.stillImageOutput.capturePhoto(with: settings, delegate: self)
     }

@@ -10,13 +10,6 @@ import UIKit
 
 class SRNavigationController: UINavigationController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
     override var shouldAutorotate : Bool {
         return self.viewControllers.last!.shouldAutorotate
     }
