@@ -91,7 +91,7 @@ public class SRAlbumWrapper:NSObject{
                         SRAlbumData.sharedInstance.completeImageHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
-                        let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                        let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
                         nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
                         nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
                         nv.navigationBar.tintColor = UIColor.white
@@ -129,7 +129,7 @@ public class SRAlbumWrapper:NSObject{
                 SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-                let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
                 nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
                 nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
                 nv.navigationBar.tintColor = UIColor.white
@@ -166,7 +166,7 @@ extension UIViewController{
                         SRAlbumData.sharedInstance.completeImageHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
-                        let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                        let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
                         nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
                         nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
                         nv.navigationBar.tintColor = UIColor.white
@@ -213,7 +213,7 @@ extension UIViewController{
                 SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-                let nv:UINavigationController = UINavigationController.init(rootViewController: vc)
+                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
                 nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
                 nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
                 nv.navigationBar.tintColor = UIColor.white

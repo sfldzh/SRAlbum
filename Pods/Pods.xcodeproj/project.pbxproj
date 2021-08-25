@@ -110,7 +110,7 @@
 		17F067F7F2C92150C7004EB8E7ED71E0 /* XibFrame-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XibFrame-prefix.pch"; sourceTree = "<group>"; };
 		19E1F8898C8D1D25E7C45BFB9C3D3141 /* MBProgressHUD-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBProgressHUD-Info.plist"; sourceTree = "<group>"; };
 		1F42842516AA2A75E4E8F577AD3A41C0 /* Pods-SRAlbum-SRAlbumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SRAlbum-SRAlbumUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		1FF3E6D8F7324430500E87D23CBFB836 /* Pods_SRAlbumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SRAlbumTests.framework; path = "Pods-SRAlbumTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF3E6D8F7324430500E87D23CBFB836 /* Pods_SRAlbumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRAlbumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22ABC4633F850D124E55B90FC363AFA0 /* JPImageresizerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JPImageresizerView-prefix.pch"; sourceTree = "<group>"; };
 		23859D0F0E72726576574840215EE958 /* Pods-SRAlbumTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SRAlbumTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		30031EA562C1851B78049CDE0867EE18 /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		395C8A9ECA493E182558DBF19A108093 /* JPImageresizerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JPImageresizerView.m; path = JPImageresizerView/Classes/JPImageresizerView.m; sourceTree = "<group>"; };
 		3DF808616B8C7EB4EC026BA413B12D7A /* XibFrame.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = XibFrame.modulemap; sourceTree = "<group>"; };
 		403678A98E4D410B1B5E326B5B692DA7 /* Pods-SRAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SRAlbum.debug.xcconfig"; sourceTree = "<group>"; };
-		57A16F36496F75700A94F44A589F70C0 /* JPImageresizerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JPImageresizerView.framework; path = JPImageresizerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A16F36496F75700A94F44A589F70C0 /* JPImageresizerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JPImageresizerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CBF5D7EF2F8F4138689DDD7A217E46 /* UIImage+JPImageresizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+JPImageresizer.m"; path = "JPImageresizerView/Classes/UIImage+JPImageresizer.m"; sourceTree = "<group>"; };
 		5D66ED8C12BC7B0CC6A35BF04405D036 /* XibExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XibExtension.swift; path = Classes/XibExtension.swift; sourceTree = "<group>"; };
 		5FF20368526869D3E69567A9DB8FD5DF /* Pods-SRAlbum-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SRAlbum-frameworks.sh"; sourceTree = "<group>"; };
@@ -137,17 +137,17 @@
 		864423DDE1BE16051559ECF6621F632A /* Pods-SRAlbum-SRAlbumUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SRAlbum-SRAlbumUITests-dummy.m"; sourceTree = "<group>"; };
 		8A8ACEBAADC0881BE2CD6B3232F2FCC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8AD798A72A01C4C7E2DDB41735B28438 /* Pods-SRAlbum-SRAlbumUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SRAlbum-SRAlbumUITests.modulemap"; sourceTree = "<group>"; };
-		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		963B752F0033A576754067B26F7B6B45 /* Pods-SRAlbum-SRAlbumUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SRAlbum-SRAlbumUITests-frameworks.sh"; sourceTree = "<group>"; };
 		99ACAB2BF3CF5C66CFDC7A1F0EF5EA34 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DDEBAD9F639B5DD054566C37DC9D9F1 /* Pods-SRAlbum-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SRAlbum-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9E21466A79EB6566495A00B380B0DF6F /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		A47644AFF45E58B6A57D98BA5D1D9F23 /* Pods-SRAlbum-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SRAlbum-dummy.m"; sourceTree = "<group>"; };
 		A4CE4D3712677257AF4B127562AA8102 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
 		A621A90367EFAAE94FED3CC77B66CC22 /* Pods-SRAlbumTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SRAlbumTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A8C387D4EF973120ED407315894BFCF3 /* Pods-SRAlbumTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SRAlbumTests-Info.plist"; sourceTree = "<group>"; };
-		AA90A844BF2195430704DCB501E373D7 /* XibFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XibFrame.framework; path = XibFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA90A844BF2195430704DCB501E373D7 /* XibFrame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XibFrame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABCDF91F0E625A901BE4D1AA95BD46A /* Pods-SRAlbumTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SRAlbumTests-dummy.m"; sourceTree = "<group>"; };
 		AD27B1C1B5D2F31F501108838D28EF02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		B0B4F2C5267C0B2FF5C8F0AFD93FEE06 /* Pods-SRAlbum-SRAlbumUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SRAlbum-SRAlbumUITests-Info.plist"; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		CF69529599F9A8C3EBB8D2D73BCEFBEB /* Pods-SRAlbum.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SRAlbum.modulemap"; sourceTree = "<group>"; };
 		D47A265F7ACDEA1E8B490850F6736E0B /* Pods-SRAlbum-SRAlbumUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SRAlbum-SRAlbumUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D4E4EFFF1E1C2AB79329633FC04DE9C9 /* JPImageresizerTypedef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JPImageresizerTypedef.h; path = JPImageresizerView/Classes/JPImageresizerTypedef.h; sourceTree = "<group>"; };
-		DEF31C50D863549E69C984045FBD481A /* Pods_SRAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SRAlbum.framework; path = "Pods-SRAlbum.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF31C50D863549E69C984045FBD481A /* Pods_SRAlbum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRAlbum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08E3E682E172F4715BCD6CB47D6B87C /* CALayer+JPImageresizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+JPImageresizer.m"; path = "JPImageresizerView/Classes/CALayer+JPImageresizer.m"; sourceTree = "<group>"; };
 		E2748BF03A84693DFA237C605F245D99 /* JPImageresizerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JPImageresizerView.debug.xcconfig; sourceTree = "<group>"; };
 		EACA760AB0A78BF230B99E07B6718C43 /* XibFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XibFrame.debug.xcconfig; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		F6B78657B17A057AE1C8E3658F449C1F /* Pods-SRAlbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SRAlbum.release.xcconfig"; sourceTree = "<group>"; };
 		FA8F9A1FF00460E82A376F485E22D874 /* JPImageresizerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JPImageresizerView-dummy.m"; sourceTree = "<group>"; };
 		FA92DC2B8F8F89E09D4D8A6451DF5723 /* JPImageresizerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JPImageresizerView-umbrella.h"; sourceTree = "<group>"; };
-		FBD4936661617E867D049B155E1BE841 /* Pods_SRAlbum_SRAlbumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SRAlbum_SRAlbumUITests.framework; path = "Pods-SRAlbum-SRAlbumUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD4936661617E867D049B155E1BE841 /* Pods_SRAlbum_SRAlbumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SRAlbum_SRAlbumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE03265497D69C8E097F12AE17431458 /* VButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VButton.swift; path = Classes/VButton.swift; sourceTree = "<group>"; };
 		FFA51DF58BFD369AF6BE252245A18B2F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -271,7 +271,6 @@
 				58CBF5D7EF2F8F4138689DDD7A217E46 /* UIImage+JPImageresizer.m */,
 				762C30C7D99BC8065E91A6AFACBDBC6F /* Support Files */,
 			);
-			name = JPImageresizerView;
 			path = JPImageresizerView;
 			sourceTree = "<group>";
 		};
@@ -282,7 +281,6 @@
 				5D66ED8C12BC7B0CC6A35BF04405D036 /* XibExtension.swift */,
 				77913EA2CF48BB9270992843F6C8C51C /* Support Files */,
 			);
-			name = XibFrame;
 			path = XibFrame;
 			sourceTree = "<group>";
 		};
@@ -350,7 +348,6 @@
 				99ACAB2BF3CF5C66CFDC7A1F0EF5EA34 /* MBProgressHUD.m */,
 				B2A72354CB20D1A48F0353A6CBEBFF4F /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};

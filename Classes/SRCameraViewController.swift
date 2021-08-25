@@ -146,4 +146,14 @@ class SRCameraViewController: UIViewController{
             self?.vedioUrl = nil
         }
     }
+    
+    override var shouldAutorotate: Bool{
+        return true
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+        return UIInterfaceOrientation.portrait
+    }
 }

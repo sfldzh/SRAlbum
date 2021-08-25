@@ -157,15 +157,14 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     
     private func transformationRectangles(rectangles:[CIFeature]) -> [CIRectangleFeature]?{
         if rectangles.count == 0 {
-            print("没有检测到矩形")
+//            print("没有检测到矩形")
             return nil
         }else{
-            print("检测到矩形")
+//            print("检测到矩形")
             var list:[CIRectangleFeature] = Array.init();
             for rect:CIFeature in rectangles {
                 if rect.type == CIFeatureTypeRectangle{
                     let feature:CIRectangleFeature = rect as! CIRectangleFeature
-//                    let data:CIFeatureRect = CIFeatureRect.init(topLeft: feature.topLeft, topRight: feature.topRight, bottomRight: feature.bottomRight, bottomLeft: feature.bottomLeft)
                     list.append(feature)
                 }
             }
@@ -201,7 +200,6 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         }
         
         let path:UIBezierPath = UIBezierPath.init()
-        
         path.move(to: CGPoint.init(x: rWidth*tl_x, y: sHeight - topLeft.y*ts))
         path.addLine(to: CGPoint.init(x: rWidth*tr_x, y: sHeight - topRight.y*ts))
         path.addLine(to: CGPoint.init(x: rWidth*br_x, y: sHeight - bottomRight.y*ts))
@@ -291,6 +289,9 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         self.timer?.invalidate()
         self.timer = nil
         self.movieFileOutput.stopRecording()
+        if self.isRectangleDetection {
+            self.rectOverlay?.path = nil
+        }
     }
     
     /// TODO:切换摄像头
@@ -345,24 +346,36 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         if error != nil {
             self.imageResult?(nil,error)
         }else{
-            if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
-                if self.isRectangleDetection {//开启矩形检测
-                    var enhancedImage = CIImage.init(data: imageData)
-                    let features = self.highDetector?.features(in: enhancedImage!)
-                    if let rectangle = self.queryBiggestRectangle(rectangles: features as! [CIRectangleFeature]) {
-                        enhancedImage = self.correctPerspective(image: enhancedImage!, rectangleFeature: rectangle)
+            let hub:MBProgressHUD = SRHelper.showHud(message: "处理中...", addto: self)
+            DispatchQueue.global().async {
+                if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
+                    if self.isRectangleDetection {//开启矩形检测
+                        var enhancedImage = CIImage.init(data: imageData)
+                        let features = self.highDetector?.features(in: enhancedImage!)
+                        if let rectangle = self.queryBiggestRectangle(rectangles: features as! [CIRectangleFeature]) {
+                            enhancedImage = self.correctPerspective(image: enhancedImage!, rectangleFeature: rectangle)
+                        }
+                        UIGraphicsBeginImageContext(CGSize.init(width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
+                        UIImage.init(ciImage: enhancedImage!, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
+                        let image = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                        DispatchQueue.main.async {
+                            SRHelper.hideHud(hud: hub)
+                            self.imageResult?(image,nil)
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            SRHelper.hideHud(hud: hub)
+                            self.imageResult?(UIImage.init(data: imageData),nil)
+                        }
                     }
-                    UIGraphicsBeginImageContext(CGSize.init(width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
-                    UIImage.init(ciImage: enhancedImage!, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
-                    let image = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-                    self.imageResult?(image,nil)
                 }else{
-                    self.imageResult?(UIImage.init(data: imageData),nil)
+                    DispatchQueue.main.async {
+                        SRHelper.hideHud(hud: hub)
+                        let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
+                        self.imageResult?(nil,err as Error)
+                    }
                 }
-            }else{
-                let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
-                self.imageResult?(nil,err as Error)
             }
         }
     }
