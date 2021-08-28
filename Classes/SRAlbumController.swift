@@ -35,7 +35,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
     
     //MARK: - 生命周期
     deinit {
-        print("相册Kill")
+//        print("相册Kill")
         SRAlbumData.free();
     }
     
@@ -193,7 +193,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     }
                 }else{
                     if asset.editedPic == nil {
-                        _=asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
+                        _=asset.requestOriginalImage(resizeMode: .none, isSynchronous:true) { (imageData, info) in
                             if asset.isGif() {
                                 results.append(imageData!)
                             }else{

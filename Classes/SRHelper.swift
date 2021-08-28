@@ -94,7 +94,7 @@ class SRHelper {
         if maxSize > 0 {
             var compression:CGFloat = 1.0
             var data = sourceImage.jpegData(compressionQuality: compression)!
-            print("初始 : \(data.count/1024) KB")
+//            print("初始 : \(data.count/1024) KB")
             if (data.count < maxSize){
                 return sourceImage
             }
@@ -105,7 +105,7 @@ class SRHelper {
             for _ in 0...6 {
                 compression = scale / 2;
                 data = sourceImage.jpegData(compressionQuality: compression)!
-                print("质量压缩中： \(data.count/1024) KB")
+//                print("质量压缩中： \(data.count/1024) KB")
                 if (data.count>Int(0.95*lastLength)) {
                     break;//当前压缩后大小和上一次进行对比，如果大小变化不大就退出循环
                 }
@@ -115,9 +115,9 @@ class SRHelper {
                 scale = compression;
                 lastLength = CGFloat(data.count);
             }
-            print("压缩图片质量后: \(data.count/1024) KB")
+//            print("压缩图片质量后: \(data.count/1024) KB")
             if (data.count < maxSize){
-                print("压缩完成： \(data.count/1024) KB")
+//                print("压缩完成： \(data.count/1024) KB")
                 return sourceImage
             }
             
@@ -125,12 +125,14 @@ class SRHelper {
             var lastDataLength = 0
             while (data.count > maxSize && data.count != lastDataLength) {
                 lastDataLength = data.count;
-                let ratio:Float = Float(maxSize/data.count)
-                print("Ratio =  \(ratio)")
+                let ratio:Float = Float(maxSize)/Float(data.count)
+//                print("Ratio =  \(ratio)")
                 let size = CGSize.init(width: resultImage.size.width * CGFloat(sqrtf(ratio)), height: resultImage.size.height * CGFloat(sqrtf(ratio)))
                 UIGraphicsBeginImageContext(size);
                 sourceImage.draw(in: CGRect.init(x: 0, y: 0, width: size.width, height: size.height));
-                resultImage = UIGraphicsGetImageFromCurrentImageContext()!
+                if let img = UIGraphicsGetImageFromCurrentImageContext() {
+                    resultImage = img
+                }
                 UIGraphicsEndImageContext();
             }
             

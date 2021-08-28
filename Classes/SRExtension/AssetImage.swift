@@ -31,11 +31,11 @@ extension PHAsset{
     }
     
     
-    func requestOriginalImage(resizeMode:PHImageRequestOptionsResizeMode = .fast, resultHandler:@escaping (Data?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
+    func requestOriginalImage(resizeMode:PHImageRequestOptionsResizeMode = .fast, isSynchronous:Bool = false, resultHandler:@escaping (Data?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option:PHImageRequestOptions = PHImageRequestOptions.init()
         option.isNetworkAccessAllowed = true;
         option.resizeMode = resizeMode
-        option.isSynchronous = false;
+        option.isSynchronous = isSynchronous;
         return PHImageManager.default().requestImageData(for: self, options: option) { (imageData, dataUTI, orientation, info) in
             if imageData != nil{
                 resultHandler(imageData, info)
