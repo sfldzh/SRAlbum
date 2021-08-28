@@ -1,9 +1,10 @@
 # SRAlbum
 *自定义相册，图片编辑，相册获取方式有照片和视频混合获取，照片获取，视频获取，照相和录像功能，有矩形卡片检测功能，自动截取矩形卡片。
-
-
-![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0010.PNG?raw=true)![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0011.PNG?raw=true)
-![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0012.PNG?raw=true)![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0013.PNG?raw=true)
+![](IMG_0010.PNG)
+![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0010.PNG?raw=true)
+![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0011.PNG?raw=true)
+![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0012.PNG?raw=true)
+![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0013.PNG?raw=true)
 ![image](https://github.com/sfldzh/SRAlbum/blob/master/IMG_0113.PNG?raw=true)
 
 
