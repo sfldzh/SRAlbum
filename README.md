@@ -8,7 +8,7 @@
 
 
 # 安装方法
-    在Podfile中添加 pod 'SRAlbum'
+    在Podfile中添加 pod 'SRAlbum','~> 0.0.5'
     然后使用 pod install 命令
     
 
