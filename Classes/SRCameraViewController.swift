@@ -24,11 +24,16 @@ class SRCameraViewController: UIViewController{
     open var fileName:String?
     private var vedioUrl:URL?
     
+    deinit {
+        print("kill")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configerView()
-        self.cameraView.install(isRectangleDetection: is_rectangle_detection)
-        self.cameraView.startRunning()
+        self.cameraView.install(isRectangleDetection: is_rectangle_detection) { [weak self] in
+            self?.cameraView.startRunning()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

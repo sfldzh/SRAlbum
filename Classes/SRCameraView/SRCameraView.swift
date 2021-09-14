@@ -78,11 +78,10 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         self.configerGLView()
     }
     
-    open func install(isRectangleDetection:Bool = false){
+    open func install(isRectangleDetection:Bool = false, finish:@escaping(() -> Void)){
         self.isRectangleDetection = isRectangleDetection
         self.captureQueue = DispatchQueue(label: "Agora-Custom-Video-Capture-Queue")
-        self.configerCamera()
-        self.addOpearetionAction()
+        self.configerCamera(finish: finish)
     }
     
     private func configerGLView(){
@@ -93,7 +92,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         self.layer.insertSublayer(self.videoLayer, at: 0)
     }
     
-    private func configerCamera(){
+    private func configerCamera(finish:@escaping(()->Void)){
         if self.backDevice != nil {
             DispatchQueue.global().async {
                 self.captureSession.beginConfiguration()
@@ -122,14 +121,15 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                     }
                     self.backDevice!.unlockForConfiguration()
                     self.captureSession.commitConfiguration()
+                    
+                    DispatchQueue.main.async {
+                        finish()
+                    }
                 }
             }
         }
     }
     
-    private func addOpearetionAction(){
-        
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
