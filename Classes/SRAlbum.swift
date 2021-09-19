@@ -122,21 +122,23 @@ public class SRAlbumWrapper:NSObject{
     @available(iOS 10, *)
     @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
         tager.checkCamera(cameraType: cameraType) { authorization in
-            camera_type = cameraType
-            is_eidt = isEidt
-            max_size = maxSize
-            is_rectangle_detection = isRectangleDetection
-            SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
-            SRAlbumData.sharedInstance.isZip = maxSize>0;
-            let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-            let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
-            nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
-            nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-            nv.navigationBar.tintColor = UIColor.white
-            nv.navigationBar.barStyle = .black
-            nv.modalPresentationStyle = .fullScreen
-            nv.isNavigationBarHidden = true
-            tager.present(nv, animated: true, completion: nil)
+            if authorization {
+                camera_type = cameraType
+                is_eidt = isEidt
+                max_size = maxSize
+                is_rectangle_detection = isRectangleDetection
+                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
+                SRAlbumData.sharedInstance.isZip = maxSize>0;
+                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                nv.navigationBar.tintColor = UIColor.white
+                nv.navigationBar.barStyle = .black
+                nv.modalPresentationStyle = .fullScreen
+                nv.isNavigationBarHidden = true
+                tager.present(nv, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -179,7 +181,11 @@ extension UIViewController{
                 }
             }
         }else{
-            let alertController = UIAlertController.init(title: "提示", message: "想要访问相册，需要你的允许。去设置？", preferredStyle: .alert);
+            var message:String = "想要访问相册，需要你的允许。去设置？"
+            if Bundle.main.infoDictionary != nil {
+                message = Bundle.main.infoDictionary!["NSPhotoLibraryUsageDescription"] as! String
+            }
+            let alertController = UIAlertController.init(title: "提示", message: message, preferredStyle: .alert);
             let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
             alertController.addAction(cancelAction);
             let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
@@ -205,21 +211,23 @@ extension UIViewController{
     @available(iOS 10, *)
     @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
         self.checkCamera(cameraType: cameraType) {[weak self] authorization in
-            camera_type = cameraType
-            is_eidt = isEidt
-            max_size = maxSize
-            is_rectangle_detection = isRectangleDetection
-            SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
-            SRAlbumData.sharedInstance.isZip = maxSize>0;
-            let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
-            let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
-            nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
-            nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-            nv.navigationBar.tintColor = UIColor.white
-            nv.navigationBar.barStyle = .black
-            nv.modalPresentationStyle = .fullScreen
-            nv.isNavigationBarHidden = true
-            self?.present(nv, animated: true, completion: nil)
+            if authorization {
+                camera_type = cameraType
+                is_eidt = isEidt
+                max_size = maxSize
+                is_rectangle_detection = isRectangleDetection
+                SRAlbumData.sharedInstance.completeVedioHandle = completeHandle
+                SRAlbumData.sharedInstance.isZip = maxSize>0;
+                let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
+                let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+                nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                nv.navigationBar.tintColor = UIColor.white
+                nv.navigationBar.barStyle = .black
+                nv.modalPresentationStyle = .fullScreen
+                nv.isNavigationBarHidden = true
+                self?.present(nv, animated: true, completion: nil)
+            }
         }
     }
     
@@ -234,7 +242,11 @@ extension UIViewController{
                     }
                 }else{
                     result(false)
-                    let alertController = UIAlertController.init(title: "提示", message: "想要访问麦克风，需要你的允许。去设置？", preferredStyle: .alert);
+                    var message:String = "想要访问麦克风，需要你的允许。去设置？"
+                    if Bundle.main.infoDictionary != nil {
+                        message = Bundle.main.infoDictionary!["NSMicrophoneUsageDescription"] as! String
+                    }
+                    let alertController = UIAlertController.init(title: "提示", message: message, preferredStyle: .alert);
                     let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
                     alertController.addAction(cancelAction);
                     let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
@@ -256,7 +268,11 @@ extension UIViewController{
             }
         }else{
             result(false)
-            let alertController = UIAlertController.init(title: "提示", message: "想要访问相机，需要你的允许。去设置？", preferredStyle: .alert);
+            var message:String = "想要访问相机，需要你的允许。去设置？"
+            if Bundle.main.infoDictionary != nil {
+                message = Bundle.main.infoDictionary!["NSCameraUsageDescription"] as! String
+            }
+            let alertController = UIAlertController.init(title: "提示", message: message, preferredStyle: .alert);
             let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
             alertController.addAction(cancelAction);
             let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
