@@ -81,6 +81,16 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
     
     
     func getDatas() -> Void {
+        self.queryImages()
+        if #available(iOS 14.0, *){
+            let authorStatus = PHPhotoLibrary.authorizationStatus(for: PHAccessLevel.readWrite)
+            if authorStatus == .limited{
+                
+            }
+        }
+    }
+    
+    private func queryImages(){
         self.collectionView.alpha = 0;
         self.loadAlbumsCollection { [weak self](results) in
             self?.groupView?.albumsCollection = results;
@@ -98,7 +108,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
             }else{
                 self?.collectionView.alpha = 1.0;
             }
-        };
+        }
     }
     
     func isCanSend() -> Bool{
@@ -363,7 +373,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.collection!.assets.count;
+        return self.collection?.assets.count ?? 0;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

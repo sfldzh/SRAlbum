@@ -78,12 +78,10 @@ public class SRAlbumWrapper:NSObject{
     
     @available(iOS 10, *)
     @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
-        if tager.isCanOpenAlbums() {
-            
-            PHPhotoLibrary.requestAuthorization { (status) in
-                DispatchQueue.main.async {
-                    switch status{
-                    case .authorized:
+        tager.checkCanOpenAlbums(callback: { status in
+            DispatchQueue.main.async {
+                if #available(iOS 14, *) {
+                    if status == .authorized || status == .limited{
                         max_count = maxCount
                         asset_type = assetType
                         is_eidt = isEidt
@@ -99,25 +97,28 @@ public class SRAlbumWrapper:NSObject{
                         nv.navigationBar.barStyle = .black
                         nv.modalPresentationStyle = .fullScreen
                         tager.present(nv, animated: true, completion: nil)
-                    default:
-                        break;
+                    }
+                } else {
+                    if status == .authorized{
+                        max_count = maxCount
+                        asset_type = assetType
+                        is_eidt = isEidt
+                        max_size = maxSize
+                        is_sort = isSort
+                        SRAlbumData.sharedInstance.completeImageHandle = completeHandle
+                        SRAlbumData.sharedInstance.isZip = maxSize>0;
+                        let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
+                        let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+                        nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                        nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                        nv.navigationBar.tintColor = UIColor.white
+                        nv.navigationBar.barStyle = .black
+                        nv.modalPresentationStyle = .fullScreen
+                        tager.present(nv, animated: true, completion: nil)
                     }
                 }
             }
-        }else{
-            let alertController = UIAlertController.init(title: "提示", message: "想要访问相册，需要你的允许。去设置？", preferredStyle: .alert);
-            let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
-            alertController.addAction(cancelAction);
-            let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
-                //去c设置中修改权限
-                let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
-                if UIApplication.shared.canOpenURL(setUrl) {
-                    UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
-                }
-            }
-            alertController.addAction(sureAction);
-            tager.present(alertController, animated: true, completion: nil)
-        }
+        })
     }
     @available(iOS 10, *)
     @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((UIImage?,URL?)->Void)?)->Void{
@@ -155,11 +156,10 @@ extension UIViewController{
     ///   - completeHandle: 回调结果
     @available(iOS 10, *)
     @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
-        if self.isCanOpenAlbums() {
-            PHPhotoLibrary.requestAuthorization { (status) in
-                DispatchQueue.main.async {
-                    switch status{
-                    case .authorized:
+        self.checkCanOpenAlbums(callback: {[weak self] status in
+            DispatchQueue.main.async {
+                if #available(iOS 14, *) {
+                    if status == .authorized || status == .limited{
                         max_count = maxCount
                         asset_type = assetType
                         is_eidt = isEidt
@@ -174,30 +174,29 @@ extension UIViewController{
                         nv.navigationBar.tintColor = UIColor.white
                         nv.navigationBar.barStyle = .black
                         nv.modalPresentationStyle = .fullScreen
-                        self.present(nv, animated: true, completion: nil)
-                    default:
-                        break;
+                        self?.present(nv, animated: true, completion: nil)
+                    }
+                } else {
+                    if status == .authorized{
+                        max_count = maxCount
+                        asset_type = assetType
+                        is_eidt = isEidt
+                        max_size = maxSize
+                        is_sort = isSort
+                        SRAlbumData.sharedInstance.completeImageHandle = completeHandle
+                        SRAlbumData.sharedInstance.isZip = maxSize>0;
+                        let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
+                        let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
+                        nv.navigationBar.barTintColor = UIColor.init(red: 44.0/255.0, green: 44.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+                        nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                        nv.navigationBar.tintColor = UIColor.white
+                        nv.navigationBar.barStyle = .black
+                        nv.modalPresentationStyle = .fullScreen
+                        self?.present(nv, animated: true, completion: nil)
                     }
                 }
             }
-        }else{
-            var message:String = "想要访问相册，需要你的允许。去设置？"
-            if Bundle.main.infoDictionary != nil {
-                message = Bundle.main.infoDictionary!["NSPhotoLibraryUsageDescription"] as! String
-            }
-            let alertController = UIAlertController.init(title: "提示", message: message, preferredStyle: .alert);
-            let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
-            alertController.addAction(cancelAction);
-            let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
-                //去c设置中修改权限
-                let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
-                if UIApplication.shared.canOpenURL(setUrl) {
-                    UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
-                }
-            }
-            alertController.addAction(sureAction);
-            self.present(alertController, animated: true, completion: nil)
-        }
+        })
     }
     
     /// 打开相机
@@ -287,15 +286,61 @@ extension UIViewController{
         }
     }
     
-    /// TODO: 判断是否有相册权限
-    func isCanOpenAlbums() -> Bool {
-        let authorStatus = PHPhotoLibrary.authorizationStatus()
-        if authorStatus == .restricted || authorStatus == .denied {
-            return false;
-        }else{
-            return true;
+    
+    func checkCanOpenAlbums(callback:@escaping ((PHAuthorizationStatus)->Void)){
+        var authorStatus:PHAuthorizationStatus?
+        if #available(iOS 14.0, *) {
+            authorStatus = PHPhotoLibrary.authorizationStatus(for: PHAccessLevel.readWrite)
+        } else {
+            authorStatus = PHPhotoLibrary.authorizationStatus()
+        }
+        switch authorStatus {
+        case .notDetermined:
+            if #available(iOS 14.0, *){
+                PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: callback)
+            }else{
+                PHPhotoLibrary.requestAuthorization(callback)
+            }
+            break
+        case .authorized:
+            callback(.authorized)
+            break
+        case .restricted:
+            self.openAlunmsSet()
+            break
+        case .denied:
+            self.openAlunmsSet()
+            break
+        case .limited:
+            if #available(iOS 14, *) {
+                callback(.limited)
+            }
+            break
+        default:
+            break
         }
     }
+    
+    
+    private func openAlunmsSet(){
+        var message:String = "想要访问相册，需要你的允许。去设置？"
+        if Bundle.main.infoDictionary != nil {
+            message = Bundle.main.infoDictionary!["NSPhotoLibraryUsageDescription"] as! String
+        }
+        let alertController = UIAlertController.init(title: "提示", message: message, preferredStyle: .alert);
+        let cancelAction:UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction);
+        let sureAction:UIAlertAction = UIAlertAction.init(title: "设置", style: .destructive) { (action) in
+            //去c设置中修改权限
+            let setUrl = URL.init(string: UIApplication.openSettingsURLString)!;
+            if UIApplication.shared.canOpenURL(setUrl) {
+                UIApplication.shared.open(setUrl, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(sureAction);
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     /// TODO: 判断是否有麦克风权限
     func isCanOpenMic() -> Bool {
         let micStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.audio)

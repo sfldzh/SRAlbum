@@ -12,6 +12,8 @@
 	<string>想要访问麦克风，来上传视频，需要你的允许。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>保存图片</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
