@@ -11,6 +11,12 @@
     在Podfile中添加 pod 'SRAlbum','~> 0.0.9'
     然后使用 pod install 命令
     
+# Info.plist需要添加：
+    Privacy - Photo Library Usage Description
+    Privacy - Camera Usage Description
+    Privacy - Microphone Usage Description
+    Prevent limited photos access alert 这个设置为YES
+    
 
 # swift使用方法
     导入模块：import SRAlbum
