@@ -65,13 +65,21 @@ class SRCameraViewController: UIViewController{
                 if is_eidt {
                     self?.cameraView.stopRunning()
                     SRAlbumEidtView.createEidtView()?.show(data: image!, complete: { cutImage, eideView in
-                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
-                        DispatchQueue.global().async {//图片压缩
-                            let img:UIImage = SRHelper.imageZip(sourceImage:cutImage!, maxSize: max_size)
+                        if SRAlbumData.sharedInstance.isZip{
+                            let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                            DispatchQueue.global().async {//图片压缩
+                                let img:UIImage = SRHelper.imageZip(sourceImage:cutImage!, maxSize: max_size)
+                                DispatchQueue.main.async {
+                                    SRHelper.hideHud(hud: hub)
+                                    eideView.dismiss()
+                                    SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                                    self?.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        }else{
                             DispatchQueue.main.async {
-                                SRHelper.hideHud(hud: hub)
                                 eideView.dismiss()
-                                SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                                SRAlbumData.sharedInstance.completeVedioHandle?(cutImage,nil)
                                 self?.dismiss(animated: true, completion: nil)
                             }
                         }
@@ -79,13 +87,17 @@ class SRCameraViewController: UIViewController{
                         self?.cameraView.startRunning()
                     })
                 }else{
-                    let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
-                    DispatchQueue.global().async {//图片压缩
-                        let img:UIImage = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
-                        DispatchQueue.main.async {
-                            SRHelper.hideHud(hud: hub)
-                            SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                    if SRAlbumData.sharedInstance.isZip{
+                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                        DispatchQueue.global().async {//图片压缩
+                            let img:UIImage = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
+                            DispatchQueue.main.async {
+                                SRHelper.hideHud(hud: hub)
+                                SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                            }
                         }
+                    }else{
+                        SRAlbumData.sharedInstance.completeVedioHandle?(image!,nil)
                     }
                 }
             }else{
