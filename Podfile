@@ -9,7 +9,7 @@ workspace 'SRAlbum'
 
 target 'SRAlbum' do
   pod 'JPImageresizerView', '~> 1.3.4'
-  pod 'XibFrame', '~> 0.0.7' # xib属性
+  pod 'XibFrame', '~> 0.0.9' # xib属性
   pod 'MBProgressHUD', '~> 1.2.0'
 #  pod 'Tool', :path => '../Tool'
   

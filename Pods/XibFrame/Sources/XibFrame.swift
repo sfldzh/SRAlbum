@@ -1,12 +1,7 @@
-//
-//  XibExtension.swift
-//  XibFrame
-//
-//  Created by 施峰磊 on 2020/1/11.
-//  Copyright © 2020 施峰磊. All rights reserved.
-//
-
 import UIKit
+
+/// Current Alamofire version. Necessary since SPM doesn't use dynamic libraries. Plus this will be more accurate.
+let version = "0.0.8"
 
 //MARK: - 基础视图
 extension UIView {
@@ -123,31 +118,6 @@ extension UIButton {
         didSet{
             self.backgroundColor = self.isEnabled ? (self.enabledColor ?? self.backgroundColor) : (self.unEnabledColor ?? self.backgroundColor) ;
         }
-    }
-}
-
-extension UIColor{
-    func compare(tagerColor:UIColor?) -> Bool {
-        if tagerColor == nil {
-            return false;
-        }else{
-            var red1:CGFloat = 0.0
-            var red2:CGFloat = 0.0
-            var green1:CGFloat = 0.0
-            var green2:CGFloat = 0.0
-            var blue1:CGFloat = 0.0
-            var blue2:CGFloat = 0.0
-            var alpha1:CGFloat = 0.0
-            var alpha2:CGFloat = 0.0
-            self.getRed(&red1, green: &green1, blue: &blue1, alpha: &alpha1)
-            tagerColor!.getRed(&red2, green: &green2, blue: &blue2, alpha: &alpha2)
-            if ((red1 == red2)&&(green1 == green2)&&(blue1 == blue2)&&(alpha1 == alpha2)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        
     }
 }
 
@@ -438,7 +408,36 @@ extension UIColor{
     ///   - value: 十六进制数字
     ///   - a: 透明度
     public static func hexa(value:Int32,a:CGFloat) ->UIColor {
-        return UIColor.init(red: CGFloat((value & 0xFF0000) >> 16)/255.0, green: CGFloat((value & 0xFF00) >> 8)/255.0, blue: CGFloat(value & 0xFF)/255.0, alpha: a)
+        let mask = 0x000000FF
+        let r = Int(value >> 16) & mask
+        let g = Int(value >> 8) & mask
+        let b = Int(value) & mask
+        return UIColor.init(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: a)
+//        return UIColor.init(red: CGFloat((value & 0xFF0000) >> 16)/255.0, green: CGFloat((value & 0xFF00) >> 8)/255.0, blue: CGFloat(value & 0xFF)/255.0, alpha: a)
+    }
+    
+    /// 十六进制颜色
+    /// - Parameters:
+    ///   - value: 十六进制色值
+    ///   - a: 透明度
+    /// - Returns: 颜色
+    public static func hexa(value:String,a:CGFloat) -> UIColor? {
+        var str = value.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        if str.count >= 6{
+            if str.hasPrefix("#"){
+                str = str.subString(rang: NSRange.init(location: 1, length: str.count-1))
+            }
+            let redStr = str.subString(rang: NSRange.init(location: 0, length: 2))
+            let greenStr = str.subString(rang: NSRange.init(location: 2, length: 2))
+            let blueStr = str.subString(rang: NSRange.init(location: 4, length: 2))
+            var red:CUnsignedLongLong = 0, green:CUnsignedLongLong = 0, blue:CUnsignedLongLong = 0;
+            Scanner.init(string: redStr).scanHexInt64(&red)
+            Scanner.init(string: greenStr).scanHexInt64(&green)
+            Scanner.init(string: blueStr).scanHexInt64(&blue)
+            return UIColor.init(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: a)
+        }else{
+            return nil
+        }
     }
     
     
@@ -467,4 +466,28 @@ extension UIColor{
             return lightColor;
         }
     }
+    
+    func compare(tagerColor:UIColor?) -> Bool {
+        if tagerColor == nil {
+            return false;
+        }else{
+            var red1:CGFloat = 0.0
+            var red2:CGFloat = 0.0
+            var green1:CGFloat = 0.0
+            var green2:CGFloat = 0.0
+            var blue1:CGFloat = 0.0
+            var blue2:CGFloat = 0.0
+            var alpha1:CGFloat = 0.0
+            var alpha2:CGFloat = 0.0
+            self.getRed(&red1, green: &green1, blue: &blue1, alpha: &alpha1)
+            tagerColor!.getRed(&red2, green: &green2, blue: &blue2, alpha: &alpha2)
+            if ((red1 == red2)&&(green1 == green2)&&(blue1 == blue2)&&(alpha1 == alpha2)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+    }
 }
+

@@ -139,6 +139,6 @@ Pod::Spec.new do |spec|
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
   spec.dependency "JPImageresizerView", "~> 1.3.4"
-  spec.dependency "XibFrame", "~> 0.0.7"
+  spec.dependency "XibFrame", "~> 0.0.9"
   spec.dependency "MBProgressHUD", "~> 1.2.0"
 end
