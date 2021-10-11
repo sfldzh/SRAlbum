@@ -179,7 +179,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         let concurrentQueue = DispatchQueue(label: "hanldAssent")
         // 创建调度组
         let workingGroup = DispatchGroup()
-        var results = Array<Any>.init()
+        var results = Array<AnyObject>.init()
         //初始化信号量为1
         let semaphore = DispatchSemaphore(value: 1)
         for asset in SRAlbumData.sharedInstance.sList {
@@ -187,16 +187,18 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                 workingGroup.enter()
                 semaphore.wait()
                 if asset.isVideo(){
+//                    let hub:MBProgressHUD = SRHelper.showHud(message: "压缩视频中...", addto: self)
+//                    SRHelper.videoZip(sourceUrl: outputFileURL, tagerUrl: nil) { [weak self] (url) in
+//                        DispatchQueue.main.async {
+//                            SRHelper.hideHud(hud: hub)
+//                            self?.recordingResult?(self?.timeValue ?? -1, url)
+//                        }
+//                    }
                     let options = PHVideoRequestOptions.init()
                     options.isNetworkAccessAllowed = true;
                     PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { (vedioAsset, audioMix, info) in
-                        if let infoString:String = info!["PHImageFileSandboxExtensionTokenKey"] as? String {
-                            for string in infoString.split(separator: ";") {
-                                if String(string).hasSuffix(".MOV") {
-                                    results.append(String(string))
-                                    break
-                                }
-                            }
+                        if let urlAsset = vedioAsset as? AVURLAsset{
+                            results.append(urlAsset.url.path as AnyObject)
                             workingGroup.leave()
                             semaphore.signal()
                         }
@@ -205,7 +207,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     if asset.editedPic == nil {
                         _=asset.requestOriginalImage(resizeMode: .none, isSynchronous:true) { (imageData, info) in
                             if asset.isGif() {
-                                results.append(imageData!)
+                                results.append(imageData! as AnyObject)
                             }else{
                                 if SRAlbumData.sharedInstance.isZip {
                                     results.append(SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!, maxSize: max_size))
@@ -246,7 +248,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         let workingGroup = DispatchGroup()
         // 创建多列
         let workingQueue = DispatchQueue(label: "hanldAssent")
-        var results = Array<Any>.init()
+        var results = Array<AnyObject>.init()
 
         for asset in SRAlbumData.sharedInstance.sList {
             workingGroup.enter()
@@ -255,21 +257,16 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     let options = PHVideoRequestOptions.init()
                     options.isNetworkAccessAllowed = true;
                     PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { (vedioAsset, audioMix, info) in
-                        if let infoString:String = info!["PHImageFileSandboxExtensionTokenKey"] as? String {
-                            for string in infoString.split(separator: ";") {
-                                if String(string).hasSuffix(".MOV") {
-                                    results.append(String(string))
-                                    break
-                                }
-                            }
+                        if let urlAsset = vedioAsset as? AVURLAsset{
+                            results.append(urlAsset.url.path as AnyObject)
+                            workingGroup.leave()
                         }
-                        workingGroup.leave()
                     }
                 }else{
                     if asset.editedPic == nil {
                         _=asset.requestOriginalImage(resizeMode: .none) { (imageData, info) in
                             if asset.isGif() {
-                                results.append(imageData!)
+                                results.append(imageData! as AnyObject)
                             }else{
                                 if SRAlbumData.sharedInstance.isZip {
                                     results.append(SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!,  maxSize: max_size))

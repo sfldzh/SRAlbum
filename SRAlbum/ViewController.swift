@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 //        self.openAlbum(assetType: .Photo, maxCount: 5, isEidt: true) { (assets) in
 //            print("assets")
 //        }
-        self.openAlbum( maxCount: 5, isEidt: true, isSort: true) { [weak self](assets) in
+        self.openAlbum(assetType: .None, maxCount: 5, isEidt: true, isSort: false) { [weak self](assets) in
             let vc:ResultViewController = ResultViewController.init(nibName: "ResultViewController", bundle: bundle)
             vc.images = assets as? Array<UIImage>;
             self?.navigationController?.pushViewController(vc, animated: true);

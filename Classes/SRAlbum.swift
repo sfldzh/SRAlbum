@@ -77,7 +77,7 @@ var is_rectangle_detection = false;//开启矩形检测
 public class SRAlbumWrapper:NSObject{
     
     @available(iOS 10, *)
-    @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<Any>)->Void)?)->Void{
+    @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((Array<AnyObject>)->Void)?)->Void{
         tager.checkCanOpenAlbums(callback: { status in
             DispatchQueue.main.async {
                 if #available(iOS 14, *) {
@@ -367,7 +367,7 @@ class SRAlbumData: NSObject {
     //TODO: 是否压缩
     var isZip = false
     
-    var completeImageHandle:((Array<Any>)->Void)?
+    var completeImageHandle:((Array<AnyObject>)->Void)?
     var completeVedioHandle:((UIImage?,URL?)->Void)?
     static let sharedInstance = SRAlbumData()
     
