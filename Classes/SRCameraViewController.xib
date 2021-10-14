@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -104,7 +104,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="PUg-1n-JQb" secondAttribute="height" multiplier="1:1" id="2bP-j5-bk5"/>
                                             </constraints>
-                                            <state key="normal" image="sr_camera_cancel"/>
+                                            <state key="normal" image="sr_camera_cancel_icon"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="35"/>
@@ -189,7 +189,7 @@
         </view>
     </objects>
     <resources>
-        <image name="sr_camera_cancel" width="26.5" height="25.5"/>
+        <image name="sr_camera_cancel_icon" width="26.5" height="25.5"/>
         <image name="sr_camera_flash_on_icon" width="29.5" height="29.5"/>
         <image name="sr_camera_fz_icon" width="35" height="29.5"/>
         <image name="sr_camera_selected" width="26.5" height="18.5"/>

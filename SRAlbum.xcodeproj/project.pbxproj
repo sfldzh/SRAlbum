@@ -18,6 +18,7 @@
 		D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */; };
 		D6400C3823FFA4F800DF5639 /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */; };
 		D64CC53526C6145100B025DB /* SRPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CC53426C6145100B025DB /* SRPlayerView.swift */; };
+		D685B50C2717BE680036F32B /* SRAlbum.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D685B50B2717BE680036F32B /* SRAlbum.xcassets */; };
 		D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692B7A923D5789700015DE5 /* AssetCollection.swift */; };
 		D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692B7AC23D57F2300015DE5 /* TopSwitchButton.swift */; };
 		D692B7B123D57F5E00015DE5 /* TopSwitchButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */; };
@@ -86,6 +87,7 @@
 		D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
 		D64CC53426C6145100B025DB /* SRPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPlayerView.swift; sourceTree = "<group>"; };
+		D685B50B2717BE680036F32B /* SRAlbum.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SRAlbum.xcassets; sourceTree = "<group>"; };
 		D692B7A923D5789700015DE5 /* AssetCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollection.swift; sourceTree = "<group>"; };
 		D692B7AC23D57F2300015DE5 /* TopSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSwitchButton.swift; sourceTree = "<group>"; };
 		D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopSwitchButton.xib; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		D697988923D19C3C0009E906 /* SRAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				D697989323D19C3D0009E906 /* Assets.xcassets */,
 				D697988A23D19C3C0009E906 /* AppDelegate.swift */,
 				D697988C23D19C3C0009E906 /* SceneDelegate.swift */,
 				D697988E23D19C3C0009E906 /* ViewController.swift */,
@@ -284,9 +287,9 @@
 				D605F1FB26B7DA3900C9391E /* SRCameraView */,
 				D692B7AB23D57EF200015DE5 /* SRAlbumView */,
 				D692B7A823D5786200015DE5 /* SRExtension */,
-				D697989323D19C3D0009E906 /* Assets.xcassets */,
 				D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */,
 				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
+				D685B50B2717BE680036F32B /* SRAlbum.xcassets */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				D605F1FA26B78F1B00C9391E /* SRCameraViewController.xib in Resources */,
 				D6ED18A523D7CE8D0094C06E /* SRAlbumBrowseController.xib in Resources */,
 				D692B7B123D57F5E00015DE5 /* TopSwitchButton.xib in Resources */,
+				D685B50C2717BE680036F32B /* SRAlbum.xcassets in Resources */,
 				D697989423D19C3D0009E906 /* Assets.xcassets in Resources */,
 				D6400C3423FFA48600DF5639 /* ResultViewController.xib in Resources */,
 				D692B7C523D5A64500015DE5 /* SRAlbumImageCell.xib in Resources */,
