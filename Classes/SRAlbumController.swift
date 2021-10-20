@@ -137,8 +137,20 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
             if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                 isAdd = true
                 SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
-                    data.editedPic = image
-                    SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                    if SRAlbumData.sharedInstance.isZip {
+                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                        DispatchQueue.global().async {
+                            let img = SRHelper.imageZip(sourceImage:image!,  maxSize: max_size)
+                            data.editedPic = img;
+                            DispatchQueue.main.async {
+                                SRHelper.hideHud(hud: hub)
+                                SRAlbumData.sharedInstance.completeImageHandle?([img])
+                            }
+                        }
+                    }else{
+                        data.editedPic = image;
+                        SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                    }
                     eideView.dismiss()
                     self.cancelAction()
                 }, nil)
@@ -413,8 +425,20 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
             }else{
                 if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                     SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
-                        data.editedPic = image;
-                        SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                        if SRAlbumData.sharedInstance.isZip {
+                            let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                            DispatchQueue.global().async {
+                                let img = SRHelper.imageZip(sourceImage:image!,  maxSize: max_size)
+                                data.editedPic = img;
+                                DispatchQueue.main.async {
+                                    SRHelper.hideHud(hud: hub)
+                                    SRAlbumData.sharedInstance.completeImageHandle?([img])
+                                }
+                            }
+                        }else{
+                            data.editedPic = image;
+                            SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                        }
                         eideView.dismiss();
                         self.cancelAction()
                     }, nil)
