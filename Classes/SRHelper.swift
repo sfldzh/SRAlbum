@@ -93,45 +93,8 @@ class SRHelper {
     static func imageZip(sourceImage:UIImage, maxSize:Int)->UIImage{
         let data = self.resetSizeOfImageData(source_image: sourceImage, maxSize: maxSize / 1024)
         return UIImage.init(data: data as Data)!
+//        return self.compressImage(sourceImage, toByte: maxSize)
     }
-    
-    /// TODO:图片的尺寸压缩
-    /// - Parameters:
-    ///   - sourceImage: 源图片
-    ///   - ratio: 比例
-    static func imageSizeZip(sourceImage:UIImage, ratio:CGFloat)->UIImage{
-        if sourceImage.size.width > sourceImage.size.height * 2 || sourceImage.size.height > sourceImage.size.width * 2{//长图
-            return sourceImage
-        }else{
-            let tagerSize = CGSize.init(width: sourceImage.size.width * ratio, height: sourceImage.size.height * ratio)
-            UIGraphicsBeginImageContext(tagerSize);
-            sourceImage.draw(in: CGRect.init(x: 0, y: 0, width: tagerSize.width, height: tagerSize.height));
-            let resultImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext();
-            return resultImage
-            
-//            let maxSize = CGSize.init(width: 2448.0, height: 3264.0)
-//            if sourceImage.size.width  > maxSize.width || sourceImage.size.height  > maxSize.height {
-//                var tagerSize:CGSize = CGSize.zero
-//                if sourceImage.size.width > sourceImage.size.height{//横图
-//                    tagerSize.width = maxSize.width
-//                    tagerSize.height = sourceImage.size.height * (maxSize.width/sourceImage.size.width)
-//                }else{//竖图
-//                    tagerSize.height = maxSize.height
-//                    tagerSize.width = sourceImage.size.width * (maxSize.height/sourceImage.size.height)
-//                }
-//                UIGraphicsBeginImageContext(tagerSize);
-//                sourceImage.draw(in: CGRect.init(x: 0, y: 0, width: tagerSize.width, height: tagerSize.height));
-//                let resultImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-//                UIGraphicsEndImageContext();
-//                return resultImage
-//            }else{
-//                return sourceImage
-//            }
-        }
-        
-    }
-    
     
     /// 压缩视频
     /// - Parameters:
@@ -157,7 +120,69 @@ class SRHelper {
         }
     }
     
+    /// 图片质量压缩
+    /// - Parameters:
+    ///   - image: 原来的图片
+    ///   - maxLength: 最大内存
+    /// - Returns: 压缩好的图片
+    static func compressImageQuality(_ image: UIImage, toByte maxLength: Int) -> UIImage {
+        var compression: CGFloat = 1
+        guard var data = image.jpegData(compressionQuality: compression),
+            data.count > maxLength else { return image }
+//        print("Before compressing quality, image size =", data.count / 1024, "KB")
+        
+        var max: CGFloat = 1
+        var min: CGFloat = 0
+        for _ in 0..<6 {
+            compression = (max + min) / 2
+            data = image.jpegData(compressionQuality: compression)!
+//            print("Compression =", compression)
+//            print("In compressing quality loop, image size =", data.count / 1024, "KB")
+            if CGFloat(data.count) < CGFloat(maxLength) * 0.9 {
+                min = compression
+            } else if data.count > maxLength {
+                max = compression
+            } else {
+                break
+            }
+        }
+//        print("After compressing quality, image size =", data.count / 1024, "KB")
+        return UIImage(data: data)!
+    }
     
+    /// 图片尺寸压缩
+    /// - Parameters:
+    ///   - image: 原来的图片
+    ///   - maxLength: 最大内存
+    /// - Returns: 压缩好的图片
+    static func compressImageSize(_ image: UIImage, toByte maxLength: Int) -> UIImage {
+        guard var data = image.jpegData(compressionQuality: 1) else { return image }
+//        print("Before compressing size, image size =", data.count / 1024, "KB")
+        
+        var resultImage: UIImage = image
+        var lastDataLength: Int = 0
+        while data.count > maxLength, data.count != lastDataLength {
+            lastDataLength = data.count
+            let ratio: CGFloat = CGFloat(maxLength) / CGFloat(data.count)
+//            print("Ratio =", ratio)
+            let size: CGSize = CGSize(width: Int(resultImage.size.width * sqrt(ratio)),
+                                      height: Int(resultImage.size.height * sqrt(ratio)))
+            UIGraphicsBeginImageContext(size)
+            resultImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            resultImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            data = resultImage.jpegData(compressionQuality: 1)!
+//            print("In compressing size loop, image size =", data.count / 1024, "KB")
+        }
+//        print("After compressing size loop, image size =", data.count / 1024, "KB")
+        return resultImage
+    }
+    
+    /// 图片尺寸和质量压缩
+    /// - Parameters:
+    ///   - source_image: 原来的图片
+    ///   - maxLength: 最大内存
+    /// - Returns: 压缩好的图片
     static func resetSizeOfImageData(source_image: UIImage!, maxSize: Int) -> Data {
         //先判断当前质量是否满足要求，不满足再进行压缩
         var finallImageData = source_image.jpegData(compressionQuality: 1.0)
@@ -195,8 +220,62 @@ class SRHelper {
             defaultSize = CGSize(width: defaultSize.width-100, height: defaultSize.height-100)
             let image = self.newSizeImage(size: defaultSize, source_image: UIImage.init(data: newImage.jpegData(compressionQuality: compressionQualityArr.lastObject as! CGFloat)!)!)
             finallImageData = self.halfFuntion(arr: compressionQualityArr.copy() as! [CGFloat], image: image, sourceData: image.jpegData(compressionQuality: 1.0)!, maxSize: maxSize)
+            
+           
         }
+        print("After compressing size loop, image size =", finallImageData!.count / 1024, "KB")
         return finallImageData!
+    }
+    
+    
+    /// 图片尺寸和质量压缩
+    /// - Parameters:
+    ///   - source_image: 原来的图片
+    ///   - maxLength: 最大内存
+    /// - Returns: 压缩好的图片
+    static func compressImage(_ image: UIImage, toByte maxLength: Int) -> UIImage {
+        var compression: CGFloat = 1
+        guard var data = image.jpegData(compressionQuality: compression),
+            data.count > maxLength else { return image }
+        print("Before compressing quality, image size =", data.count / 1024, "KB")
+        
+        // Compress by size
+        var max: CGFloat = 1
+        var min: CGFloat = 0
+        for _ in 0..<6 {
+            compression = (max + min) / 2
+            data = image.jpegData(compressionQuality: compression)!
+//            print("Compression =", compression)
+//            print("In compressing quality loop, image size =", data.count / 1024, "KB")
+            if CGFloat(data.count) < CGFloat(maxLength) * 0.9 {
+                min = compression
+            } else if data.count > maxLength {
+                max = compression
+            } else {
+                break
+            }
+        }
+//        print("After compressing quality, image size =", data.count / 1024, "KB")
+        var resultImage: UIImage = UIImage(data: data)!
+        if data.count < maxLength { return resultImage }
+        
+        // Compress by size
+        var lastDataLength: Int = 0
+        while data.count > maxLength, data.count != lastDataLength {
+            lastDataLength = data.count
+            let ratio: CGFloat = CGFloat(maxLength) / CGFloat(data.count)
+//            print("Ratio =", ratio)
+            let size: CGSize = CGSize(width: Int(resultImage.size.width * sqrt(ratio)),
+                                      height: Int(resultImage.size.height * sqrt(ratio)))
+            UIGraphicsBeginImageContext(size)
+            resultImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            resultImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            data = resultImage.jpegData(compressionQuality: compression)!
+//            print("In compressing size loop, image size =", data.count / 1024, "KB")
+        }
+        print("After compressing size loop, image size =", data.count / 1024, "KB")
+        return resultImage
     }
     
     // MARK: - 调整图片分辨率/尺寸（等比例缩放）
