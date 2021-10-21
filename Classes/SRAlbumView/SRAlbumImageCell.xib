@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +56,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-v2-YKY">
                         <rect key="frame" x="0.0" y="132" width="178" height="30"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sr_album_vedio_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vOg-nx-d2J">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sr_album_vedio_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vOg-nx-d2J">
                                 <rect key="frame" x="10" y="4.5" width="21.5" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21.5" id="H1W-LD-gmP"/>
@@ -93,6 +93,7 @@
                     </button>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="z2g-v2-YKY" secondAttribute="trailing" id="1hi-d8-dDN"/>
                 <constraint firstItem="z2g-v2-YKY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6g5-hq-WHf"/>
@@ -106,7 +107,6 @@
                 <constraint firstAttribute="trailing" secondItem="ttY-ae-88r" secondAttribute="trailing" constant="10" id="fd0-6l-sv4"/>
                 <constraint firstAttribute="bottom" secondItem="z2g-v2-YKY" secondAttribute="bottom" id="u13-ut-WUG"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="178" height="162"/>
             <connections>
                 <outlet property="icon" destination="O9b-Wu-s4D" id="Cuy-eK-zRN"/>
@@ -120,6 +120,6 @@
     </objects>
     <resources>
         <image name="sr_album_image_unselected" width="30" height="30"/>
-        <image name="sr_album_vedio_icon" width="21.5" height="21.5"/>
+        <image name="sr_album_vedio_icon.png" width="21.5" height="21.5"/>
     </resources>
 </document>

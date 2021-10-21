@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,7 +58,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="3xN-6J-FDb"/>
                                     </constraints>
-                                    <state key="normal" image="sr_album_back_icon"/>
+                                    <state key="normal" image="sr_album_back_icon.png"/>
                                     <connections>
                                         <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="80t-ZK-2TS"/>
                                     </connections>
@@ -135,8 +135,8 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ko-Zc-H4H">
                             <rect key="frame" x="181" y="0.0" width="52" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <state key="normal" title=" 原图" image="sr_album_unselected"/>
-                            <state key="selected" image="sr_album_selected"/>
+                            <state key="normal" title=" 原图" image="sr_album_unselected.png"/>
+                            <state key="selected" image="sr_album_selected.png"/>
                             <connections>
                                 <action selector="zipAction:" destination="-1" eventType="touchUpInside" id="yjG-48-MhX"/>
                             </connections>
@@ -210,8 +210,9 @@
         </view>
     </objects>
     <resources>
-        <image name="sr_album_back_icon" width="21.5" height="21.5"/>
-        <image name="sr_album_selected" width="15" height="15"/>
+        <image name="sr_album_back_icon.png" width="21.5" height="21.5"/>
+        <image name="sr_album_selected.png" width="15" height="15"/>
         <image name="sr_album_unselected" width="15" height="15"/>
+        <image name="sr_album_unselected.png" width="15" height="15"/>
     </resources>
 </document>

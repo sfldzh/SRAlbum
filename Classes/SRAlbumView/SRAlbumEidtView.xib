@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="44" id="9TP-ue-o0v"/>
                             </constraints>
-                            <state key="normal" image="sr_album_back_icon"/>
+                            <state key="normal" image="sr_album_back_icon.png"/>
                             <connections>
                                 <action selector="dissmissAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mxR-2e-nHg"/>
                             </connections>
@@ -32,7 +32,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="44" id="nBc-t9-lN4"/>
                             </constraints>
-                            <state key="normal" image="sr_tailoring_icon"/>
+                            <state key="normal" image="sr_tailoring_icon.png"/>
                             <connections>
                                 <action selector="tailoringAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="i9y-cu-wQW"/>
                             </connections>
@@ -68,7 +68,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="bvf-b8-hqy" secondAttribute="height" multiplier="1:1" id="cPh-J4-cda"/>
                                     </constraints>
-                                    <state key="normal" image="sr_eidt_rotate_icon"/>
+                                    <state key="normal" image="sr_eidt_rotate_icon.png"/>
                                     <connections>
                                         <action selector="rotateAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mnd-eI-ZXV"/>
                                     </connections>
@@ -89,7 +89,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="8eI-aE-KYH" secondAttribute="height" multiplier="1:1" id="Ykf-B3-aIk"/>
                                     </constraints>
-                                    <state key="normal" image="sr_eidt_mirror_vertically_icon"/>
+                                    <state key="normal" image="sr_eidt_mirror_vertically_icon.png"/>
                                     <connections>
                                         <action selector="verticallyAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="tmO-Ja-Vsa"/>
                                     </connections>
@@ -110,7 +110,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="7lx-97-N7s" secondAttribute="height" multiplier="1:1" id="CIC-Li-dyc"/>
                                     </constraints>
-                                    <state key="normal" image="sr_eidt_reset_icon"/>
+                                    <state key="normal" image="sr_eidt_reset_icon.png"/>
                                     <connections>
                                         <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="BaU-TD-YET"/>
                                     </connections>
@@ -131,7 +131,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="VVv-Zc-A17" secondAttribute="height" multiplier="1:1" id="1Zh-0O-FaG"/>
                                     </constraints>
-                                    <state key="normal" image="sr_eidt_mirror_horizontal_icon"/>
+                                    <state key="normal" image="sr_eidt_mirror_horizontal_icon.png"/>
                                     <connections>
                                         <action selector="horizontalAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lgs-Pv-C7m"/>
                                     </connections>
@@ -167,6 +167,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ggB-vS-qHJ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="0me-xZ-JcT"/>
@@ -177,7 +178,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f8Y-pC-Bzv" secondAttribute="trailing" id="s7Z-Rl-lWc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="horizontalButton" destination="VVv-Zc-A17" id="7Gx-H8-82c"/>
                 <outlet property="resetButton" destination="7lx-97-N7s" id="Uah-Xr-GV7"/>
@@ -190,11 +190,11 @@
         </view>
     </objects>
     <resources>
-        <image name="sr_album_back_icon" width="21.5" height="21.5"/>
-        <image name="sr_eidt_mirror_horizontal_icon" width="26.5" height="26.5"/>
-        <image name="sr_eidt_mirror_vertically_icon" width="26.5" height="26.5"/>
-        <image name="sr_eidt_reset_icon" width="26.5" height="26.5"/>
-        <image name="sr_eidt_rotate_icon" width="26.5" height="26.5"/>
-        <image name="sr_tailoring_icon" width="24" height="24"/>
+        <image name="sr_album_back_icon.png" width="21.5" height="21.5"/>
+        <image name="sr_eidt_mirror_horizontal_icon.png" width="26.5" height="26.5"/>
+        <image name="sr_eidt_mirror_vertically_icon.png" width="26.5" height="26.5"/>
+        <image name="sr_eidt_reset_icon.png" width="26.5" height="26.5"/>
+        <image name="sr_eidt_rotate_icon.png" width="26.5" height="26.5"/>
+        <image name="sr_tailoring_icon.png" width="24" height="24"/>
     </resources>
 </document>

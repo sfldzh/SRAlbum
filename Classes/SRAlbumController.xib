@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +48,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZm-lt-bt1">
                                         <rect key="frame" x="0.0" y="0.0" width="174" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="q2U-rP-qhO">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q2U-rP-qhO">
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
@@ -75,10 +75,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUl-FL-yz8">
-                            <rect key="frame" x="173.5" y="0.0" width="67" height="50"/>
+                            <rect key="frame" x="181" y="0.0" width="52" height="50"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <state key="normal" title=" 原图" image="sr_album_unselected"/>
-                            <state key="selected" image="sr_album_selected"/>
+                            <state key="normal" title=" 原图" image="sr_album_unselected.png"/>
+                            <state key="selected" image="sr_album_selected.png"/>
                             <connections>
                                 <action selector="zipAction:" destination="-1" eventType="touchUpInside" id="3SL-dd-OoE"/>
                             </connections>
@@ -124,6 +124,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.19602152710000001" green="0.19605553149999999" blue="0.1960140467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SRg-Th-bG1" secondAttribute="trailing" id="Awi-9O-l7s"/>
@@ -134,12 +135,11 @@
                 <constraint firstItem="SRg-Th-bG1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YMz-SG-frF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VoV-Fb-Sln" secondAttribute="trailing" id="dG9-Mt-74b"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="sr_album_selected" width="15" height="15"/>
-        <image name="sr_album_unselected" width="15" height="15"/>
+        <image name="sr_album_selected.png" width="15" height="15"/>
+        <image name="sr_album_unselected.png" width="15" height="15"/>
     </resources>
 </document>
