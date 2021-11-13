@@ -176,84 +176,11 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
     
     /// TODO: 发送图片
     func sendAlbum() -> Void {
-        if is_sort {//是否排序图片处理
-            synchronizationHanldAssent()
-        }else{
-            asynchronousHanldAssent()
-        }
+        asynchronousHanldAssent()
     }
+
     
-    
-    /// TODO: 同步处理文件
-    func synchronizationHanldAssent() -> Void {
-        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
-        // 创建一个并发队列
-        let concurrentQueue = DispatchQueue(label: "hanldAssent")
-        // 创建调度组
-        let workingGroup = DispatchGroup()
-        var results = Array<AnyObject>.init()
-        //初始化信号量为1
-        let semaphore = DispatchSemaphore(value: 1)
-        for asset in SRAlbumData.sharedInstance.sList {
-            concurrentQueue.async {
-                workingGroup.enter()
-                semaphore.wait()
-                if asset.isVideo(){
-//                    let hub:MBProgressHUD = SRHelper.showHud(message: "压缩视频中...", addto: self)
-//                    SRHelper.videoZip(sourceUrl: outputFileURL, tagerUrl: nil) { [weak self] (url) in
-//                        DispatchQueue.main.async {
-//                            SRHelper.hideHud(hud: hub)
-//                            self?.recordingResult?(self?.timeValue ?? -1, url)
-//                        }
-//                    }
-                    let options = PHVideoRequestOptions.init()
-                    options.isNetworkAccessAllowed = true;
-                    PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { (vedioAsset, audioMix, info) in
-                        if let urlAsset = vedioAsset as? AVURLAsset{
-                            results.append(urlAsset.url.path as AnyObject)
-                            workingGroup.leave()
-                            semaphore.signal()
-                        }
-                    }
-                }else{
-                    if asset.editedPic == nil {
-                        _=asset.requestOriginalImage(resizeMode: .none, isSynchronous:true) { (imageData, info) in
-                            if asset.isGif() {
-                                results.append(imageData! as AnyObject)
-                            }else{
-                                if SRAlbumData.sharedInstance.isZip {
-                                    results.append(SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!, maxSize: max_size))
-                                }else{
-                                    results.append(UIImage.init(data: imageData!)!)
-                                }
-                            }
-                            workingGroup.leave()
-                            semaphore.signal()
-                        }
-                    }else{
-                        if SRAlbumData.sharedInstance.isZip {
-                            results.append(SRHelper.imageZip(sourceImage:asset.editedPic!,  maxSize: max_size))
-                        }else{
-                            results.append(asset.editedPic!)
-                        }
-                        workingGroup.leave()
-                        semaphore.signal()
-                    }
-                }
-            }
-        }
-        
-        // 调度组里的任务都执行完毕
-        workingGroup.notify(queue: concurrentQueue) {
-            DispatchQueue.main.async {
-                SRHelper.hideHud(hud: hub)
-                SRAlbumData.sharedInstance.completeImageHandle?(results)
-                self.cancelAction()
-            }
-        }
-    }
-    
-    /// TODO: 异步处理文件
+    /// TODO: 处理文件
     func asynchronousHanldAssent() -> Void {
         let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
         // 创建调度组
@@ -261,8 +188,15 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         // 创建多列
         let workingQueue = DispatchQueue(label: "hanldAssent")
         var results = Array<AnyObject>.init()
-
+        if is_sort{
+            results = SRAlbumData.sharedInstance.sList
+        }
+        var index = 0
         for asset in SRAlbumData.sharedInstance.sList {
+            if is_sort{
+                asset.index = index
+                index += 1
+            }
             workingGroup.enter()
             workingQueue.async {
                 if asset.isVideo(){
@@ -270,8 +204,14 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     options.isNetworkAccessAllowed = true;
                     PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { (vedioAsset, audioMix, info) in
                         if let urlAsset = vedioAsset as? AVURLAsset{
-                            results.append(urlAsset.url.path as AnyObject)
-                            workingGroup.leave()
+                            SRHelper.videoZip(sourceUrl: urlAsset.url, tagerUrl: nil) { url in
+                                if is_sort{
+                                    results[asset.index] = url.path as AnyObject
+                                }else{
+                                    results.append(url.path as AnyObject)
+                                }
+                                workingGroup.leave()
+                            }
                         }
                     }
                 }else{
@@ -281,18 +221,35 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                                 results.append(imageData! as AnyObject)
                             }else{
                                 if SRAlbumData.sharedInstance.isZip {
-                                    results.append(SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!,  maxSize: max_size))
+                                    if is_sort{
+                                        results[asset.index] = SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!, maxSize: max_size)
+                                    }else{
+                                        results.append(SRHelper.imageZip(sourceImage:UIImage.init(data: imageData!)!,  maxSize: max_size))
+                                    }
                                 }else{
-                                    results.append(UIImage.init(data: imageData!)!)
+                                    if is_sort{
+                                        results[asset.index] = UIImage.init(data: imageData!)!
+                                    }else{
+                                        results.append(UIImage.init(data: imageData!)!)
+                                    }
                                 }
                             }
                             workingGroup.leave()
                         }
                     }else{
                         if SRAlbumData.sharedInstance.isZip {
-                            results.append(SRHelper.imageZip(sourceImage:asset.editedPic!, maxSize: max_size))
+                            if is_sort{
+                                results[asset.index] = SRHelper.imageZip(sourceImage:asset.editedPic!, maxSize: max_size)
+                            }else{
+                                results.append(SRHelper.imageZip(sourceImage:asset.editedPic!, maxSize: max_size))
+                            }
+                            
                         }else{
-                            results.append(asset.editedPic!)
+                            if is_sort{
+                                results[asset.index] = asset.editedPic!
+                            }else{
+                                results.append(asset.editedPic!)
+                            }
                         }
                         workingGroup.leave()
                     }

@@ -106,7 +106,7 @@ class SRHelper {
         let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
         if compatiblePresets.contains(AVAssetExportPresetHighestQuality) {
             if let exportSession = AVAssetExportSession.init(asset: avAsset, presetName: AVAssetExportPresetMediumQuality) {
-                let pathUrl = (tagerUrl==nil) ? URL.init(fileURLWithPath: videoTemporaryZipDirectory(fileName: sourceUrl.lastPathComponent)) : tagerUrl
+                let pathUrl = (tagerUrl==nil) ? URL.init(fileURLWithPath: videoTemporaryZipDirectory(fileName: sourceUrl.lastPathComponent.replacingOccurrences(of: sourceUrl.pathExtension, with: "mp4"))) : tagerUrl
                 exportSession.outputURL = pathUrl
                 exportSession.outputFileType = .mp4
                 exportSession.shouldOptimizeForNetworkUse = true

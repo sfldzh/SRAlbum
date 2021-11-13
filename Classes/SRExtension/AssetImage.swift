@@ -10,6 +10,7 @@ import Photos
 import UIKit
 
 private var srAlbumEditedPic :Void?
+private var srAlbumIndex :Void?
 extension PHAsset{
     var editedPic:UIImage? {
         set{
@@ -17,6 +18,15 @@ extension PHAsset{
         }
         get{
             return objc_getAssociatedObject(self, &srAlbumEditedPic) as? UIImage
+        }
+    }
+    
+    var index:Int!{
+        set{
+            objc_setAssociatedObject(self, &srAlbumIndex, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
+        get{
+            return objc_getAssociatedObject(self, &srAlbumIndex) as? Int ?? 0
         }
     }
     
@@ -68,6 +78,7 @@ extension PHAsset{
     func isTimelapseVideo() -> Bool {
         return self.mediaType == .video && self.mediaSubtypes.contains(.videoTimelapse)
     }
+    
 }
 
 extension UIImage{
