@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SRAlbum"
-  spec.version      = "0.1.6"
+  spec.version      = "0.1.7"
   spec.summary      = "相册和相机模块"
   spec.swift_version      = "5.0"
 

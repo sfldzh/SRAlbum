@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
+import Photos
+
 @objc public enum SRCameraType:Int{
     case Photo//普通拍照
     case Video//视频
@@ -42,6 +45,8 @@ class SRCameraViewController: UIViewController{
     }
     
     private func configerView(){
+        try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
         self.flashBtn.isHidden = camera_type == .Video
         self.time.isHidden = camera_type == .Photo
         if camera_type == .Video{
@@ -113,6 +118,13 @@ class SRCameraViewController: UIViewController{
                 self?.vedioUrl = fileUrl
                 self?.playerView.isHidden = false
                 self?.playerView.play(playUrl: fileUrl!)
+                let photoLibrary = PHPhotoLibrary.shared()
+                photoLibrary.performChanges {
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileUrl!)
+                } completionHandler: { success, error in
+                    print("")
+                }
+
             }
         }
     }
@@ -152,6 +164,7 @@ class SRCameraViewController: UIViewController{
     }
     
     @IBAction func cancelPlayAction(_ sender: UIButton) {
+        self.playerView.stop()
         self.playerView.isHidden = true
         SRHelper.cleanMov(url: self.vedioUrl!)
         self.vedioUrl = nil

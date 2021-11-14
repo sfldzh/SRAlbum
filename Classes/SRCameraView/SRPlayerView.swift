@@ -81,6 +81,20 @@ class SRPlayerView: UIView {
         }
     }
     
+    open func stop(){
+        self.player?.pause()
+        if self.urlAsset != nil {
+            self.urlAsset = nil;
+        }
+        if self.playerItem != nil {
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.playerItem)
+            self.playerItem = nil;
+        }
+        if self.player != nil {
+            self.player = nil;
+        }
+    }
+    
     
     @objc private func vedioDidEnd(notification:Notification){
         if self.player?.currentItem?.status == AVPlayerItem.Status.readyToPlay {

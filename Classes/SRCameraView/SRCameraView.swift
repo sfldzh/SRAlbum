@@ -46,6 +46,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     private lazy var highDetector:CIDetector? = CIDetector.init(ofType: CIDetectorTypeRectangle, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])
     private lazy var movieFileOutput:AVCaptureMovieFileOutput = {
         let out:AVCaptureMovieFileOutput = AVCaptureMovieFileOutput.init()
+        out.movieFragmentInterval = CMTime.invalid
         if let videoConnection = out.connection(with: AVMediaType.video){
             if videoConnection.isVideoStabilizationSupported {
                 videoConnection.preferredVideoStabilizationMode = .auto
@@ -110,6 +111,9 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                     }
                     
                     if self.cameraModeType == .Video {
+                        if let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio), let audioInput = try? AVCaptureDeviceInput.init(device: audioDevice){
+                            self.captureSession.addInput(audioInput)
+                        }
                         self.captureSession.addOutput(self.movieFileOutput)
                     }else{
                         self.captureSession.addOutput(self.stillImageOutput)
