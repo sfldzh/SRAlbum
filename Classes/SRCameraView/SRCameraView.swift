@@ -344,6 +344,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     }
     
     // MARK: - AVCapturePhotoCaptureDelegate
+    @available(iOS, introduced: 10.0, deprecated: 11.0)
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if error != nil {
             self.imageResult?(nil,error)
@@ -351,6 +352,45 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             let hub:MBProgressHUD = SRHelper.showHud(message: "处理中...", addto: self)
             DispatchQueue.global().async {
                 if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
+                    if self.isRectangleDetection {//开启矩形检测
+                        var enhancedImage = CIImage.init(data: imageData)
+                        let features = self.highDetector?.features(in: enhancedImage!)
+                        if let rectangle = self.queryBiggestRectangle(rectangles: features as! [CIRectangleFeature]) {
+                            enhancedImage = self.correctPerspective(image: enhancedImage!, rectangleFeature: rectangle)
+                        }
+                        UIGraphicsBeginImageContext(CGSize.init(width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
+                        UIImage.init(ciImage: enhancedImage!, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: enhancedImage!.extent.size.height, height: enhancedImage!.extent.size.width))
+                        let image = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                        DispatchQueue.main.async {
+                            SRHelper.hideHud(hud: hub)
+                            self.imageResult?(image,nil)
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            SRHelper.hideHud(hud: hub)
+                            self.imageResult?(UIImage.init(data: imageData),nil)
+                        }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        SRHelper.hideHud(hud: hub)
+                        let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
+                        self.imageResult?(nil,err as Error)
+                    }
+                }
+            }
+        }
+    }
+    
+    @available(iOS 11.0, *)
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if error != nil {
+            self.imageResult?(nil,error)
+        }else{
+            let hub:MBProgressHUD = SRHelper.showHud(message: "处理中...", addto: self)
+            DispatchQueue.global().async {
+                if let imageData = photo.fileDataRepresentation() {
                     if self.isRectangleDetection {//开启矩形检测
                         var enhancedImage = CIImage.init(data: imageData)
                         let features = self.highDetector?.features(in: enhancedImage!)

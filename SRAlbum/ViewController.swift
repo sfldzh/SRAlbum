@@ -25,20 +25,20 @@ class ViewController: UIViewController {
 //            self?.navigationController?.pushViewController(vc, animated: true);
 //            print("assets")
 //        }
-        self.openCamera(cameraType: .Video, isRectangleDetection: false, isEidt: true) { [weak self](img:UIImage?, url:URL?) in
-            if img != nil {
-                let vc:ResultViewController = ResultViewController.init(nibName: "ResultViewController", bundle: bundle)
-                vc.images = [img!];
-                self?.navigationController?.pushViewController(vc, animated: true);
-                print("assets")
-            }else{
-
-            }
-        }
-        
-//        SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 2*1024*1024) { (img:UIImage?, url:URL?) in
+//        self.openCamera(cameraType: .Video, isRectangleDetection: false, isEidt: true) { [weak self](img:UIImage?, url:URL?) in
+//            if img != nil {
+//                let vc:ResultViewController = ResultViewController.init(nibName: "ResultViewController", bundle: bundle)
+//                vc.images = [img!];
+//                self?.navigationController?.pushViewController(vc, animated: true);
+//                print("assets")
+//            }else{
 //
+//            }
 //        }
+        
+        SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: true, isEidt: true, maxSize: 2*1024*1024) { (img:UIImage?, url:URL?) in
+
+        }
     }
     
 }
