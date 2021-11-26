@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SRAlbum"
-  spec.version      = "0.1.8"
+  spec.version      = "0.1.9"
   spec.summary      = "相册和相机模块"
   spec.swift_version      = "5.0"
 
@@ -138,7 +138,7 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-  spec.dependency "JPImageresizerView", "~> 1.3.4"
+  # spec.dependency "JPImageresizerView", "~> 1.9.4"
   spec.dependency "XibFrame", "~> 0.0.9"
   spec.dependency "MBProgressHUD", "~> 1.2.0"
 end

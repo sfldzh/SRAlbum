@@ -92,7 +92,11 @@ class SRHelper {
     ///   - maxSize: 最大M数
     static func imageZip(sourceImage:UIImage, maxSize:Int)->UIImage{
         let data = self.resetSizeOfImageData(source_image: sourceImage, maxSize: maxSize / 1024)
-        return UIImage.init(data: data as Data)!
+        if !data.isEmpty{
+            return UIImage.init(data: data as Data)!
+        }else{
+            return UIImage.init()
+        }
 //        return self.compressImage(sourceImage, toByte: maxSize)
     }
     
@@ -308,6 +312,7 @@ class SRHelper {
             let sizeOrigin = tempFinallImageData.count
             let sizeOriginKB = sizeOrigin / 1024
 //            print("当前降到的质量：\(sizeOriginKB)\n\(index)----\(arr[index])")
+            tempData = tempFinallImageData
             if sizeOriginKB > maxSize {
                 start = index + 1
             } else if sizeOriginKB < maxSize {

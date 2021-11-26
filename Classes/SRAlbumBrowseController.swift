@@ -166,11 +166,14 @@ class SRAlbumBrowseController: UIViewController, UICollectionViewDelegate, UICol
     /// - Parameter sender: 按钮
     @IBAction func eidtAction(_ sender: Any) {
         let asset = self.collection != nil ? self.collection!.assets[self.indexPath!.row] : SRAlbumData.sharedInstance.sList[self.indexPath!.row]
-        SRAlbumEidtView.createEidtView()?.show(data: asset, complete: { [weak self](image, eideView) in
-            eideView.dismiss()
-            asset.editedPic = image
-            self?.collectionView.reloadData();
-            self?.delegate?.eidtFinish(data: asset)
+        SRAlbumEidtView.createEidtView()?.show(data: asset, complete: { [weak self](images, eideView) in
+            if images.count == 1{
+                eideView.dismiss()
+                asset.editedPic = images.first
+                self?.collectionView.reloadData();
+                self?.delegate?.eidtFinish(data: asset)
+            }
+            
         }, nil)
     }
     

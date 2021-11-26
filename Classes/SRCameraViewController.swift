@@ -27,7 +27,8 @@ class SRCameraViewController: UIViewController{
     private var vedioUrl:URL?
     
     deinit {
-        print("kill")
+//        print("Kill")
+        SRAlbumData.free();
     }
     
     override func viewDidLoad() {
@@ -66,22 +67,27 @@ class SRCameraViewController: UIViewController{
             if image != nil {
                 if is_eidt {
                     self?.cameraView.stopRunning()
-                    SRAlbumEidtView.createEidtView()?.show(data: image!, complete: { cutImage, eideView in
+                    SRAlbumEidtView.createEidtView()?.show(data: image!, complete: { images, eideView in
                         if SRAlbumData.sharedInstance.isZip{
+                            var list:[UIImage] = []
                             let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
                             DispatchQueue.global().async {//图片压缩
-                                let img:UIImage = SRHelper.imageZip(sourceImage:cutImage!, maxSize: max_size)
+                                for image in images{
+                                    list.append(SRHelper.imageZip(sourceImage:image, maxSize: max_size))
+                                }
+                                
+//                                let img:UIImage = SRHelper.imageZip(sourceImage:cutImage!, maxSize: max_size)
                                 DispatchQueue.main.async {
                                     SRHelper.hideHud(hud: hub)
                                     eideView.dismiss()
-                                    SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                                    SRAlbumData.sharedInstance.completeVedioHandle?(list,nil)
                                     self?.dismiss(animated: true, completion: nil)
                                 }
                             }
                         }else{
                             DispatchQueue.main.async {
                                 eideView.dismiss()
-                                SRAlbumData.sharedInstance.completeVedioHandle?(cutImage,nil)
+                                SRAlbumData.sharedInstance.completeVedioHandle?(images,nil)
                                 self?.dismiss(animated: true, completion: nil)
                             }
                         }
@@ -95,11 +101,11 @@ class SRCameraViewController: UIViewController{
                             let img:UIImage = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
                             DispatchQueue.main.async {
                                 SRHelper.hideHud(hud: hub)
-                                SRAlbumData.sharedInstance.completeVedioHandle?(img,nil)
+                                SRAlbumData.sharedInstance.completeVedioHandle?([img],nil)
                             }
                         }
                     }else{
-                        SRAlbumData.sharedInstance.completeVedioHandle?(image!,nil)
+                        SRAlbumData.sharedInstance.completeVedioHandle?([image!],nil)
                     }
                 }
             }else{

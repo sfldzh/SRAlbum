@@ -8,7 +8,7 @@
 
 import UIKit
 import Photos
-import JPImageresizerView
+//import JPImageresizerView
 
 class SRAlbumEidtView: UIView {
     
@@ -21,7 +21,7 @@ class SRAlbumEidtView: UIView {
     
     
     weak var imageView:JPImageresizerView?
-    private var completeBlock:((UIImage?,SRAlbumEidtView)->Void)?
+    private var completeBlock:(([UIImage],SRAlbumEidtView)->Void)?
     private var cancelBlock:(()->Void)?
     deinit {
         print("编辑kill")
@@ -49,7 +49,7 @@ class SRAlbumEidtView: UIView {
         }
     }
     
-    func show<T>(data:T, complete:((UIImage?, SRAlbumEidtView)->Void)?, _ cancelBlock:(()->Void)?) -> Void {
+    func show<T>(data:T, complete:(([UIImage], SRAlbumEidtView)->Void)?, _ cancelBlock:(()->Void)?) -> Void {
         var canAdd = false
         if T.self == PHAsset.self {
             self.completeBlock = complete
@@ -73,31 +73,58 @@ class SRAlbumEidtView: UIView {
     
     private func addImageConfiger(image:UIImage?) -> Void {
         if image != nil {
-            let configure = JPImageresizerConfigure.defaultConfigure(withResize: image!) { (configure) in
-                var top:CGFloat = 20;
-                if #available(iOS 11.0, *) {
-                    top = SRHelper.getWindow()?.safeAreaInsets.top ?? 20
+            var configure:JPImageresizerConfigure!
+            if SRAlbumData.sharedInstance.eidtConfigure.type == .Circular{
+                configure = JPImageresizerConfigure.darkBlurMaskTypeConfigure(with: image!) { config in
+                    _ = config.jp_strokeColor(UIColor.white)
+                        .jp_frameType(.classicFrameType)
+                        .jp_isClockwiseRotation(true)
+                        .jp_animationCurve(.easeOut)
+                        .jp_isRoundResize(true)
+                        .jp_isArbitrarily(false)
                 }
-                
-                var bottom:CGFloat = 0;
-                if #available(iOS 11.0, *) {
-                    bottom = SRHelper.getWindow()?.safeAreaInsets.bottom ?? 0
+            }else{
+                configure = JPImageresizerConfigure.defaultConfigure(with: image!) { config in
+                    var top:CGFloat = 20;
+                    if #available(iOS 11.0, *) {
+                        top = SRHelper.getWindow()?.safeAreaInsets.top ?? 20
+                    }
+                    
+                    var bottom:CGFloat = 0;
+                    if #available(iOS 11.0, *) {
+                        bottom = SRHelper.getWindow()?.safeAreaInsets.bottom ?? 0
+                    }
+                    config.contentInsets = UIEdgeInsets.init(top: top+46, left: 0, bottom: bottom+55, right: 0)
                 }
-                
-                configure?.contentInsets = UIEdgeInsets.init(top: top+46, left: 0, bottom: bottom+55, right: 0)
             }
-            if let imageresizerView = JPImageresizerView.init(configure: configure, imageresizerIsCanRecovery: { [weak self](isCanRecovery) in
+            let imageresizerView = JPImageresizerView(configure:configure){ [weak self] isCanRecovery in
                 self?.resetButton.isHidden = !isCanRecovery
-            }, imageresizerIsPrepareToScale: { [weak self](isPrepareToScale) in
+            } imageresizerIsPrepareToScale: { [weak self] isPrepareToScale in
                 self?.rotateButton.isEnabled = !isPrepareToScale
                 self?.horizontalButton.isEnabled = !isPrepareToScale
                 self?.verticallyButton.isEnabled = !isPrepareToScale
                 self?.tailoringButton.isEnabled = !isPrepareToScale
                 self?.resetButton.isEnabled = !isPrepareToScale
-            }) {
+            }
+            self.insertSubview(imageresizerView, at: 0)
+            self.imageView = imageresizerView
+            
+            if SRAlbumData.sharedInstance.eidtConfigure.type == .Square{
+                imageresizerView.resizeWHScale = 1
+            }else if SRAlbumData.sharedInstance.eidtConfigure.type == .Gird{
+                if SRAlbumData.sharedInstance.eidtConfigure.girdIndex.item == SRAlbumData.sharedInstance.eidtConfigure.girdIndex.section{
+                    imageresizerView.maskImage = nil
+                    imageresizerView.borderImage = nil
+                    imageresizerView.frameType = .classicFrameType
+                    imageresizerView.resizeWHScale = 1
+                    imageresizerView.gridCount = UInt(SRAlbumData.sharedInstance.eidtConfigure.girdIndex.item)
+                    imageresizerView.isShowGridlinesWhenIdle = true
+                    imageresizerView.isShowGridlinesWhenDragging = true
+                }else{
+                    imageresizerView.frameType = .conciseFrameType;
+                }
+            }else{
                 imageresizerView.frameType = .conciseFrameType;
-                self.insertSubview(imageresizerView, at: 0)
-                self.imageView = imageresizerView
             }
         }
     }
@@ -128,8 +155,35 @@ class SRAlbumEidtView: UIView {
     }
     
     @IBAction func tailoringAction(_ sender: UIButton) {
-        self.imageView?.imageresizer(complete: { [weak self](resizeImage) in
-            self?.completeBlock?(resizeImage, self!)
-        }, compressScale: 1)
+        if SRAlbumData.sharedInstance.eidtConfigure.type == .Gird{
+            let index = SRAlbumData.sharedInstance.eidtConfigure.girdIndex;
+            self.imageView?.cropGirdPictures(withColumnCount: index.section, rowCount: index.item, compressScale: 1, bgColor: UIColor.white, cacheURL: nil, errorBlock: { url, error in
+                
+            }, complete: { [weak self] result, results, columnCount, rowCount in
+                var list:[UIImage] = []
+                if results?.isEmpty ?? true {
+                    if let img = result?.image{
+                        list.append(img)
+                    }
+                }else{
+                    if results != nil{
+                        for data in results! {
+                            if data.image != nil{
+                                list.append(data.image!)
+                            }
+                        }
+                    }
+                }
+                self?.completeBlock?(list, self!)
+            })
+        }else if SRAlbumData.sharedInstance.eidtConfigure.type == .Circular {
+            self.imageView?.cropPicture(withCompressScale: 1, cacheURL: nil, errorBlock: { url, error in
+                
+            }, complete: { [weak self] result in
+                if result?.image != nil{
+                    self?.completeBlock?([result!.image!], self!)
+                }
+            })
+        }
     }
 }

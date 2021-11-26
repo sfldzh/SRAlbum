@@ -8,7 +8,7 @@ xcodeproj 'SRAlbum'
 workspace 'SRAlbum'
 
 target 'SRAlbum' do
-  pod 'JPImageresizerView', '~> 1.3.4'
+#  pod 'JPImageresizerView', '~> 1.9.4'
   pod 'XibFrame', '~> 0.0.9' # xib属性
   pod 'MBProgressHUD', '~> 1.2.0'
   

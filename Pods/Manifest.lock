@@ -1,24 +1,20 @@
 PODS:
-  - JPImageresizerView (1.3.9)
   - MBProgressHUD (1.2.0)
   - XibFrame (0.0.9)
 
 DEPENDENCIES:
-  - JPImageresizerView (~> 1.3.4)
   - MBProgressHUD (~> 1.2.0)
   - XibFrame (~> 0.0.9)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - JPImageresizerView
     - MBProgressHUD
     - XibFrame
 
 SPEC CHECKSUMS:
-  JPImageresizerView: ae9fa9be2d2eed9f426b02a910376a0202afe25b
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   XibFrame: 0de8b33dad9e5c4dfd12b5c391721fca22dcdbf3
 
-PODFILE CHECKSUM: e7b2efff30a42f49f40e63c2d9315383a3240f6d
+PODFILE CHECKSUM: 7b1d33fdc549aa391066b3e55f266c65b1bcb890
 
 COCOAPODS: 1.11.2

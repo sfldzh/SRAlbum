@@ -43,6 +43,17 @@
 		D6A51A5823F9519300295F3F /* SRAlbumTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A51A5723F9519300295F3F /* SRAlbumTip.swift */; };
 		D6A51AD723F992B200295F3F /* SRAlbumEidtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A51AD623F992B200295F3F /* SRAlbumEidtView.swift */; };
 		D6A51AD923F9944400295F3F /* SRAlbumEidtView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A51AD823F9944400295F3F /* SRAlbumEidtView.xib */; };
+		D6B345FE2750889E00B0D285 /* JPImageresizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345EC2750889E00B0D285 /* JPImageresizerView.m */; };
+		D6B345FF2750889E00B0D285 /* JPImageresizerSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345EE2750889E00B0D285 /* JPImageresizerSlider.m */; };
+		D6B346002750889E00B0D285 /* JPImageresizerFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345F12750889E00B0D285 /* JPImageresizerFrameView.m */; };
+		D6B346012750889E00B0D285 /* JPImageresizerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345F52750889E00B0D285 /* JPImageresizerResult.m */; };
+		D6B346022750889E00B0D285 /* JPImageresizerConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345F72750889E00B0D285 /* JPImageresizerConfigure.m */; };
+		D6B346032750889E00B0D285 /* JPImageresizer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345F92750889E00B0D285 /* JPImageresizer+Extension.m */; };
+		D6B346042750889E00B0D285 /* JPImageresizerBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345FA2750889E00B0D285 /* JPImageresizerBlurView.m */; };
+		D6B346052750889E00B0D285 /* JPImageresizerVideoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345FC2750889E00B0D285 /* JPImageresizerVideoObject.m */; };
+		D6B346062750889E00B0D285 /* JPImageresizerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B345FD2750889E00B0D285 /* JPImageresizerTool.m */; };
+		D6B3464927508A9200B0D285 /* SRAlbum.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D6B3464827508A9200B0D285 /* SRAlbum.podspec */; };
+		D6C8822527439F56008189B2 /* SREidtConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C8822427439F56008189B2 /* SREidtConfigure.swift */; };
 		D6DE92FC272115AC0051BDD7 /* sr_photograph_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6DE92CC272115AC0051BDD7 /* sr_photograph_icon@3x.png */; };
 		D6DE92FD272115AC0051BDD7 /* sr_camera_flash_auto_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6DE92CD272115AC0051BDD7 /* sr_camera_flash_auto_icon@2x.png */; };
 		D6DE92FE272115AC0051BDD7 /* sr_videotape_un_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6DE92CE272115AC0051BDD7 /* sr_videotape_un_icon@2x.png */; };
@@ -165,6 +176,28 @@
 		D6A51A5723F9519300295F3F /* SRAlbumTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRAlbumTip.swift; sourceTree = "<group>"; };
 		D6A51AD623F992B200295F3F /* SRAlbumEidtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRAlbumEidtView.swift; sourceTree = "<group>"; };
 		D6A51AD823F9944400295F3F /* SRAlbumEidtView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRAlbumEidtView.xib; sourceTree = "<group>"; };
+		D6B345E62750888700B0D285 /* SRAlbum-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SRAlbum-Bridging-Header.h"; sourceTree = "<group>"; };
+		D6B345EB2750889E00B0D285 /* JPImageresizerConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerConfigure.h; sourceTree = "<group>"; };
+		D6B345EC2750889E00B0D285 /* JPImageresizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerView.m; sourceTree = "<group>"; };
+		D6B345ED2750889E00B0D285 /* JPImageresizerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerResult.h; sourceTree = "<group>"; };
+		D6B345EE2750889E00B0D285 /* JPImageresizerSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerSlider.m; sourceTree = "<group>"; };
+		D6B345EF2750889E00B0D285 /* JPImageresizerBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerBlurView.h; sourceTree = "<group>"; };
+		D6B345F02750889E00B0D285 /* JPImageresizer+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JPImageresizer+Extension.h"; sourceTree = "<group>"; };
+		D6B345F12750889E00B0D285 /* JPImageresizerFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerFrameView.m; sourceTree = "<group>"; };
+		D6B345F22750889E00B0D285 /* JPImageresizerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerTool.h; sourceTree = "<group>"; };
+		D6B345F32750889E00B0D285 /* JPImageresizerVideoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerVideoObject.h; sourceTree = "<group>"; };
+		D6B345F42750889E00B0D285 /* JPImageresizerTypedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerTypedef.h; sourceTree = "<group>"; };
+		D6B345F52750889E00B0D285 /* JPImageresizerResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerResult.m; sourceTree = "<group>"; };
+		D6B345F62750889E00B0D285 /* JPImageresizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerView.h; sourceTree = "<group>"; };
+		D6B345F72750889E00B0D285 /* JPImageresizerConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerConfigure.m; sourceTree = "<group>"; };
+		D6B345F82750889E00B0D285 /* JPImageresizerFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerFrameView.h; sourceTree = "<group>"; };
+		D6B345F92750889E00B0D285 /* JPImageresizer+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JPImageresizer+Extension.m"; sourceTree = "<group>"; };
+		D6B345FA2750889E00B0D285 /* JPImageresizerBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerBlurView.m; sourceTree = "<group>"; };
+		D6B345FB2750889E00B0D285 /* JPImageresizerSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImageresizerSlider.h; sourceTree = "<group>"; };
+		D6B345FC2750889E00B0D285 /* JPImageresizerVideoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerVideoObject.m; sourceTree = "<group>"; };
+		D6B345FD2750889E00B0D285 /* JPImageresizerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImageresizerTool.m; sourceTree = "<group>"; };
+		D6B3464827508A9200B0D285 /* SRAlbum.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SRAlbum.podspec; sourceTree = "<group>"; };
+		D6C8822427439F56008189B2 /* SREidtConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SREidtConfigure.swift; sourceTree = "<group>"; };
 		D6DE92CC272115AC0051BDD7 /* sr_photograph_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sr_photograph_icon@3x.png"; sourceTree = "<group>"; };
 		D6DE92CD272115AC0051BDD7 /* sr_camera_flash_auto_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sr_camera_flash_auto_icon@2x.png"; sourceTree = "<group>"; };
 		D6DE92CE272115AC0051BDD7 /* sr_videotape_un_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sr_videotape_un_icon@2x.png"; sourceTree = "<group>"; };
@@ -312,6 +345,7 @@
 		D697987E23D19C3C0009E906 = {
 			isa = PBXGroup;
 			children = (
+				D6B3464827508A9200B0D285 /* SRAlbum.podspec */,
 				D69798BA23D19C660009E906 /* Classes */,
 				D697988923D19C3C0009E906 /* SRAlbum */,
 				D69798A023D19C3E0009E906 /* SRAlbumTests */,
@@ -319,6 +353,7 @@
 				D697988823D19C3C0009E906 /* Products */,
 				A38E83573A84A7410394D7C5 /* Pods */,
 				D82118C6B40A32F66FF8BA11 /* Frameworks */,
+				D6B345E62750888700B0D285 /* SRAlbum-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,10 +406,12 @@
 		D69798BA23D19C660009E906 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D6B345EA2750889E00B0D285 /* JPImageresizerView */,
 				D6DE92CB272115AC0051BDD7 /* Image */,
 				D6304D8D26D62B2100A7E473 /* SRBase */,
 				D692B7BE23D59B1300015DE5 /* SRHelper.swift */,
 				D69798BB23D19C9E0009E906 /* SRAlbum.swift */,
+				D6C8822427439F56008189B2 /* SREidtConfigure.swift */,
 				D69798CC23D1BA900009E906 /* SRAlbumController.swift */,
 				D69798CD23D1BA900009E906 /* SRAlbumController.xib */,
 				D6ED18A223D7CE8D0094C06E /* SRAlbumBrowseController.swift */,
@@ -386,6 +423,32 @@
 				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		D6B345EA2750889E00B0D285 /* JPImageresizerView */ = {
+			isa = PBXGroup;
+			children = (
+				D6B345F02750889E00B0D285 /* JPImageresizer+Extension.h */,
+				D6B345F92750889E00B0D285 /* JPImageresizer+Extension.m */,
+				D6B345EF2750889E00B0D285 /* JPImageresizerBlurView.h */,
+				D6B345FA2750889E00B0D285 /* JPImageresizerBlurView.m */,
+				D6B345EB2750889E00B0D285 /* JPImageresizerConfigure.h */,
+				D6B345F72750889E00B0D285 /* JPImageresizerConfigure.m */,
+				D6B345F82750889E00B0D285 /* JPImageresizerFrameView.h */,
+				D6B345F12750889E00B0D285 /* JPImageresizerFrameView.m */,
+				D6B345ED2750889E00B0D285 /* JPImageresizerResult.h */,
+				D6B345F52750889E00B0D285 /* JPImageresizerResult.m */,
+				D6B345FB2750889E00B0D285 /* JPImageresizerSlider.h */,
+				D6B345EE2750889E00B0D285 /* JPImageresizerSlider.m */,
+				D6B345F22750889E00B0D285 /* JPImageresizerTool.h */,
+				D6B345FD2750889E00B0D285 /* JPImageresizerTool.m */,
+				D6B345F42750889E00B0D285 /* JPImageresizerTypedef.h */,
+				D6B345F32750889E00B0D285 /* JPImageresizerVideoObject.h */,
+				D6B345FC2750889E00B0D285 /* JPImageresizerVideoObject.m */,
+				D6B345F62750889E00B0D285 /* JPImageresizerView.h */,
+				D6B345EC2750889E00B0D285 /* JPImageresizerView.m */,
+			);
+			path = JPImageresizerView;
 			sourceTree = "<group>";
 		};
 		D6DE92CB272115AC0051BDD7 /* Image */ = {
@@ -526,7 +589,7 @@
 				TargetAttributes = {
 					D697988623D19C3C0009E906 = {
 						CreatedOnToolsVersion = 11.2.1;
-						LastSwiftMigration = 1250;
+						LastSwiftMigration = 1310;
 					};
 					D697989C23D19C3E0009E906 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -618,6 +681,7 @@
 				D6DE931A272115AC0051BDD7 /* SR_Camera_Selected@3x.png in Resources */,
 				D6DE9306272115AC0051BDD7 /* sr_default_image@3x.png in Resources */,
 				D6DE931F272115AC0051BDD7 /* sr_camera_fz_icon@3x.png in Resources */,
+				D6B3464927508A9200B0D285 /* SRAlbum.podspec in Resources */,
 				D6DE930B272115AC0051BDD7 /* sr_eidt_reset_icon@2x.png in Resources */,
 				D6A51AD923F9944400295F3F /* SRAlbumEidtView.xib in Resources */,
 				D6DE931B272115AC0051BDD7 /* SR_Camera_Selected@2x.png in Resources */,
@@ -752,11 +816,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6B346022750889E00B0D285 /* JPImageresizerConfigure.m in Sources */,
 				D6ED18A923D7F4940094C06E /* SRAlbumSelect.swift in Sources */,
+				D6B345FE2750889E00B0D285 /* JPImageresizerView.m in Sources */,
 				D692B7BF23D59B1300015DE5 /* SRHelper.swift in Sources */,
 				D64CC53526C6145100B025DB /* SRPlayerView.swift in Sources */,
+				D6B346052750889E00B0D285 /* JPImageresizerVideoObject.m in Sources */,
+				D6C8822527439F56008189B2 /* SREidtConfigure.swift in Sources */,
 				D6A51A5823F9519300295F3F /* SRAlbumTip.swift in Sources */,
 				D697988F23D19C3C0009E906 /* ViewController.swift in Sources */,
+				D6B345FF2750889E00B0D285 /* JPImageresizerSlider.m in Sources */,
 				D6304D8C26D62B0900A7E473 /* SRNavigationController.swift in Sources */,
 				D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */,
 				D692B7BC23D5977600015DE5 /* SRAldumGroupTableViewCell.swift in Sources */,
@@ -764,16 +833,21 @@
 				D692B7B323D58CA300015DE5 /* GroupView.swift in Sources */,
 				D605F1F926B78F1B00C9391E /* SRCameraViewController.swift in Sources */,
 				D6A51AD723F992B200295F3F /* SRAlbumEidtView.swift in Sources */,
+				D6B346042750889E00B0D285 /* JPImageresizerBlurView.m in Sources */,
 				D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */,
 				D692B7C123D59B7400015DE5 /* AssetImage.swift in Sources */,
+				D6B346012750889E00B0D285 /* JPImageresizerResult.m in Sources */,
 				D69798CE23D1BA900009E906 /* SRAlbumController.swift in Sources */,
 				D69798BC23D19C9E0009E906 /* SRAlbum.swift in Sources */,
 				D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */,
 				D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */,
 				D6ED18AC23D7FA6F0094C06E /* SRBrowseImageCell.swift in Sources */,
+				D6B346032750889E00B0D285 /* JPImageresizer+Extension.m in Sources */,
 				D6ED18A423D7CE8D0094C06E /* SRAlbumBrowseController.swift in Sources */,
 				D692B7C423D5A64500015DE5 /* SRAlbumImageCell.swift in Sources */,
+				D6B346062750889E00B0D285 /* JPImageresizerTool.m in Sources */,
 				D697988D23D19C3C0009E906 /* SceneDelegate.swift in Sources */,
+				D6B346002750889E00B0D285 /* JPImageresizerFrameView.m in Sources */,
 				D6400C3323FFA48600DF5639 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,7 +1037,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SRAlbum-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -988,7 +1062,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hletong.hletongjppt.SRAlbum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SRAlbum-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

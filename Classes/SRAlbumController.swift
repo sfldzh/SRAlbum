@@ -136,23 +136,31 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         }else{
             if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                 isAdd = true
-                SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
+                SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (images, eideView) in
                     if SRAlbumData.sharedInstance.isZip {
                         let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
                         DispatchQueue.global().async {
-                            let img = SRHelper.imageZip(sourceImage:image!,  maxSize: max_size)
-                            data.editedPic = img;
+                            var list:[UIImage] = []
+                            for img in images {
+                                let imge = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
+                                if images.count == 1{
+                                    data.editedPic = imge;
+                                }
+                                list.append(imge)
+                            }
                             DispatchQueue.main.async {
                                 SRHelper.hideHud(hud: hub)
-                                SRAlbumData.sharedInstance.completeImageHandle?([img])
+                                SRAlbumData.sharedInstance.completeImageHandle?(list)
+                                eideView.dismiss()
+                                self.cancelAction()
                             }
                         }
                     }else{
-                        data.editedPic = image;
-                        SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                        data.editedPic = images.first
+                        SRAlbumData.sharedInstance.completeImageHandle?([images.first!])
+                        eideView.dismiss()
+                        self.cancelAction()
                     }
-                    eideView.dismiss()
-                    self.cancelAction()
                 }, nil)
             }else{
                 if SRAlbumData.sharedInstance.sList.count >= max_count {
@@ -381,23 +389,36 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                 isAdd = false
             }else{
                 if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
-                    SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (image, eideView) in
+                    SRAlbumEidtView.createEidtView()?.show(data: data, complete: { (images, eideView) in
                         if SRAlbumData.sharedInstance.isZip {
                             let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
                             DispatchQueue.global().async {
-                                let img = SRHelper.imageZip(sourceImage:image!,  maxSize: max_size)
-                                data.editedPic = img;
-                                DispatchQueue.main.async {
-                                    SRHelper.hideHud(hud: hub)
-                                    SRAlbumData.sharedInstance.completeImageHandle?([img])
+                                if images.count == 1{
+                                    var list:[UIImage] = []
+                                    for img in images {
+                                        let imge = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
+                                        if images.count == 1{
+                                            data.editedPic = imge;
+                                        }
+                                        list.append(imge)
+                                    }
+                                    DispatchQueue.main.async {
+                                        SRHelper.hideHud(hud: hub)
+                                        SRAlbumData.sharedInstance.completeImageHandle?(list)
+                                        eideView.dismiss();
+                                        self.cancelAction()
+                                    }
                                 }
                             }
                         }else{
-                            data.editedPic = image;
-                            SRAlbumData.sharedInstance.completeImageHandle?([image!])
+                            if images.count == 1{
+                                data.editedPic = images.first!
+                                SRAlbumData.sharedInstance.completeImageHandle?([images.first!])
+                                eideView.dismiss();
+                                self.cancelAction()
+                            }
                         }
-                        eideView.dismiss();
-                        self.cancelAction()
+                        
                     }, nil)
                     isAdd = true
                 }else{
