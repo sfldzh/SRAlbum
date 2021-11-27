@@ -176,7 +176,7 @@ class SRAlbumEidtView: UIView {
                 }
                 self?.completeBlock?(list, self!)
             })
-        }else if SRAlbumData.sharedInstance.eidtConfigure.type == .Circular {
+        }else{
             self.imageView?.cropPicture(withCompressScale: 1, cacheURL: nil, errorBlock: { url, error in
                 
             }, complete: { [weak self] result in
