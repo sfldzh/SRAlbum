@@ -43,7 +43,7 @@
     
     
 # Objective-C使用方法
-    导入模块：#import <SRAlbum-Swift.h>
+    导入模块：#import <SRAlbum/SRAlbum-Swift.h>
     
     相册使用：
     调用方法1：
@@ -57,12 +57,12 @@
     
     相机使用：
     调用方法1：
-    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:true isEidt:true maxSize:2*1024*1024 completeHandle:^(UIImage * img, NSURL * url) {
-        
+    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:2*1024*1024 eidtConfigure:[SREidtConfigure new] completeHandle:^(NSArray<UIImage *> * _Nullable images, NSURL * _Nullable url) {
+
     }];
     调用方法2：
-    [self openCameraWithCameraType:SRCameraTypePhoto isRectangleDetection:true isEidt:true maxSize:2*1024*1024 completeHandle:^(UIImage * img, NSURL * url) {
-        
+    [self openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:2*1024*1024 eidtConfigure:[SREidtConfigure new] completeHandle:^(NSArray<UIImage *> * _Nullable images, NSURL * _Nullable url) {
+    
     }];
     
     
