@@ -152,7 +152,7 @@ class SRCameraViewController: UIViewController{
             self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_auto_icon", in: bundle, compatibleWith: nil), for: .normal)
         }else if self.cameraView.flashMode == .auto {
             self.cameraView.flashMode = .off
-            self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_off_icon", in: bundle, compatibleWith: nil), for: .normal)
+            self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_close_icon", in: bundle, compatibleWith: nil), for: .normal)
         }
     }
     @IBAction func closeAction(_ sender: UIButton) {
