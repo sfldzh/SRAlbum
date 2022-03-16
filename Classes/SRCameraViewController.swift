@@ -61,7 +61,7 @@ class SRCameraViewController: UIViewController{
         }else if self.cameraView.flashMode == .on {
             self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_on_icon", in: bundle, compatibleWith: nil), for: .normal)
         }else if self.cameraView.flashMode == .off {
-            self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_off_icon", in: bundle, compatibleWith: nil), for: .normal)
+            self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_close_icon", in: bundle, compatibleWith: nil), for: .normal)
         }
         self.cameraView.imageResult = {[weak self](image:UIImage?, _error:Error?) in
             if image != nil {

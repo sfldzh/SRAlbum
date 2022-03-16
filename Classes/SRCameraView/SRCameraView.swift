@@ -64,11 +64,15 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     private let pathLineWidth:CGFloat = 1
     private var isRectangleDetection:Bool = false//开启矩形检测
     private var captureQueue:DispatchQueue?
-    private var timeValue:Int = -1{
-        didSet{
-            
-        }
-    }
+    private var timeValue:Int = -1
+//    private var focalLength:Float = 0{
+//        didSet{
+//            try! self.backDevice?.lockForConfiguration()
+//            self.backDevice?.setFocusModeLocked(lensPosition: self.focalLength, completionHandler: nil)
+//            self.backDevice?.unlockForConfiguration()
+//        }
+//
+//    }
     
     deinit {
         self.timer?.invalidate()
