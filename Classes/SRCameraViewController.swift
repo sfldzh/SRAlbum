@@ -140,7 +140,12 @@ class SRCameraViewController: UIViewController{
     }
     
     @IBAction func swithCameraAction(_ sender: UIButton) {
-        self.cameraView.swithCamera()
+        let type = self.cameraView.swithCamera()
+        if camera_type == .Photo{
+            self.flashBtn.isHidden = type == 2
+        }else{
+            self.flashBtn.isHidden = true
+        }
     }
 
     @IBAction func flashAction(_ sender: UIButton) {

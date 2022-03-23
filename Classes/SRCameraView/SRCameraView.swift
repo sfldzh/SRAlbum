@@ -37,6 +37,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
             return self.movieFileOutput.isRecording
         }
     }
+    open var camerType:Int = 1//1：后置摄像；2：前置摄像
     
     private lazy var videoLayer:AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.init()
     private lazy var captureSession = AVCaptureSession.init()
@@ -263,14 +264,16 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     /// 拍照操作
     open func photographOperation(){
         let settings = AVCapturePhotoSettings.init()
-        if self.flashMode == .on {
-            settings.flashMode = .on
-        }else if self.flashMode == .off{
-            settings.flashMode = .off
-        }else if self.flashMode == .auto{
-            settings.flashMode = .auto
-        }else{
-            settings.flashMode = .off
+        if self.inputDevice!.device == self.backDevice {
+            if self.flashMode == .on {
+                settings.flashMode = .on
+            }else if self.flashMode == .off{
+                settings.flashMode = .off
+            }else if self.flashMode == .auto{
+                settings.flashMode = .auto
+            }else{
+                settings.flashMode = .off
+            }
         }
         self.stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
@@ -300,21 +303,26 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         }
     }
     
+    
     /// TODO:切换摄像头
-    open func swithCamera(){
+    /// - Returns: 1：后置摄像；2：前置摄像
+    open func swithCamera()-> Int{
         if self.inputDevice != nil {
             self.captureSession.stopRunning()
             self.captureSession.beginConfiguration()
             self.captureSession.removeInput(self.inputDevice!)
             if self.inputDevice!.device == self.backDevice {
                 self.inputDevice = try? AVCaptureDeviceInput.init(device: self.frontDevice!)
+                self.camerType = 2
             }else{
                 self.inputDevice = try? AVCaptureDeviceInput.init(device: self.backDevice!)
+                self.camerType = 1
             }
             self.captureSession.addInput(self.inputDevice!)
             self.captureSession.commitConfiguration()
             self.captureSession.startRunning()
         }
+        return self.camerType
     }
     
     
