@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 import AVFoundation
 
-class SRHelper {
+public class SRHelper:NSObject {
     
     /// 时间转换
     /// - Parameter timeSecond: 时间
@@ -90,14 +90,14 @@ class SRHelper {
     ///   - sourceImage: 源图片
     ///   - imageData: 源图片数据
     ///   - maxSize: 最大M数
-    static func imageZip(sourceImage:UIImage, maxSize:Int)->UIImage{
+    @objc public static func imageZip(sourceImage:UIImage, maxSize:Int)->Data{
         let data = self.resetSizeOfImageData(source_image: sourceImage, maxSize: maxSize / 1024)
-        if !data.isEmpty{
-            return UIImage.init(data: data as Data)!
-        }else{
-            return UIImage.init()
-        }
-//        return self.compressImage(sourceImage, toByte: maxSize)
+//        if !data.isEmpty{
+//            return UIImage.init(data: data as Data)!
+//        }else{
+//            return UIImage.init()
+//        }
+        return data
     }
     
     /// 压缩视频
@@ -105,7 +105,7 @@ class SRHelper {
     ///   - sourceUrl: 视频原地址
     ///   - tagerUrl: 视频目标地址
     ///   - result: 完成的回调
-    static func videoZip(sourceUrl:URL, tagerUrl:URL?, result:((URL)->Void)?){
+    @objc public static func videoZip(sourceUrl:URL, tagerUrl:URL?, result:((URL)->Void)?){
         let avAsset = AVAsset.init(url: sourceUrl)
         let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
         if compatiblePresets.contains(AVAssetExportPresetHighestQuality) {

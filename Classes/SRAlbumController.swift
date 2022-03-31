@@ -140,24 +140,24 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                     if SRAlbumData.sharedInstance.isZip {
                         let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
                         DispatchQueue.global().async {
-                            var list:[UIImage] = []
+                            var list:[Any] = []
                             for img in images {
-                                let imge = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
-                                if images.count == 1{
-                                    data.editedPic = imge;
-                                }
-                                list.append(imge)
+                                let imgedata = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
+//                                if images.count == 1{
+//                                    data.editedPic = img;
+//                                }
+                                list.append(imgedata)
                             }
                             DispatchQueue.main.async {
                                 SRHelper.hideHud(hud: hub)
-                                SRAlbumData.sharedInstance.completeImageHandle?(list)
+                                SRAlbumData.sharedInstance.completeHandle?(list)
                                 eideView.dismiss()
                                 self.cancelAction()
                             }
                         }
                     }else{
                         data.editedPic = images.first
-                        SRAlbumData.sharedInstance.completeImageHandle?([images.first!])
+                        SRAlbumData.sharedInstance.completeHandle?([images.first!])
                         eideView.dismiss()
                         self.cancelAction()
                     }
@@ -195,9 +195,9 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         let workingGroup = DispatchGroup()
         // 创建多列
         let workingQueue = DispatchQueue(label: "hanldAssent")
-        var results = Array<AnyObject>.init()
+        var results:[Any] = []
         if is_sort{
-            results = SRAlbumData.sharedInstance.sList
+            results.append(contentsOf: SRAlbumData.sharedInstance.sList)
         }
         var index = 0
         for asset in SRAlbumData.sharedInstance.sList {
@@ -214,9 +214,9 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                         if let urlAsset = vedioAsset as? AVURLAsset{
                             SRHelper.videoZip(sourceUrl: urlAsset.url, tagerUrl: nil) { url in
                                 if is_sort{
-                                    results[asset.index] = url.path as AnyObject
+                                    results[asset.index] = url
                                 }else{
-                                    results.append(url.path as AnyObject)
+                                    results.append(url)
                                 }
                                 workingGroup.leave()
                             }
@@ -268,7 +268,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         workingGroup.notify(queue: workingQueue) {
             DispatchQueue.main.async {
                 SRHelper.hideHud(hud: hub)
-                SRAlbumData.sharedInstance.completeImageHandle?(results)
+                SRAlbumData.sharedInstance.completeHandle?(results)
                 self.cancelAction()
             }
         }
@@ -396,15 +396,15 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                                 if images.count == 1{
                                     var list:[UIImage] = []
                                     for img in images {
-                                        let imge = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
+//                                        let imge = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
                                         if images.count == 1{
-                                            data.editedPic = imge;
+                                            data.editedPic = img;
                                         }
-                                        list.append(imge)
+                                        list.append(img)
                                     }
                                     DispatchQueue.main.async {
                                         SRHelper.hideHud(hud: hub)
-                                        SRAlbumData.sharedInstance.completeImageHandle?(list)
+                                        SRAlbumData.sharedInstance.completeHandle?(list)
                                         eideView.dismiss();
                                         self.cancelAction()
                                     }
@@ -413,7 +413,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                         }else{
                             if images.count == 1{
                                 data.editedPic = images.first!
-                                SRAlbumData.sharedInstance.completeImageHandle?([images.first!])
+                                SRAlbumData.sharedInstance.completeHandle?([images.first!])
                                 eideView.dismiss();
                                 self.cancelAction()
                             }

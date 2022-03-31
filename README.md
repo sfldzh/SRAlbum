@@ -8,7 +8,7 @@
 
 
 # 安装方法
-    在Podfile中添加 pod 'SRAlbum','~> 0.2.3'
+    在Podfile中添加 pod 'SRAlbum','~> 0.2.4'
     然后使用 pod install 命令
     
 # Info.plist需要添加：
@@ -21,24 +21,29 @@
 # swift使用方法
     导入模块：import SRAlbum
     
+    图片编辑配置：
+    let config:SREidtConfigure = SREidtConfigure.init()
+    config.type = .Gird
+    config.girdIndex = IndexPath.init(item: 4, section: 4)
+    
     相册使用：
     调用方法1：
-    SRAlbumWrapper.openAlbum(tager: self, maxCount: 5, isEidt: true, isSort: true) { (assets) in
-        print("assets")
+    SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) { files in
+        self.fileshandel(files: files)
     }
     调用方法2：
-    self.openAlbum( maxCount: 5, isEidt: true, isSort: true) { [weak self](assets) in
-        print("assets")
+    self.openAlbum(assetType: .None, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
+        self?.fileshandel(files: files)
     }
     
     相机使用：
     调用方法1：
-    SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 2*1024*1024) { (img:UIImage?, url:URL?) in
-        
+    SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) { files in
+        self.fileshandel(files: files)
     }
     调用方法2：
-    self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true) { [weak self](img:UIImage?, url:URL?) in
-    
+    self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
+        self?.fileshandel(files: files)
     }
     
     
