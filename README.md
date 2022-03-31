@@ -46,35 +46,40 @@
         self?.fileshandel(files: files)
     }
     
+    assetType: .None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
+    maxCount: 取图片或者视频的数量；默认为1
+    isEidt: 是否要编辑；默认为false
+    isSort: 是否要排序输出图片；默认为false
+    maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
+    cameraType: .Photo 拍照，.Video 录像
+    isRectangleDetection: 是否矩形检测
+    
     
 # Objective-C使用方法
     导入模块：#import <SRAlbum/SRAlbum-Swift.h>
     
+    图片编辑配置：
+    SREidtConfigure *config = [[SREidtConfigure alloc] init];
+    config.type = SRCutTypeGird;
+    config.girdIndex = [NSIndexPath indexPathForRow:4 inSection:4];
+    
     相册使用：
     调用方法1：
-    [SRAlbumWrapper openAlbumWithTager:(UIViewController * _Nonnull) assetType:(enum SRAssetType) maxCount:(NSInteger) isEidt:(BOOL) isSort:(BOOL) maxSize:(NSInteger) completeHandle:^(NSArray * list) {
-        
+    [SRAlbumWrapper openAlbumWithTager:self assetType:SRAssetTypePhoto maxCount:2 isEidt:true isSort:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
+        [self fileshandel:files];
     }];
     调用方法2：
-    [self openAlbumWithAssetType:SRAssetTypeNone maxCount:5 isEidt:true isSort:true maxSize:2*1024*1024 completeHandle:^(NSArray * list) {
-        NSLog(@"");
+    [self openAlbumWithAssetType:SRAssetTypePhoto maxCount:2 isEidt:true isSort:true maxSize:200 * 1024  eidtConfigure:config completeHandle:^(NSArray * files) {
+        [weakSelf fileshandel:files];
     }];
     
     相机使用：
     调用方法1：
-    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:2*1024*1024 eidtConfigure:[SREidtConfigure new] completeHandle:^(NSArray<UIImage *> * _Nullable images, NSURL * _Nullable url) {
-
+    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypeVideo isRectangleDetection:false isEidt:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
+        [self fileshandel:files];
     }];
     调用方法2：
-    [self openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:2*1024*1024 eidtConfigure:[SREidtConfigure new] completeHandle:^(NSArray<UIImage *> * _Nullable images, NSURL * _Nullable url) {
-    
+    [self openCameraWithCameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
+        [weakSelf fileshandel:files];
     }];
     
-    
-assetType: .None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
-maxCount: 取图片或者视频的数量；默认为1
-isEidt: 是否要编辑；默认为false
-isSort: 是否要排序输出图片；默认为false
-maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
-cameraType: .Photo 拍照，.Video 录像
-isRectangleDetection: 是否矩形检测
