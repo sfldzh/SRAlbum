@@ -39,13 +39,11 @@ class ViewController: UIViewController {
         for file in files{
             let type = type(of: file)
             if type == Data.self{
-                print("数据")
+                print("照片压缩数据")
             }else if type == UIImage.self{
                 print("照片")
-            }else if type == NSURL.self{
-                print("NSURL")
             }else if type == URL.self{
-                print("URL")
+                print("视频URL")
             }else{
                 print("未知类型")
             }

@@ -46,6 +46,22 @@
         self?.fileshandel(files: files)
     }
     
+    返回文件种类：
+    private func fileshandel(files:[Any]) -> Void {
+        for file in files{
+            let type = type(of: file)
+            if type == Data.self{
+                print("照片压缩数据")
+            }else if type == UIImage.self{
+                print("照片")
+            }else if type == URL.self{
+                print("视频URL")
+            }else{
+                print("未知类型")
+            }
+        }
+    }
+    
     assetType: .None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
     maxCount: 取图片或者视频的数量；默认为1
     isEidt: 是否要编辑；默认为false
@@ -83,3 +99,15 @@
         [weakSelf fileshandel:files];
     }];
     
+    返回文件种类：
+    - (void)fileshandel:(NSArray *)files {
+        for (NSObject* file in files) {
+            if ([file isKindOfClass:[NSData class]]) {
+                NSLog(@"照片压缩数据");
+            }else if ([file isKindOfClass:[UIImage class]]) {
+                NSLog(@"照片");
+            }else if ([file isKindOfClass:[NSURL class]]) {
+                NSLog(@"视频NSURL");
+            }
+        }
+    }
