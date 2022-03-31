@@ -21,17 +21,25 @@ class ViewController: UIViewController {
         let config:SREidtConfigure = SREidtConfigure.init()
         config.type = .Gird
         config.girdIndex = IndexPath.init(item: 4, section: 4)
-        self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
-            self?.fileshandel(files: files)
-        }
-        self.openAlbum(assetType: .None, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
-            self?.fileshandel(files: files)
-        }
-        SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) { files in
-            self.fileshandel(files: files)
-        }
-        SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) { files in
-            self.fileshandel(files: files)
+        
+        let type = 0
+        
+        if type == 0{
+            self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
+                self?.fileshandel(files: files)
+            }
+        }else if type == 1{
+            self.openAlbum(assetType: .None, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
+                self?.fileshandel(files: files)
+            }
+        }else if type == 2{
+            SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) { files in
+                self.fileshandel(files: files)
+            }
+        }else if type == 3{
+            SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) { files in
+                self.fileshandel(files: files)
+            }
         }
     }
     
