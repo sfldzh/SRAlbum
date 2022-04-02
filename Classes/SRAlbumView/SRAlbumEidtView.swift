@@ -24,7 +24,7 @@ class SRAlbumEidtView: UIView {
     private var completeBlock:(([UIImage],SRAlbumEidtView)->Void)?
     private var cancelBlock:(()->Void)?
     deinit {
-        print("编辑kill")
+//        print("编辑kill")
     }
     
     static func createEidtView() -> SRAlbumEidtView?{

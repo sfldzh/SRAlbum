@@ -227,7 +227,7 @@ public class SRHelper:NSObject {
             
            
         }
-        print("After compressing size loop, image size =", finallImageData!.count / 1024, "KB")
+//        print("After compressing size loop, image size =", finallImageData!.count / 1024, "KB")
         return finallImageData!
     }
     
@@ -241,7 +241,7 @@ public class SRHelper:NSObject {
         var compression: CGFloat = 1
         guard var data = image.jpegData(compressionQuality: compression),
             data.count > maxLength else { return image }
-        print("Before compressing quality, image size =", data.count / 1024, "KB")
+//        print("Before compressing quality, image size =", data.count / 1024, "KB")
         
         // Compress by size
         var max: CGFloat = 1
@@ -278,7 +278,7 @@ public class SRHelper:NSObject {
             data = resultImage.jpegData(compressionQuality: compression)!
 //            print("In compressing size loop, image size =", data.count / 1024, "KB")
         }
-        print("After compressing size loop, image size =", data.count / 1024, "KB")
+//        print("After compressing size loop, image size =", data.count / 1024, "KB")
         return resultImage
     }
     
