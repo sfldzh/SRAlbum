@@ -29,22 +29,11 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
     private let faceSize = UIScreen.main.bounds.size.width - 100
     //请把脸移检测框
     private let moveFaceTask = SRFaceTaskData.init()
-    //笑一笑
-    private let smileFaceTask:SRFaceTaskData = {
-        let faceTask = SRFaceTaskData.init()
-        faceTask.faceType = 1
-        return faceTask
-    }()
-    //眨眨眼
-    private let blinkFaceTask:SRFaceTaskData = {
-        let faceTask = SRFaceTaskData.init()
-        faceTask.faceType = 2
-        return faceTask
-    }()
-    private let is_smile_first = arc4random_uniform(2) == 0
+    private var tasks:[SRFaceTaskData] = []
+    
 
     private weak var delegate:SRFaceViewDelegate?
-
+    var faceTaskCount:Int = 2
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,6 +44,30 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         self.delegate = delegate
         self.captureQueue = DispatchQueue(label: "Agora-Custom-Video-Capture-Queue")
         self.configerCamera(finish: finish)
+        self.initData()
+    }
+    
+    private func initData(){
+        var list:[SRFaceTaskData] = []
+        //笑一笑
+        let smileFaceTask = SRFaceTaskData.init()
+        smileFaceTask.faceType = 1
+        list.append(smileFaceTask)
+        //眨眨眼
+        let blinkFaceTask = SRFaceTaskData.init()
+        blinkFaceTask.faceType = 2
+        list.append(blinkFaceTask)
+        //摇头
+        let yawFaceTaskData:SRYawFaceTaskData = SRYawFaceTaskData.init()
+        yawFaceTaskData.faceType = 3
+        list.append(yawFaceTaskData)
+        //歪歪
+        let rollFaceTaskData:SRRollFaceTaskData = SRRollFaceTaskData.init()
+        rollFaceTaskData.faceType = 4
+        list.append(rollFaceTaskData)
+        
+        let taskCount = min(faceTaskCount, list.count)
+        self.tasks = list.shuffled().suffix(taskCount)
     }
     
     private func rectOfInterest() -> CGRect{
@@ -152,37 +165,61 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
             }
             return false
         }
-        if self.is_smile_first{
-            if !self.smileFaceTask.isFinish{
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "请笑一笑"
+        for task in self.tasks {
+            if task.faceType == 1{
+                if !task.isFinish{
+                    DispatchQueue.main.async {
+                        self.tipLabel.text = "请笑一笑"
+                    }
+                    return false
                 }
-                return false
-            }
-            if !self.blinkFaceTask.isFinish{
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "请眨眨眼"
+            }else if task.faceType == 2{
+                if !task.isFinish{
+                    DispatchQueue.main.async {
+                        self.tipLabel.text = "请眨眨眼"
+                    }
+                    return false
                 }
-                return false
-            }
-        }else{
-            if !self.blinkFaceTask.isFinish{
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "请眨眨眼"
+            }else if task.faceType == 3{
+                if let taskData = task as? SRYawFaceTaskData{
+                    if !taskData.checkFinish(){
+                        DispatchQueue.main.async {
+                            self.tipLabel.text = "请摇摇头"
+                        }
+                        return false
+                    }
                 }
-                return false
-            }
-            if !self.smileFaceTask.isFinish{
-                DispatchQueue.main.async {
-                    self.tipLabel.text = "请笑一笑"
+            }else if task.faceType == 4{
+                if let taskData = task as? SRRollFaceTaskData{
+                    if !taskData.checkFinish(){
+                        DispatchQueue.main.async {
+                            self.tipLabel.text = "请左右歪歪头"
+                        }
+                        return false
+                    }
                 }
-                return false
             }
         }
         DispatchQueue.main.async {
             self.tipLabel.text = "已完成"
         }
         return true
+    }
+    
+    /// 获取任务数据
+    /// - Parameter type: 0：请把脸移检测框，1：笑一笑，2：眨眨眼，3：摇头，4：点头
+    /// - Returns: 任务数据
+    private func getTaskData(type:Int) ->SRFaceTaskData?{
+        for task in self.tasks {
+            if !task.isFinish {
+                if task.faceType == type{
+                    return task
+                }else{
+                    return nil
+                }
+            }
+        }
+        return nil
     }
     
     // MARK: - 操作
@@ -218,9 +255,13 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
                             let faceFeature = features.first!
                             if faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition && faceFeature.hasMouthPosition{
                                 if faceFeature.hasSmile{
-                                    self.smileFaceTask.isFinish = true
+                                    if let smileFaceTask = self.getTaskData(type: 1){
+                                        smileFaceTask.isFinish = true
+                                    }
                                 }else if faceFeature.leftEyeClosed && faceFeature.rightEyeClosed{
-                                    self.blinkFaceTask.isFinish = true
+                                    if let blinkFaceTask = self.getTaskData(type: 2){
+                                        blinkFaceTask.isFinish = true
+                                    }
                                 }
                             }
                         }
@@ -238,6 +279,20 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
                 self.tipLabel.text = "请把脸移入检测框内"
             }
         }else if metadataObjects.count == 1{
+            if let face = metadataObjects.first as? AVMetadataFaceObject{
+                if face.hasYawAngle{
+                    if let yawFaceTaskData = self.getTaskData(type: 3) as? SRYawFaceTaskData{
+                        yawFaceTaskData.setLYaw(value: Float(face.yawAngle))
+                        yawFaceTaskData.setRYaw(value: Float(face.yawAngle))
+                    }
+                }
+                if face.hasRollAngle{
+                    if let rollFaceTaskData = self.getTaskData(type: 4) as? SRRollFaceTaskData{
+                        rollFaceTaskData.setLYaw(value: Float(face.rollAngle))
+                        rollFaceTaskData.setRYaw(value: Float(face.rollAngle))
+                    }
+                }
+            }
             self.moveFaceTask.isFinish = true
         }else{
             self.moveFaceTask.isFinish = false

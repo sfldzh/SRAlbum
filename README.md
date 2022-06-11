@@ -8,7 +8,7 @@
 
 
 # 安装方法
-    在Podfile中添加 pod 'SRAlbum','~> 0.2.4'
+    在Podfile中添加 pod 'SRAlbum','~> 0.2.6'
     然后使用 pod install 命令
     
 # Info.plist需要添加：
@@ -48,11 +48,11 @@
     
     人脸采集使用：
     调用方法1：
-    SRAlbumWrapper.openFaceTrack(tager: self) { files in
+    SRAlbumWrapper.openFaceTrack(faceTaskCount: 3, tager: self, maxSize: 200*1024) { files in
         self.fileshandel(files: files)
     }
     调用方法2：
-    self.openFaceTrack(maxSize: 200*1024) {[weak self] files in
+    self.openFaceTrack(faceTaskCount:3, maxSize: 200*1024) {[weak self] files in
         self?.fileshandel(files: files)
     }
     

@@ -47,12 +47,12 @@ class ViewController: UIViewController {
             }
             break
         case 4:
-            self.openFaceTrack(maxSize: 200*1024) {[weak self] files in
+            self.openFaceTrack(faceTaskCount:3, maxSize: 200*1024) {[weak self] files in
                 self?.fileshandel(files: files)
             }
             break
         default:
-            SRAlbumWrapper.openFaceTrack(tager: self) { files in
+            SRAlbumWrapper.openFaceTrack(faceTaskCount: 3, tager: self, maxSize: 200*1024) { files in
                 self.fileshandel(files: files)
             }
             break

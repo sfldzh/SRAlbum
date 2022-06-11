@@ -10,13 +10,14 @@ import UIKit
 
 class SRFaceController:UIViewController ,SRFaceViewDelegate {
     @IBOutlet weak var faceView: SRFaceView!
-    
+    var faceTaskCount:Int = 2
     deinit {
         SRAlbumData.free();
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.faceView.faceTaskCount = self.faceTaskCount
         self.faceView.install(delegate: self) {[weak self] in
             self?.faceView.startRunning()
         }

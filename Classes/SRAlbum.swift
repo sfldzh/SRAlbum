@@ -86,8 +86,8 @@ public class SRAlbumWrapper:NSObject{
     }
     
     @available(iOS 10, *)
-    @objc public class  func openFaceTrack(tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
-        tager.openFaceTrack(maxSize: maxSize, completeHandle: completeHandle)
+    @objc public class  func openFaceTrack(faceTaskCount:Int = 2, tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+        tager.openFaceTrack(faceTaskCount:faceTaskCount, maxSize: maxSize, completeHandle: completeHandle)
     }
 }
 
@@ -184,13 +184,14 @@ extension UIViewController{
     }
     
     @available(iOS 10, *)
-    @objc public func openFaceTrack(maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+    @objc public func openFaceTrack(faceTaskCount:Int = 2, maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
         self.checkCamera(cameraType: .Photo) {[weak self] authorization in
             if authorization {
                 max_size = maxSize
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 SRAlbumData.sharedInstance.completeHandle = completeHandle
                 let vc:SRFaceController = SRFaceController.init(nibName: "SRFaceController", bundle:bundle)
+                vc.faceTaskCount = faceTaskCount
                 self?.present(vc, animated: true, completion: nil)
             }
         }

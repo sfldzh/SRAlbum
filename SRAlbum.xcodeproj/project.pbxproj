@@ -111,6 +111,8 @@
 		D6ED18A923D7F4940094C06E /* SRAlbumSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED18A823D7F4940094C06E /* SRAlbumSelect.swift */; };
 		D6ED18AC23D7FA6F0094C06E /* SRBrowseImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED18AA23D7FA6F0094C06E /* SRBrowseImageCell.swift */; };
 		D6ED18AD23D7FA6F0094C06E /* SRBrowseImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6ED18AB23D7FA6F0094C06E /* SRBrowseImageCell.xib */; };
+		D6F5632F28546B4000E56D84 /* SRYawFaceTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F5632E28546B4000E56D84 /* SRYawFaceTaskData.swift */; };
+		D6F5633128547A9C00E56D84 /* SRRollFaceTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F5633028547A9C00E56D84 /* SRRollFaceTaskData.swift */; };
 		EEF2BADD98E2AEC9E5C69A1C /* Pods_SRAlbum_SRAlbumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AF499BDBA5F40B02EDB5BA /* Pods_SRAlbum_SRAlbumUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -259,6 +261,8 @@
 		D6ED18A823D7F4940094C06E /* SRAlbumSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRAlbumSelect.swift; sourceTree = "<group>"; };
 		D6ED18AA23D7FA6F0094C06E /* SRBrowseImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRBrowseImageCell.swift; sourceTree = "<group>"; };
 		D6ED18AB23D7FA6F0094C06E /* SRBrowseImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRBrowseImageCell.xib; sourceTree = "<group>"; };
+		D6F5632E28546B4000E56D84 /* SRYawFaceTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRYawFaceTaskData.swift; sourceTree = "<group>"; };
+		D6F5633028547A9C00E56D84 /* SRRollFaceTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRRollFaceTaskData.swift; sourceTree = "<group>"; };
 		FB71F941A03ACE03EC2D8A23 /* Pods-SRAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRAlbum.debug.xcconfig"; path = "Target Support Files/Pods-SRAlbum/Pods-SRAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */,
+				D6F5632E28546B4000E56D84 /* SRYawFaceTaskData.swift */,
+				D6F5633028547A9C00E56D84 /* SRRollFaceTaskData.swift */,
 				D68B7FEB28543A1800935A4C /* SRFaceView.swift */,
 				D68B7FEE28543A3B00935A4C /* SRFaceController.swift */,
 				D68B7FEF28543A3B00935A4C /* SRFaceController.xib */,
@@ -859,8 +865,10 @@
 				D692B7C123D59B7400015DE5 /* AssetImage.swift in Sources */,
 				D6B346012750889E00B0D285 /* JPImageresizerResult.m in Sources */,
 				D68B7FF028543A3B00935A4C /* SRFaceController.swift in Sources */,
+				D6F5632F28546B4000E56D84 /* SRYawFaceTaskData.swift in Sources */,
 				D69798CE23D1BA900009E906 /* SRAlbumController.swift in Sources */,
 				D69798BC23D19C9E0009E906 /* SRAlbum.swift in Sources */,
+				D6F5633128547A9C00E56D84 /* SRRollFaceTaskData.swift in Sources */,
 				D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */,
 				D68B7FEC28543A1800935A4C /* SRFaceTaskData.swift in Sources */,
 				D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */,
