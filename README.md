@@ -46,6 +46,16 @@
         self?.fileshandel(files: files)
     }
     
+    人脸采集使用：
+    调用方法1：
+    SRAlbumWrapper.openFaceTrack(tager: self) { files in
+        self.fileshandel(files: files)
+    }
+    调用方法2：
+    self.openFaceTrack(maxSize: 200*1024) {[weak self] files in
+        self?.fileshandel(files: files)
+    }
+    
     返回文件种类：
     private func fileshandel(files:[Any]) -> Void {
         for file in files{
@@ -97,6 +107,16 @@
     调用方法2：
     [self openCameraWithCameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
         [weakSelf fileshandel:files];
+    }];
+    
+    人脸采集使用：
+    调用方法1：
+    [SRAlbumWrapper openFaceTrackWithTager:self maxSize:200 * 1024 completeHandle:^(NSArray * files) {
+        [self fileshandel:files];
+    }];
+    调用方法2：
+    [self openFaceTrackWithMaxSize:200 * 1024 completeHandle:^(NSArray * files) {
+        [self fileshandel:files];
     }];
     
     返回文件种类：
