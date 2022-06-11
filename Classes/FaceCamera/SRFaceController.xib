@@ -24,6 +24,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-SF-UeJ">
+                    <rect key="frame" x="10" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5hW-4c-hjr"/>
+                        <constraint firstAttribute="width" constant="44" id="vw8-sA-PWY"/>
+                    </constraints>
+                    <state key="normal" image="sr_album_back_icon.png"/>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="ghJ-XI-8zN"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -32,11 +43,14 @@
                 <constraint firstAttribute="bottom" secondItem="tI4-v0-iCn" secondAttribute="bottom" id="LJJ-fI-Xir"/>
                 <constraint firstItem="tI4-v0-iCn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="flq-DZ-1jI"/>
                 <constraint firstItem="tI4-v0-iCn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hed-yk-T08"/>
+                <constraint firstItem="kTf-SF-UeJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="o6D-o7-YS4"/>
+                <constraint firstItem="kTf-SF-UeJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="qah-gL-RUp"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="69.642857142857139"/>
         </view>
     </objects>
     <resources>
+        <image name="sr_album_back_icon.png" width="21.5" height="21.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

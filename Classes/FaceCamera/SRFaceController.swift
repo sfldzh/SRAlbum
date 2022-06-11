@@ -23,7 +23,10 @@ class SRFaceController:UIViewController ,SRFaceViewDelegate {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func backAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     // MARK: - FaceViewDelegate
     func faceTrackFinish(image: UIImage) {
