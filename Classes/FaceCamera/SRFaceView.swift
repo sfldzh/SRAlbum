@@ -14,7 +14,7 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor.white
-        label.text = "请把脸移入相机"
+        label.text = "请把脸移入检测框内"
         return label
     }()
     private lazy var videoLayer:AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.init()
@@ -148,7 +148,7 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
     private func checkTask() -> Bool{
         if !self.moveFaceTask.isFinish {
             DispatchQueue.main.async {
-                self.tipLabel.text = "请把脸移入相机"
+                self.tipLabel.text = "请把脸移入检测框内"
             }
             return false
         }
@@ -235,7 +235,7 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         if metadataObjects.count == 0{
             self.moveFaceTask.isFinish = false
             DispatchQueue.main.async {
-                self.tipLabel.text = "请把脸移入相机"
+                self.tipLabel.text = "请把脸移入检测框内"
             }
         }else if metadataObjects.count == 1{
             self.moveFaceTask.isFinish = true
