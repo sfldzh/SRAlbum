@@ -84,6 +84,11 @@ public class SRAlbumWrapper:NSObject{
     @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, eidtConfigure:SREidtConfigure = SREidtConfigure(), completeHandle:((_ files:[Any])->Void)?)->Void{
         tager.openCamera(cameraType: cameraType, isRectangleDetection: isRectangleDetection, isEidt: isEidt, maxSize: maxSize, eidtConfigure: eidtConfigure, completeHandle: completeHandle)
     }
+    
+    @available(iOS 10, *)
+    @objc public class  func openFaceTrack(tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+        tager.openFaceTrack(maxSize: maxSize, completeHandle: completeHandle)
+    }
 }
 
 extension UIViewController{
@@ -174,6 +179,19 @@ extension UIViewController{
                 nv.modalPresentationStyle = .fullScreen
                 nv.isNavigationBarHidden = true
                 self?.present(nv, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @available(iOS 10, *)
+    @objc public func openFaceTrack(maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+        self.checkCamera(cameraType: .Photo) {[weak self] authorization in
+            if authorization {
+                max_size = maxSize
+                SRAlbumData.sharedInstance.isZip = maxSize>0;
+                SRAlbumData.sharedInstance.completeHandle = completeHandle
+                let vc:SRFaceController = SRFaceController.init(nibName: "SRFaceController", bundle:bundle)
+                self?.present(vc, animated: true, completion: nil)
             }
         }
     }

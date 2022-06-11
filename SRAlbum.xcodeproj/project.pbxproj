@@ -18,6 +18,10 @@
 		D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */; };
 		D6400C3823FFA4F800DF5639 /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */; };
 		D64CC53526C6145100B025DB /* SRPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CC53426C6145100B025DB /* SRPlayerView.swift */; };
+		D68B7FEC28543A1800935A4C /* SRFaceTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */; };
+		D68B7FED28543A1800935A4C /* SRFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEB28543A1800935A4C /* SRFaceView.swift */; };
+		D68B7FF028543A3B00935A4C /* SRFaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEE28543A3B00935A4C /* SRFaceController.swift */; };
+		D68B7FF128543A3B00935A4C /* SRFaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68B7FEF28543A3B00935A4C /* SRFaceController.xib */; };
 		D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692B7A923D5789700015DE5 /* AssetCollection.swift */; };
 		D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692B7AC23D57F2300015DE5 /* TopSwitchButton.swift */; };
 		D692B7B123D57F5E00015DE5 /* TopSwitchButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */; };
@@ -145,6 +149,10 @@
 		D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
 		D64CC53426C6145100B025DB /* SRPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPlayerView.swift; sourceTree = "<group>"; };
+		D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFaceTaskData.swift; sourceTree = "<group>"; };
+		D68B7FEB28543A1800935A4C /* SRFaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFaceView.swift; sourceTree = "<group>"; };
+		D68B7FEE28543A3B00935A4C /* SRFaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRFaceController.swift; sourceTree = "<group>"; };
+		D68B7FEF28543A3B00935A4C /* SRFaceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SRFaceController.xib; sourceTree = "<group>"; };
 		D692B7A923D5789700015DE5 /* AssetCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCollection.swift; sourceTree = "<group>"; };
 		D692B7AC23D57F2300015DE5 /* TopSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSwitchButton.swift; sourceTree = "<group>"; };
 		D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopSwitchButton.xib; sourceTree = "<group>"; };
@@ -312,6 +320,17 @@
 			path = SRBase;
 			sourceTree = "<group>";
 		};
+		D68B7FE92854393D00935A4C /* FaceCamera */ = {
+			isa = PBXGroup;
+			children = (
+				D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */,
+				D68B7FEB28543A1800935A4C /* SRFaceView.swift */,
+				D68B7FEE28543A3B00935A4C /* SRFaceController.swift */,
+				D68B7FEF28543A3B00935A4C /* SRFaceController.xib */,
+			);
+			path = FaceCamera;
+			sourceTree = "<group>";
+		};
 		D692B7A823D5786200015DE5 /* SRExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +438,7 @@
 				D605F1FB26B7DA3900C9391E /* SRCameraView */,
 				D692B7AB23D57EF200015DE5 /* SRAlbumView */,
 				D692B7A823D5786200015DE5 /* SRExtension */,
+				D68B7FE92854393D00935A4C /* FaceCamera */,
 				D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */,
 				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
 			);
@@ -687,6 +707,7 @@
 				D6DE931B272115AC0051BDD7 /* SR_Camera_Selected@2x.png in Resources */,
 				D6400C3823FFA4F800DF5639 /* ShowTableViewCell.xib in Resources */,
 				D697989223D19C3C0009E906 /* Main.storyboard in Resources */,
+				D68B7FF128543A3B00935A4C /* SRFaceController.xib in Resources */,
 				D6DE9304272115AC0051BDD7 /* sr_album_image_unselected@2x.png in Resources */,
 				D6DE92FC272115AC0051BDD7 /* sr_photograph_icon@3x.png in Resources */,
 			);
@@ -837,9 +858,11 @@
 				D605F1FD26B7DAD200C9391E /* SRCameraView.swift in Sources */,
 				D692B7C123D59B7400015DE5 /* AssetImage.swift in Sources */,
 				D6B346012750889E00B0D285 /* JPImageresizerResult.m in Sources */,
+				D68B7FF028543A3B00935A4C /* SRFaceController.swift in Sources */,
 				D69798CE23D1BA900009E906 /* SRAlbumController.swift in Sources */,
 				D69798BC23D19C9E0009E906 /* SRAlbum.swift in Sources */,
 				D692B7AD23D57F2300015DE5 /* TopSwitchButton.swift in Sources */,
+				D68B7FEC28543A1800935A4C /* SRFaceTaskData.swift in Sources */,
 				D692B7AA23D5789700015DE5 /* AssetCollection.swift in Sources */,
 				D6ED18AC23D7FA6F0094C06E /* SRBrowseImageCell.swift in Sources */,
 				D6B346032750889E00B0D285 /* JPImageresizer+Extension.m in Sources */,
@@ -848,6 +871,7 @@
 				D6B346062750889E00B0D285 /* JPImageresizerTool.m in Sources */,
 				D697988D23D19C3C0009E906 /* SceneDelegate.swift in Sources */,
 				D6B346002750889E00B0D285 /* JPImageresizerFrameView.m in Sources */,
+				D68B7FED28543A1800935A4C /* SRFaceView.swift in Sources */,
 				D6400C3323FFA48600DF5639 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

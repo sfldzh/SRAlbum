@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func didClick(_ sender: UIButton) {
-        self.openalbumOrCamera(type: 0)
+        self.openalbumOrCamera(type: 4)
     }
     
     private func openalbumOrCamera(type:Int){
@@ -41,8 +41,18 @@ class ViewController: UIViewController {
                 self.fileshandel(files: files)
             }
             break
-        default:
+        case 3:
             SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) { files in
+                self.fileshandel(files: files)
+            }
+            break
+        case 4:
+            self.openFaceTrack(maxSize: 200*1024) {[weak self] files in
+                self?.fileshandel(files: files)
+            }
+            break
+        default:
+            SRAlbumWrapper.openFaceTrack(tager: self) { files in
                 self.fileshandel(files: files)
             }
             break
