@@ -67,33 +67,49 @@ class SRCameraViewController: UIViewController{
             if image != nil {
                 if is_eidt {
                     self?.cameraView.stopRunning()
-                    SRAlbumEidtView.createEidtView()?.show(data: image!, complete: { images, eideView in
-                        if SRAlbumData.sharedInstance.isZip{
-                            var list:[Any] = []
-                            let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
-                            DispatchQueue.global().async {//图片压缩
-                                for image in images{
-                                    list.append(SRHelper.imageZip(sourceImage:image, maxSize: max_size))
+                    if image != nil{
+                        let imageProvider = ImageProvider(image: image!)
+                        let cvc = PhotosCropViewController(imageProvider: imageProvider)
+                        cvc.modalPresentationStyle = .fullScreen
+                        cvc.handlers.didCancel = { vc in
+                            vc.dismiss(animated: true, completion: nil)
+                            self?.cameraView.startRunning()
+                        }
+                        cvc.handlers.didFinish = { vc in
+                            try! vc.editingStack.makeRenderer()
+                              .render { (result) in
+                                switch result {
+                                case .success(let rendered):
+                                    let image = rendered.uiImage
+                                    if SRAlbumData.sharedInstance.isZip{
+                                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                                        DispatchQueue.global().async {//图片压缩
+                                            let imgData = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
+                                            DispatchQueue.main.async {
+                                                SRHelper.hideHud(hud: hub)
+                                                vc.dismiss(animated: false)
+                                                let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
+                                                SRAlbumData.sharedInstance.completeHandle?(infoData)
+                                                self?.dismiss(animated: true, completion: nil)
+                                            }
+                                        }
+                                    }else{
+                                        DispatchQueue.main.async {
+                                            vc.dismiss(animated: false)
+                                            let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+                                            SRAlbumData.sharedInstance.completeHandle?(infoData)
+                                            self?.dismiss(animated: true, completion: nil)
+                                        }
+                                    }
+                                    break
+                                case .failure(let error):
+                                    SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
+                                    break
                                 }
-                                
-//                                let img:UIImage = SRHelper.imageZip(sourceImage:cutImage!, maxSize: max_size)
-                                DispatchQueue.main.async {
-                                    SRHelper.hideHud(hud: hub)
-                                    eideView.dismiss()
-                                    SRAlbumData.sharedInstance.completeHandle?(list)
-                                    self?.dismiss(animated: true, completion: nil)
-                                }
-                            }
-                        }else{
-                            DispatchQueue.main.async {
-                                eideView.dismiss()
-                                SRAlbumData.sharedInstance.completeHandle?(images)
-                                self?.dismiss(animated: true, completion: nil)
                             }
                         }
-                    }, {
-                        self?.cameraView.startRunning()
-                    })
+                        self?.present(cvc, animated: true)
+                    }
                 }else{
                     if SRAlbumData.sharedInstance.isZip{
                         let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
@@ -101,15 +117,15 @@ class SRCameraViewController: UIViewController{
                             let imgData:Data = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
                             DispatchQueue.main.async {
                                 SRHelper.hideHud(hud: hub)
-                                SRAlbumData.sharedInstance.completeHandle?([imgData])
+                                let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
+                                SRAlbumData.sharedInstance.completeHandle?(infoData)
                             }
                         }
                     }else{
-                        SRAlbumData.sharedInstance.completeHandle?([image!])
+                        let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+                        SRAlbumData.sharedInstance.completeHandle?(infoData)
                     }
                 }
-            }else{
-                SRAlbumData.sharedInstance.completeHandle?([])
             }
             if is_eidt == false {
                 self?.dismiss(animated: true, completion: nil)
@@ -172,7 +188,8 @@ class SRCameraViewController: UIViewController{
     }
     
     @IBAction func selectPlayAction(_ sender: UIButton) {
-        SRAlbumData.sharedInstance.completeHandle?([self.vedioUrl!])
+        let infoData = SRFileInfoData.init(fileType: .FileUrl, nil, nil, self.vedioUrl)
+        SRAlbumData.sharedInstance.completeHandle?(infoData)
         self.dismiss(animated: true) {[weak self] in
             self?.vedioUrl = nil
         }

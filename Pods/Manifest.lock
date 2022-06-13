@@ -1,20 +1,31 @@
 PODS:
   - MBProgressHUD (1.2.0)
+  - TransitionPatch (1.0.5)
+  - Verge/ObjcBridge (8.12.2)
+  - Verge/Store (8.12.2):
+    - Verge/ObjcBridge
   - XibFrame (0.0.9)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
+  - TransitionPatch
+  - Verge/Store (>= 8.9.1)
   - XibFrame (~> 0.0.9)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://gitee.com/mirrors/CocoaPods-Specs:
     - MBProgressHUD
     - XibFrame
+  https://gitee.com/sr_lele/Specs:
+    - TransitionPatch
+    - Verge
 
 SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  TransitionPatch: e401775146cbe326605b7009c7e7442184a444f0
+  Verge: 052910fb8112128687695f238aaba5770a0a8b04
   XibFrame: 0de8b33dad9e5c4dfd12b5c391721fca22dcdbf3
 
-PODFILE CHECKSUM: 7b1d33fdc549aa391066b3e55f266c65b1bcb890
+PODFILE CHECKSUM: df1eaec8ef55a65e3f8193aeb6c8890a9e393c84
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

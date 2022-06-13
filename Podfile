@@ -1,16 +1,21 @@
-source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+source 'https://gitee.com/sr_lele/Specs'
 
-platform:ios,'10.0'
+platform:ios,'12.0'
 inhibit_all_warnings!
 use_frameworks!
 
-xcodeproj 'SRAlbum'
+project 'SRAlbum'
 workspace 'SRAlbum'
 
 target 'SRAlbum' do
-#  pod 'JPImageresizerView', '~> 1.9.4'
   pod 'XibFrame', '~> 0.0.9' # xib属性
   pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'Verge/Store', ">= 8.9.1"
+  pod 'TransitionPatch'
+#  pod 'Brightroom/Engine'
+#  pod 'Brightroom/UI-Classic'
+#  pod 'Brightroom/UI-Crop'
   
   target 'SRAlbumTests' do
     inherit! :search_paths

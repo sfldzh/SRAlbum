@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "SRAlbum"
-  spec.version      = "0.2.6"
+  spec.version      = "0.2.7"
   spec.summary      = "相册和相机模块"
   spec.swift_version      = "5.0"
 
@@ -69,7 +69,7 @@ Pod::Spec.new do |spec|
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  spec.ios.deployment_target = "10.0"
+  spec.ios.deployment_target = "12.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
@@ -141,4 +141,6 @@ Pod::Spec.new do |spec|
   # spec.dependency "JPImageresizerView", "~> 1.9.4"
   spec.dependency "XibFrame", "~> 0.0.9"
   spec.dependency "MBProgressHUD", "~> 1.2.0"
+  spec.dependency "Verge/Store", ">= 8.9.1"
+  spec.dependency "TransitionPatch"
 end

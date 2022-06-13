@@ -88,7 +88,6 @@ public class SRHelper:NSObject {
     /// TODO:图片压缩
     /// - Parameters:
     ///   - sourceImage: 源图片
-    ///   - imageData: 源图片数据
     ///   - maxSize: 最大M数
     @objc public static func imageZip(sourceImage:UIImage, maxSize:Int)->Data{
         let data = self.resetSizeOfImageData(source_image: sourceImage, maxSize: maxSize / 1024)

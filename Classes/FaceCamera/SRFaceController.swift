@@ -37,12 +37,14 @@ class SRFaceController:UIViewController ,SRFaceViewDelegate {
                 let imgData:Data = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
                 DispatchQueue.main.async {
                     SRHelper.hideHud(hud: hub)
-                    SRAlbumData.sharedInstance.completeHandle?([imgData])
+                    let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
+                    SRAlbumData.sharedInstance.completeHandle?(infoData)
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         }else{
-            SRAlbumData.sharedInstance.completeHandle?([image])
+            let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+            SRAlbumData.sharedInstance.completeHandle?(infoData)
             self.dismiss(animated: true, completion: nil)
         }
     }

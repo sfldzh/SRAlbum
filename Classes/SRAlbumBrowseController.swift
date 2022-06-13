@@ -166,15 +166,33 @@ class SRAlbumBrowseController: UIViewController, UICollectionViewDelegate, UICol
     /// - Parameter sender: 按钮
     @IBAction func eidtAction(_ sender: Any) {
         let asset = self.collection != nil ? self.collection!.assets[self.indexPath!.row] : SRAlbumData.sharedInstance.sList[self.indexPath!.row]
-        SRAlbumEidtView.createEidtView()?.show(data: asset, complete: { [weak self](images, eideView) in
-            if images.count == 1{
-                eideView.dismiss()
-                asset.editedPic = images.first
-                self?.collectionView.reloadData();
-                self?.delegate?.eidtFinish(data: asset)
+        _ = asset.requestOriginalImage { [weak self] imageData, info in
+            let image = UIImage.init(data: imageData!)
+            let imageProvider = ImageProvider(image: image!)
+            let cvc = PhotosCropViewController(imageProvider: imageProvider)
+            cvc.modalPresentationStyle = .fullScreen
+            cvc.handlers.didCancel = { vc in
+                vc.dismiss(animated: true, completion: nil)
             }
-            
-        }, nil)
+            cvc.handlers.didFinish = { vc in
+                try! vc.editingStack.makeRenderer()
+                  .render { (result) in
+                    switch result {
+                    case .success(let rendered):
+                        let img = rendered.uiImage
+                        vc.dismiss(animated: false)
+                        asset.editedPic = img
+                        self?.collectionView.reloadData();
+                        self?.delegate?.eidtFinish(data: asset)
+                        break
+                    case .failure(let error):
+                        SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
+                        break
+                    }
+                }
+            }
+            self?.present(cvc, animated: true)
+        }
     }
     
     // MARK:- UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout

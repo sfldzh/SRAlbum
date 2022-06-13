@@ -9,6 +9,14 @@
 import UIKit
 import Photos
 
+
+@objc public enum SRResultType:Int{
+    case Image
+    case Data
+    case GifData
+    case FileUrl
+}
+
 var isMain:Bool = true;
 var bundle:Bundle?{
     get{
@@ -77,16 +85,16 @@ var is_rectangle_detection = false;//开启矩形检测
 public class SRAlbumWrapper:NSObject{
     
     @available(iOS 10, *)
-    @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, eidtConfigure:SREidtConfigure = SREidtConfigure(), completeHandle:((_ files:[Any])->Void)?)->Void{
-        tager.openAlbum(assetType: assetType, maxCount: maxCount, isEidt: isEidt, isSort: isSort, maxSize: maxSize, eidtConfigure: eidtConfigure, completeHandle: completeHandle)
+    @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ files:[SRFileInfoData])->Void)?)->Void{
+        tager.openAlbum(assetType: assetType, maxCount: maxCount, isEidt: isEidt, isSort: isSort, maxSize: maxSize, completeHandle: completeHandle)
     }
     @available(iOS 10, *)
-    @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, eidtConfigure:SREidtConfigure = SREidtConfigure(), completeHandle:((_ files:[Any])->Void)?)->Void{
-        tager.openCamera(cameraType: cameraType, isRectangleDetection: isRectangleDetection, isEidt: isEidt, maxSize: maxSize, eidtConfigure: eidtConfigure, completeHandle: completeHandle)
+    @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
+        tager.openCamera(cameraType: cameraType, isRectangleDetection: isRectangleDetection, isEidt: isEidt, maxSize: maxSize, completeHandle: completeHandle)
     }
     
     @available(iOS 10, *)
-    @objc public class  func openFaceTrack(faceTaskCount:Int = 2, tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+    @objc public class  func openFaceTrack(faceTaskCount:Int = 2, tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
         tager.openFaceTrack(faceTaskCount:faceTaskCount, maxSize: maxSize, completeHandle: completeHandle)
     }
 }
@@ -102,7 +110,7 @@ extension UIViewController{
     ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
     ///   - completeHandle: 回调结果
     @available(iOS 10, *)
-    @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, eidtConfigure:SREidtConfigure = SREidtConfigure(), completeHandle:((_ files:[Any])->Void)?)->Void{
+    @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ files:[SRFileInfoData])->Void)?)->Void{
         self.checkCanOpenAlbums(callback: {[weak self] status in
             DispatchQueue.main.async {
                 if #available(iOS 14, *) {
@@ -112,11 +120,7 @@ extension UIViewController{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
-                        if maxCount > 1 && eidtConfigure.girdIndex != IndexPath.init(item: 1, section: 1){
-                            eidtConfigure.girdIndex = IndexPath.init(item: 1, section: 1)
-                        }
-                        SRAlbumData.sharedInstance.eidtConfigure = eidtConfigure
-                        SRAlbumData.sharedInstance.completeHandle = completeHandle
+                        SRAlbumData.sharedInstance.completeFilesHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
                         let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
@@ -134,8 +138,7 @@ extension UIViewController{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
-                        SRAlbumData.sharedInstance.eidtConfigure = eidtConfigure
-                        SRAlbumData.sharedInstance.completeHandle = completeHandle
+                        SRAlbumData.sharedInstance.completeFilesHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
                         let nv:SRNavigationController = SRNavigationController.init(rootViewController: vc)
@@ -160,14 +163,13 @@ extension UIViewController{
     ///   - completeHandle: 回调结果
     /// - Returns: 空
     @available(iOS 10, *)
-    @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, eidtConfigure:SREidtConfigure = SREidtConfigure(), completeHandle:((_ files:[Any])->Void)?)->Void{
+    @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
         self.checkCamera(cameraType: cameraType) {[weak self] authorization in
             if authorization {
                 camera_type = cameraType
                 is_eidt = isEidt
                 max_size = maxSize
                 is_rectangle_detection = isRectangleDetection
-                SRAlbumData.sharedInstance.eidtConfigure = eidtConfigure
                 SRAlbumData.sharedInstance.completeHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
@@ -184,7 +186,7 @@ extension UIViewController{
     }
     
     @available(iOS 10, *)
-    @objc public func openFaceTrack(faceTaskCount:Int = 2, maxSize:Int = 2*1024*1024,completeHandle:((_ files:[Any])->Void)?)->Void{
+    @objc public func openFaceTrack(faceTaskCount:Int = 2, maxSize:Int = 2*1024*1024,completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
         self.checkCamera(cameraType: .Photo) {[weak self] authorization in
             if authorization {
                 max_size = maxSize
@@ -333,9 +335,10 @@ class SRAlbumData: NSObject {
     var sList:Array<PHAsset> = Array<PHAsset>.init()
     //TODO: 是否压缩
     var isZip = false
-    /// 编辑
-    var eidtConfigure:SREidtConfigure!
-    var completeHandle:(([Any])->Void)?
+    //多个文件返回
+    var completeFilesHandle:((_ files:[SRFileInfoData])->Void)?
+    //单个文件返回
+    var completeHandle:((_ file:SRFileInfoData)->Void)?
     
     static var sharedInstance = SRAlbumData()
     

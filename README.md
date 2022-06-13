@@ -8,7 +8,7 @@
 
 
 # 安装方法
-    在Podfile中添加 pod 'SRAlbum','~> 0.2.6'
+    在Podfile中添加 pod 'SRAlbum','~> 0.2.7'
     然后使用 pod install 命令
     
 # Info.plist需要添加：
@@ -21,55 +21,34 @@
 # swift使用方法
     导入模块：import SRAlbum
     
-    图片编辑配置：
-    let config:SREidtConfigure = SREidtConfigure.init()
-    config.type = .Gird
-    config.girdIndex = IndexPath.init(item: 4, section: 4)
-    
     相册使用：
     调用方法1：
-    SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) { files in
-        self.fileshandel(files: files)
+    SRAlbumWrapper.openAlbum(tager: self, assetType: .Photo, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024) { files in
+    
     }
     调用方法2：
-    self.openAlbum(assetType: .None, maxCount: 2, isEidt: true, isSort: false, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
-        self?.fileshandel(files: files)
+    self.openAlbum(assetType: .None, maxCount: 3, isEidt: true, isSort: false, maxSize: 200*1024) {[weak self] files in
+    
     }
     
     相机使用：
     调用方法1：
-    SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) { files in
-        self.fileshandel(files: files)
+    SRAlbumWrapper.openCamera(tager: self, cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024) { file in
+
     }
     调用方法2：
-    self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024, eidtConfigure: config) {[weak self] files in
-        self?.fileshandel(files: files)
+    self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024) {[weak self] file in
+    
     }
     
     人脸采集使用：
     调用方法1：
-    SRAlbumWrapper.openFaceTrack(faceTaskCount: 3, tager: self, maxSize: 200*1024) { files in
-        self.fileshandel(files: files)
+    SRAlbumWrapper.openFaceTrack(faceTaskCount: 3, tager: self, maxSize: 200*1024) { file in
+
     }
     调用方法2：
-    self.openFaceTrack(faceTaskCount:3, maxSize: 200*1024) {[weak self] files in
-        self?.fileshandel(files: files)
-    }
-    
-    返回文件种类：
-    private func fileshandel(files:[Any]) -> Void {
-        for file in files{
-            let type = type(of: file)
-            if type == Data.self{
-                print("照片压缩数据")
-            }else if type == UIImage.self{
-                print("照片")
-            }else if type == URL.self{
-                print("视频URL")
-            }else{
-                print("未知类型")
-            }
-        }
+    self.openFaceTrack(faceTaskCount: 3, maxSize: 200*1024) {[weak self] file in
+
     }
     
     assetType: .None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
@@ -84,50 +63,32 @@
 # Objective-C使用方法
     导入模块：#import <SRAlbum/SRAlbum-Swift.h>
     
-    图片编辑配置：
-    SREidtConfigure *config = [[SREidtConfigure alloc] init];
-    config.type = SRCutTypeGird;
-    config.girdIndex = [NSIndexPath indexPathForRow:4 inSection:4];
-    
     相册使用：
     调用方法1：
-    [SRAlbumWrapper openAlbumWithTager:self assetType:SRAssetTypePhoto maxCount:2 isEidt:true isSort:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
-        [self fileshandel:files];
+    [SRAlbumWrapper openAlbumWithTager:self assetType:SRAssetTypeNone maxCount:2 isEidt:true isSort:false maxSize:200*1024completeHandle:^(NSArray<SRFileInfoData *> * files) {
+
     }];
     调用方法2：
-    [self openAlbumWithAssetType:SRAssetTypePhoto maxCount:2 isEidt:true isSort:true maxSize:200 * 1024  eidtConfigure:config completeHandle:^(NSArray * files) {
-        [weakSelf fileshandel:files];
+    [self openAlbumWithAssetType:SRAssetTypeNone maxCount:3 isEidt:true isSort:false maxSize:200*1024completeHandle:^(NSArray<SRFileInfoData *> * files) {
+
     }];
     
     相机使用：
     调用方法1：
-    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypeVideo isRectangleDetection:false isEidt:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
-        [self fileshandel:files];
+    [SRAlbumWrapper openCameraWithTager:self cameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:200*1024completeHandle:^(SRFileInfoData * file) {
+
     }];
     调用方法2：
-    [self openCameraWithCameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:200 * 1024 eidtConfigure:config completeHandle:^(NSArray * files) {
-        [weakSelf fileshandel:files];
+    [self openCameraWithCameraType:SRCameraTypePhoto isRectangleDetection:false isEidt:true maxSize:200*1024completeHandle:^(SRFileInfoData * file) {
+
     }];
     
     人脸采集使用：
     调用方法1：
-    [SRAlbumWrapper openFaceTrackWithTager:self maxSize:200 * 1024 completeHandle:^(NSArray * files) {
-        [self fileshandel:files];
+    [SRAlbumWrapper openFaceTrackWithFaceTaskCount:2 tager:self maxSize:200*1024 completeHandle:^(SRFileInfoData * file) {
+
     }];
     调用方法2：
-    [self openFaceTrackWithMaxSize:200 * 1024 completeHandle:^(NSArray * files) {
-        [self fileshandel:files];
-    }];
+    [self openFaceTrackWithFaceTaskCount:2 maxSize:200*1024 completeHandle:^(SRFileInfoData * file) {
     
-    返回文件种类：
-    - (void)fileshandel:(NSArray *)files {
-        for (NSObject* file in files) {
-            if ([file isKindOfClass:[NSData class]]) {
-                NSLog(@"照片压缩数据");
-            }else if ([file isKindOfClass:[UIImage class]]) {
-                NSLog(@"照片");
-            }else if ([file isKindOfClass:[NSURL class]]) {
-                NSLog(@"视频NSURL");
-            }
-        }
-    }
+    }];
