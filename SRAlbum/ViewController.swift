@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var input: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -18,13 +19,14 @@ class ViewController: UIViewController {
     
 
     @IBAction func didClick(_ sender: UIButton) {
-        self.openalbumOrCamera(type: 1)
+        self.input.resignFirstResponder()
+        self.openalbumOrCamera(type: Int(self.input.text ?? "") ?? 0)
     }
     
     private func openalbumOrCamera(type:Int){
         switch type {
         case 0:
-            self.openCamera(cameraType: .Photo, isRectangleDetection: false, isEidt: true, maxSize: 200*1024) {[weak self] file in
+            self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true, maxSize: 200*1024) {[weak self] file in
                 self?.fileshandel(file: file)
             }
             break
