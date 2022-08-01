@@ -27,7 +27,7 @@ class GroupView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     
     static func createGroupView() -> GroupView?{
-        let datas = bundle!.loadNibNamed("GroupView", owner: nil, options: nil)!;
+        let datas = bundle.loadNibNamed("GroupView", owner: nil, options: nil)!;
         var groupView:GroupView?
         for data in datas {
             let temp = data as! NSObject

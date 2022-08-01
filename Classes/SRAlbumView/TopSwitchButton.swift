@@ -15,7 +15,7 @@ class TopSwitchButton: UIControl {
     
     /// TODO:获取顶部选择按钮
     static func createTopSwitchButton() -> TopSwitchButton?{
-        let datas = bundle!.loadNibNamed("TopSwitchButton", owner: nil, options: nil)!;
+        let datas = bundle.loadNibNamed("TopSwitchButton", owner: nil, options: nil)!;
         var switchButton:TopSwitchButton?
         for data in datas {
             let temp = data as! NSObject

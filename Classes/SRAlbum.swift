@@ -18,20 +18,33 @@ import Photos
 }
 
 var isMain:Bool = true;
-var bundle:Bundle?{
-    get{
-        let podBundle = Bundle.init(for: SRAlbumController.self)
-        let bundleURL = podBundle.url(forResource: "SRAlbum", withExtension: "bundle")
-        if bundleURL != nil {
-            let bundle = Bundle.init(url: bundleURL!)
-            isMain = false;
-            return bundle
+//var bundle:Bundle?{
+//    get{
+//        let podBundle = Bundle.init(for: SRAlbumController.self)
+//        let bundleURL = podBundle.url(forResource: "SRAlbum", withExtension: "bundle")
+//        if bundleURL != nil {
+//            let bundle = Bundle.init(url: bundleURL!)
+//            isMain = false;
+//            return bundle
+//        }else{
+//            isMain = true;
+//            return Bundle.main
+//        }
+//    }
+//}
+
+let bundle:Bundle = {
+    let containnerBundle = Bundle.init(for: SRAlbumController.self);
+    if let path = containnerBundle.path(forResource: "SRAlbum", ofType: "bundle"){
+        if let toastBundle = Bundle.init(path: path) {
+            return toastBundle
         }else{
-            isMain = true;
             return Bundle.main
         }
+    }else{
+        return Bundle.main
     }
-}
+}()
 
 
 func videoTemporaryDirectory(fileName:String?) -> String{

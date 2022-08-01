@@ -32,11 +32,11 @@ class SRFaceController:UIViewController ,SRFaceViewDelegate {
     // MARK: - FaceViewDelegate
     func faceTrackFinish(image: UIImage) {
         if SRAlbumData.sharedInstance.isZip{
-            let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+            let hub = self.view.showHub(value: "处理中")
             DispatchQueue.global().async {//图片压缩
                 let imgData:Data = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
                 DispatchQueue.main.async {
-                    SRHelper.hideHud(hud: hub)
+                    hub.remove()
                     let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
                     SRAlbumData.sharedInstance.completeHandle?(infoData)
                     self.dismiss(animated: true, completion: nil)

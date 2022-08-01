@@ -19,7 +19,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func configerView() -> Void {
-        self.tableView.register(UINib.init(nibName: "ShowTableViewCell", bundle: bundle), forCellReuseIdentifier: "ShowTableViewCell");
+        self.tableView.register(UINib.init(nibName: "ShowTableViewCell", bundle: nil), forCellReuseIdentifier: "ShowTableViewCell");
     }
 
 

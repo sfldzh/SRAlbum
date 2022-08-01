@@ -13,7 +13,7 @@ import CoreVideo
 import CoreImage
 import ImageIO
 import GLKit
-import MBProgressHUD
+import SRToast
 
 public enum SRFlashMode:Int{
     case off//关闭
@@ -361,7 +361,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         if error != nil {
             self.imageResult?(nil,error)
         }else{
-            let hub:MBProgressHUD = SRHelper.showHud(message: "处理中...", addto: self)
+            let hub = self.showHub(value: "处理中")
             DispatchQueue.global().async {
                 if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer) {
                     if self.isRectangleDetection {//开启矩形检测
@@ -375,18 +375,18 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                         let image = UIGraphicsGetImageFromCurrentImageContext()
                         UIGraphicsEndImageContext()
                         DispatchQueue.main.async {
-                            SRHelper.hideHud(hud: hub)
+                            hub.remove()
                             self.imageResult?(image,nil)
                         }
                     }else{
                         DispatchQueue.main.async {
-                            SRHelper.hideHud(hud: hub)
+                            hub.remove()
                             self.imageResult?(UIImage.init(data: imageData),nil)
                         }
                     }
                 }else{
                     DispatchQueue.main.async {
-                        SRHelper.hideHud(hud: hub)
+                        hub.remove()
                         let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
                         self.imageResult?(nil,err as Error)
                     }
@@ -400,7 +400,7 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
         if error != nil {
             self.imageResult?(nil,error)
         }else{
-            let hub:MBProgressHUD = SRHelper.showHud(message: "处理中...", addto: self)
+            let hub = self.showHub(value: "处理中")
             DispatchQueue.global().async {
                 if let imageData = photo.fileDataRepresentation() {
                     if self.isRectangleDetection {//开启矩形检测
@@ -414,18 +414,18 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
                         let image = UIGraphicsGetImageFromCurrentImageContext()
                         UIGraphicsEndImageContext()
                         DispatchQueue.main.async {
-                            SRHelper.hideHud(hud: hub)
+                            hub.remove()
                             self.imageResult?(image,nil)
                         }
                     }else{
                         DispatchQueue.main.async {
-                            SRHelper.hideHud(hud: hub)
+                            hub.remove()
                             self.imageResult?(UIImage.init(data: imageData),nil)
                         }
                     }
                 }else{
                     DispatchQueue.main.async {
-                        SRHelper.hideHud(hud: hub)
+                        hub.remove()
                         let err:NSError = NSError.init(domain: "图片无数据，无法合成图片", code: -1, userInfo: nil)
                         self.imageResult?(nil,err as Error)
                     }
@@ -440,10 +440,10 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        let hub:MBProgressHUD = SRHelper.showHud(message: "压缩视频中...", addto: self)
+        let hub = self.showHub(value: "压缩视频中...")
         SRHelper.videoZip(sourceUrl: outputFileURL, tagerUrl: nil) { [weak self] (url) in
             DispatchQueue.main.async {
-                SRHelper.hideHud(hud: hub)
+                hub.remove()
                 self?.recordingResult?(self?.timeValue ?? -1, url)
             }
         }

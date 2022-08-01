@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import SRToast
 
 @objc public enum SRCameraType:Int{
     case Photo//普通拍照
@@ -82,11 +83,11 @@ class SRCameraViewController: UIViewController{
                                 case .success(let rendered):
                                     let image = rendered.uiImage
                                     if SRAlbumData.sharedInstance.isZip{
-                                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                                        let hub = self?.view.showHub(value: "处理中")
                                         DispatchQueue.global().async {//图片压缩
                                             let imgData = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
                                             DispatchQueue.main.async {
-                                                SRHelper.hideHud(hud: hub)
+                                                hub?.remove()
                                                 vc.dismiss(animated: false)
                                                 let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
                                                 SRAlbumData.sharedInstance.completeHandle?(infoData)
@@ -112,11 +113,11 @@ class SRCameraViewController: UIViewController{
                     }
                 }else{
                     if SRAlbumData.sharedInstance.isZip{
-                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                        let hub = self?.view.showHub(value: "处理中")
                         DispatchQueue.global().async {//图片压缩
                             let imgData:Data = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
                             DispatchQueue.main.async {
-                                SRHelper.hideHud(hud: hub)
+                                hub?.remove()
                                 let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
                                 SRAlbumData.sharedInstance.completeHandle?(infoData)
                             }

@@ -1,8 +1,8 @@
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD" "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch" "${PODS_CONFIGURATION_BUILD_DIR}/Verge" "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SRToast" "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch" "${PODS_CONFIGURATION_BUILD_DIR}/Verge" "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MBProgressHUD/MBProgressHUD.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch/TransitionPatch.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Verge/Verge.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame/XibFrame.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "CoreGraphics" -framework "Foundation" -framework "MBProgressHUD" -framework "QuartzCore" -framework "TransitionPatch" -framework "Verge" -framework "XibFrame" -weak_framework "Combine" -weak_framework "SwiftUI"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SRToast/SRToast.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch/TransitionPatch.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Verge/Verge.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame/XibFrame.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Foundation" -framework "SRToast" -framework "TransitionPatch" -framework "Verge" -framework "XibFrame" -weak_framework "Combine" -weak_framework "SwiftUI"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

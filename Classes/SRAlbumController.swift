@@ -151,11 +151,11 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                             case .success(let rendered):
                                 let img = rendered.uiImage
                                 if SRAlbumData.sharedInstance.isZip {
-                                    let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                                    let hub = self?.view.showHub(value: "处理中")
                                     DispatchQueue.global().async {
                                         let imgedata = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
                                         DispatchQueue.main.async {
-                                            SRHelper.hideHud(hud: hub)
+                                            hub?.remove()
                                             SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Data, nil, imgedata, nil)])
                                             vc.dismiss(animated: false)
                                             self?.cancelAction()
@@ -204,7 +204,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
     
     /// TODO: 处理文件
     func asynchronousHanldAssent() -> Void {
-        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+        let hub = self.view.showHub(value: "处理中")
         // 创建调度组
         let workingGroup = DispatchGroup()
         // 创建多列
@@ -290,7 +290,7 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
         // 调度组里的任务都执行完毕
         workingGroup.notify(queue: workingQueue) {
             DispatchQueue.main.async {
-                SRHelper.hideHud(hud: hub)
+                hub.remove()
                 SRAlbumData.sharedInstance.completeFilesHandle?(results as! [SRFileInfoData])
                 self.cancelAction()
             }
@@ -427,11 +427,11 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
                                 case .success(let rendered):
                                     let img = rendered.uiImage
                                     if SRAlbumData.sharedInstance.isZip {
-                                        let hub = SRHelper.showHud(message: "处理中", addto: SRHelper.getWindow()!)
+                                        let hub = self?.view.showHub(value: "处理中")
                                         DispatchQueue.global().async {
                                             data.editedPic = img;
                                             DispatchQueue.main.async {
-                                                SRHelper.hideHud(hud: hub)
+                                                hub?.remove()
                                                 SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, img, nil, nil)])
                                                 vc.dismiss(animated: false)
                                                 self?.cancelAction()

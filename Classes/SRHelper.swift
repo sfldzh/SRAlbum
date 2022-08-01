@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+import SRToast
 import AVFoundation
 
 public class SRHelper:NSObject {
@@ -66,16 +66,6 @@ public class SRHelper:NSObject {
         }
         
         return window
-    }
-    
-    static func showHud(message:String, addto view:UIView) -> MBProgressHUD{
-        let hud:MBProgressHUD = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.label.text = message;
-        return hud;
-    }
-    
-    static func hideHud(hud:MBProgressHUD?){
-        hud?.hide(animated: true);
     }
     
     static func cleanMov(url:URL){

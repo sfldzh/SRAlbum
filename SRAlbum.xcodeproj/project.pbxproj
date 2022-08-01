@@ -19,6 +19,7 @@
 		D6400C3723FFA4F800DF5639 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */; };
 		D6400C3823FFA4F800DF5639 /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */; };
 		D64CC53526C6145100B025DB /* SRPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CC53426C6145100B025DB /* SRPlayerView.swift */; };
+		D66D46E828977DFD009905C4 /* SRAlbum.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D66D46E728977DFD009905C4 /* SRAlbum.bundle */; };
 		D68B7FEC28543A1800935A4C /* SRFaceTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */; };
 		D68B7FED28543A1800935A4C /* SRFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEB28543A1800935A4C /* SRFaceView.swift */; };
 		D68B7FF028543A3B00935A4C /* SRFaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68B7FEE28543A3B00935A4C /* SRFaceController.swift */; };
@@ -238,6 +239,7 @@
 		D6400C3523FFA4F800DF5639 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		D6400C3623FFA4F800DF5639 /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
 		D64CC53426C6145100B025DB /* SRPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPlayerView.swift; sourceTree = "<group>"; };
+		D66D46E728977DFD009905C4 /* SRAlbum.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SRAlbum.bundle; sourceTree = "<group>"; };
 		D68B7FEA28543A1700935A4C /* SRFaceTaskData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFaceTaskData.swift; sourceTree = "<group>"; };
 		D68B7FEB28543A1800935A4C /* SRFaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRFaceView.swift; sourceTree = "<group>"; };
 		D68B7FEE28543A3B00935A4C /* SRFaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRFaceController.swift; sourceTree = "<group>"; };
@@ -497,7 +499,6 @@
 				D6F5633028547A9C00E56D84 /* SRRollFaceTaskData.swift */,
 				D68B7FEB28543A1800935A4C /* SRFaceView.swift */,
 				D68B7FEE28543A3B00935A4C /* SRFaceController.swift */,
-				D68B7FEF28543A3B00935A4C /* SRFaceController.xib */,
 			);
 			path = FaceCamera;
 			sourceTree = "<group>";
@@ -515,16 +516,11 @@
 			isa = PBXGroup;
 			children = (
 				D692B7AC23D57F2300015DE5 /* TopSwitchButton.swift */,
-				D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */,
 				D692B7B223D58CA300015DE5 /* GroupView.swift */,
-				D692B7B423D58CB100015DE5 /* GroupView.xib */,
 				D692B7BA23D5977600015DE5 /* SRAldumGroupTableViewCell.swift */,
-				D692B7BB23D5977600015DE5 /* SRAldumGroupTableViewCell.xib */,
 				D692B7C223D5A64500015DE5 /* SRAlbumImageCell.swift */,
-				D692B7C323D5A64500015DE5 /* SRAlbumImageCell.xib */,
 				D6ED18A823D7F4940094C06E /* SRAlbumSelect.swift */,
 				D6ED18AA23D7FA6F0094C06E /* SRBrowseImageCell.swift */,
-				D6ED18AB23D7FA6F0094C06E /* SRBrowseImageCell.xib */,
 				D6A51A5723F9519300295F3F /* SRAlbumTip.swift */,
 			);
 			path = SRAlbumView;
@@ -558,6 +554,16 @@
 		D697988923D19C3C0009E906 /* SRAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				D68B7FEF28543A3B00935A4C /* SRFaceController.xib */,
+				D6F563D62856DAC800E56D84 /* Media.xcassets */,
+				D69798CD23D1BA900009E906 /* SRAlbumController.xib */,
+				D6ED18A323D7CE8D0094C06E /* SRAlbumBrowseController.xib */,
+				D6ED18AB23D7FA6F0094C06E /* SRBrowseImageCell.xib */,
+				D692B7C323D5A64500015DE5 /* SRAlbumImageCell.xib */,
+				D692B7BB23D5977600015DE5 /* SRAldumGroupTableViewCell.xib */,
+				D692B7B423D58CB100015DE5 /* GroupView.xib */,
+				D692B7B023D57F5E00015DE5 /* TopSwitchButton.xib */,
+				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
 				D697989323D19C3D0009E906 /* Assets.xcassets */,
 				D697988A23D19C3C0009E906 /* AppDelegate.swift */,
 				D697988C23D19C3C0009E906 /* SceneDelegate.swift */,
@@ -594,21 +600,19 @@
 		D69798BA23D19C660009E906 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D66D46E728977DFD009905C4 /* SRAlbum.bundle */,
 				D6F5637B2856DAB500E56D84 /* Brightroom */,
 				D6DE92CB272115AC0051BDD7 /* Image */,
 				D6304D8D26D62B2100A7E473 /* SRBase */,
 				D692B7BE23D59B1300015DE5 /* SRHelper.swift */,
 				D69798BB23D19C9E0009E906 /* SRAlbum.swift */,
 				D69798CC23D1BA900009E906 /* SRAlbumController.swift */,
-				D69798CD23D1BA900009E906 /* SRAlbumController.xib */,
 				D6ED18A223D7CE8D0094C06E /* SRAlbumBrowseController.swift */,
-				D6ED18A323D7CE8D0094C06E /* SRAlbumBrowseController.xib */,
 				D605F1FB26B7DA3900C9391E /* SRCameraView */,
 				D692B7AB23D57EF200015DE5 /* SRAlbumView */,
 				D692B7A823D5786200015DE5 /* SRExtension */,
 				D68B7FE92854393D00935A4C /* FaceCamera */,
 				D605F1F726B78F1B00C9391E /* SRCameraViewController.swift */,
-				D605F1F826B78F1B00C9391E /* SRCameraViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -789,7 +793,6 @@
 			isa = PBXGroup;
 			children = (
 				D6F563B32856DAC800E56D84 /* Built-in UI */,
-				D6F563D62856DAC800E56D84 /* Media.xcassets */,
 				D6F563D72856DAC800E56D84 /* BrightroomUI.h */,
 				D6F563D82856DAC800E56D84 /* Shared */,
 			);
@@ -1107,6 +1110,7 @@
 				D6DE9323272115AC0051BDD7 /* sr_album_play@2x.png in Resources */,
 				D6ED18AD23D7FA6F0094C06E /* SRBrowseImageCell.xib in Resources */,
 				D6DE9305272115AC0051BDD7 /* sr_videotape_icon@2x.png in Resources */,
+				D66D46E828977DFD009905C4 /* SRAlbum.bundle in Resources */,
 				D6DE931A272115AC0051BDD7 /* SR_Camera_Selected@3x.png in Resources */,
 				D6DE9306272115AC0051BDD7 /* sr_default_image@3x.png in Resources */,
 				D6DE931F272115AC0051BDD7 /* sr_camera_fz_icon@3x.png in Resources */,

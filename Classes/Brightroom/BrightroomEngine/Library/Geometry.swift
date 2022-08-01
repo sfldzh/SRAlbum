@@ -237,7 +237,8 @@ public struct PixelAspectRatio: Hashable {
   public func _minimized() -> Self {
     func gcd(_ a: CGFloat, _ b: CGFloat) -> CGFloat {
       let r = a.truncatingRemainder(dividingBy: b)
-      if r != 0, r != .nan {
+//      if r != 0, r != .nan {
+      if r != 0, !r.isNaN {
         return gcd(b, r)
       } else {
         return b
