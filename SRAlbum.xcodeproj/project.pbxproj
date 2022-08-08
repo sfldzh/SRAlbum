@@ -958,7 +958,7 @@
 				D697988323D19C3C0009E906 /* Sources */,
 				D697988423D19C3C0009E906 /* Frameworks */,
 				D697988523D19C3C0009E906 /* Resources */,
-				928FC0510F89898527EC59BE /* [CP] Embed Pods Frameworks */,
+				7615D9B8B601C492F2F44656 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -996,7 +996,7 @@
 				D69798A423D19C3E0009E906 /* Sources */,
 				D69798A523D19C3E0009E906 /* Frameworks */,
 				D69798A623D19C3E0009E906 /* Resources */,
-				0AE5E289557C60E7F5F28BF8 /* [CP] Embed Pods Frameworks */,
+				CD0B7A250DCEA1735E4BD47C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1142,23 +1142,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0AE5E289557C60E7F5F28BF8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		216499E660523C69A2C9F846 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1225,7 +1208,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		928FC0510F89898527EC59BE /* [CP] Embed Pods Frameworks */ = {
+		7615D9B8B601C492F2F44656 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1240,6 +1223,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SRAlbum/Pods-SRAlbum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD0B7A250DCEA1735E4BD47C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SRAlbum-SRAlbumUITests/Pods-SRAlbum-SRAlbumUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

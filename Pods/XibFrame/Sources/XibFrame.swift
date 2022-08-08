@@ -1,8 +1,5 @@
 import UIKit
 
-/// Current Alamofire version. Necessary since SPM doesn't use dynamic libraries. Plus this will be more accurate.
-let version = "0.0.8"
-
 //MARK: - 基础视图
 extension UIView {
     //TODO: 圆角
@@ -94,6 +91,18 @@ extension UIButton {
         }
     }
     
+    @IBInspectable open var sr_isEnabled: Bool{
+        set {
+            self.isEnabled = newValue
+            DispatchQueue.main.async {
+                self.backgroundColor = self.isEnabled ? (self.enabledColor ?? self.backgroundColor) : (self.unEnabledColor ?? self.backgroundColor)
+            }
+        }
+        get {
+            return self.isEnabled
+        }
+    }
+    
     
     private var enabledColor: UIColor? {
         set {
@@ -108,17 +117,12 @@ extension UIButton {
     
     open override var backgroundColor: UIColor?{
         didSet{
-            if !(self.backgroundColor?.compare(tagerColor: oldValue) ?? false) {
+            if self.enabledColor == nil{
                 self.enabledColor = backgroundColor;
             }
         }
     }
     
-    open override var isEnabled: Bool{
-        didSet{
-            self.backgroundColor = self.isEnabled ? (self.enabledColor ?? self.backgroundColor) : (self.unEnabledColor ?? self.backgroundColor) ;
-        }
-    }
 }
 
 
@@ -421,7 +425,7 @@ extension UIColor{
     ///   - value: 十六进制色值
     ///   - a: 透明度
     /// - Returns: 颜色
-    public static func hexa(value:String,a:CGFloat) -> UIColor? {
+    public static func hexa(value:String,a:CGFloat) -> UIColor {
         var str = value.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if str.count >= 6{
             if str.hasPrefix("#"){
@@ -436,7 +440,7 @@ extension UIColor{
             Scanner.init(string: blueStr).scanHexInt64(&blue)
             return UIColor.init(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: a)
         }else{
-            return nil
+            return UIColor.white
         }
     }
     

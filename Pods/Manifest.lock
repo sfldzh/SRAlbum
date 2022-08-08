@@ -1,31 +1,30 @@
 PODS:
-  - SRToast (0.0.8)
+  - SRToast (0.1.0)
   - TransitionPatch (1.0.5)
-  - Verge/ObjcBridge (8.12.2)
-  - Verge/Store (8.12.2):
+  - Verge/ObjcBridge (8.17.0)
+  - Verge/Store (8.17.0):
     - Verge/ObjcBridge
-  - XibFrame (0.0.9)
+  - XibFrame (0.1.1)
 
 DEPENDENCIES:
-  - SRToast (~> 0.0.8)
+  - SRToast
   - TransitionPatch
   - Verge/Store (>= 8.9.1)
-  - XibFrame (~> 0.0.9)
+  - XibFrame
 
 SPEC REPOS:
-  https://gitee.com/mirrors/CocoaPods-Specs:
-    - XibFrame
   https://gitee.com/sr_lele/Specs:
     - SRToast
     - TransitionPatch
     - Verge
+    - XibFrame
 
 SPEC CHECKSUMS:
-  SRToast: 136e0ff15af09bbaa92579b7072b54f2beb77e87
+  SRToast: ee8e4509b561bfc8e60cc2587db8b9459cc3f29b
   TransitionPatch: e401775146cbe326605b7009c7e7442184a444f0
-  Verge: 052910fb8112128687695f238aaba5770a0a8b04
-  XibFrame: 0de8b33dad9e5c4dfd12b5c391721fca22dcdbf3
+  Verge: 9e64bebe2b23440651213983ebc9e6f0fb78d8f4
+  XibFrame: 153e47c762c49e4f081a2a18b97fdc594221e2bf
 
-PODFILE CHECKSUM: 6e60200b8feb2bd938ca0baf6addd12cd8e46dcb
+PODFILE CHECKSUM: 36b93ec6eb22e4903a9ab081ad0d61c6318418e9
 
 COCOAPODS: 1.11.3

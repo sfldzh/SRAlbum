@@ -85,6 +85,7 @@ open class SRHub: UIView {
     @objc open func setHubContent(value:String){
         self.tipLabel.isHidden = value.isEmpty ? true : false
         self.tipLabel.text = value
+        self.layoutIfNeeded()
         DispatchQueue.main.async {
             self.contentWidth.constant = self.contentView.frame.height
             self.layoutIfNeeded()

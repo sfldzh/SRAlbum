@@ -9,8 +9,8 @@ project 'SRAlbum'
 workspace 'SRAlbum'
 
 target 'SRAlbum' do
-  pod 'XibFrame', '~> 0.0.9' # xib属性
-  pod 'SRToast', '~> 0.0.8'
+  pod 'XibFrame'
+  pod 'SRToast'
   pod 'Verge/Store', ">= 8.9.1"
   pod 'TransitionPatch'
 #  pod 'Brightroom/Engine'

@@ -8,33 +8,47 @@
 
 import UIKit
 
+
+
 public class SRTip: UIView {
+    @IBOutlet weak var centerLayout: NSLayoutConstraint!
+    @IBOutlet weak var bottomLayout: NSLayoutConstraint!
+    
+    @IBOutlet weak var top: NSLayoutConstraint!
+    @IBOutlet weak var left: NSLayoutConstraint!
+    @IBOutlet weak var bottom: NSLayoutConstraint!
+    @IBOutlet weak var right: NSLayoutConstraint!
+    
+    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet weak var showView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    
     var showIng = false
     private var afterWorkItem:DispatchWorkItem?
-    let showLabel:UILabel = {
-        let showLabel:UILabel = UILabel.init()
-        showLabel.textAlignment = .center
-        showLabel.backgroundColor = UIColor.black
-        showLabel.textColor = UIColor.white
-        showLabel.layer.cornerRadius = 5.0
-        showLabel.clipsToBounds = true
-        showLabel.numberOfLines = 0
-        showLabel.font = UIFont.systemFont(ofSize: 14)
-        showLabel.isUserInteractionEnabled = true
-        return showLabel
-    }()
     
     private var tipStyle:SRTipStyleData!{
         didSet{
-            self.showLabel.backgroundColor = tipStyle.backgroundColor
-            self.showLabel.textColor = tipStyle.tipColor
+            self.showView.backgroundColor = tipStyle.backgroundColor
+            self.titleLabel.textColor = tipStyle.titleColor
+            self.descLabel.textColor = tipStyle.tipColor
+            self.bottomLayout.isActive = tipStyle.showType == .bottom
+            self.centerLayout.isActive = tipStyle.showType == .center
+            self.top.constant = tipStyle.insets.top
+            self.left.constant = tipStyle.insets.left
+            self.bottom.constant = tipStyle.insets.bottom
+            self.right.constant = tipStyle.insets.right
+            self.stackView.spacing = tipStyle.spacing
+            self.titleLabel.font = tipStyle.titleFont
+            self.descLabel.font = tipStyle.tipFont
         }
     }
     open var completeHandle:((_ tap:Bool)->Void)?
     var showSec:Double = 2
     
     static func createView() -> SRTip?{
-        let datas = sr_toast_bundle.loadNibNamed("SRTip", owner:nil, options:nil)!;
+        let datas = sr_toast_bundle.loadNibNamed("SRTip", owner:nil, options:nil)!
         var view:SRTip?
         for data in datas {
             if let temp = data as? SRTip{
@@ -59,38 +73,32 @@ public class SRTip: UIView {
     
     private func tipDismiss(isTap:Bool) -> Void {
         UIView.animate(withDuration: self.tipStyle.dismissDuration, delay: 0, usingSpringWithDamping: self.tipStyle.springDamping, initialSpringVelocity: self.tipStyle.springVelocity, options: .curveEaseInOut, animations: {
-            self.showLabel.transform = self.tipStyle.dismissTransform;
-            self.showLabel.alpha = self.tipStyle.dismissFinalAlpha;
+            self.showView.transform = self.tipStyle.dismissTransform;
+            self.showView.alpha = self.tipStyle.dismissFinalAlpha;
         }) { (finished) in
-            self.showLabel.removeFromSuperview()
-            self.showLabel.transform = .identity;
+            self.showView.transform = .identity;
             self.showIng = false;
             self.removeFromSuperview()
             self.completeHandle?(isTap)
         }
     }
     
-    func show(content:String, stype:SRTipStyleData) -> Void {
+    func show(title:String? = nil, content:String, stype:SRTipStyleData) -> Void {
         self.tipStyle = stype
-        self.setTipContent(value: content)
-        self.showLabel.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapDismiss(tap:))))
+        self.setTipContent(title: title, value: content)
+        self.showView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapDismiss(tap:))))
     }
     
-    @objc open func setTipContent(value:String) -> Void {
-        let viewSize = self.frame.size
-        if self.showLabel.superview == nil {
-            self.addSubview(self.showLabel);
-        }
-        let contentSize = SRToastTool.textSize(text: value, font: self.showLabel.font, maxSize: CGSize.init(width: viewSize.width-self.tipStyle.edgeInsets.left-self.tipStyle.edgeInsets.right, height: 200), compensationSize: CGSize.init(width: 10, height: 15))
-        self.showLabel.text = value;
-        self.showLabel.frame = CGRect.init(x: 0, y: 0, width: contentSize.width, height: contentSize.height)
-        self.showLabel.center = CGPoint.init(x: viewSize.width/2.0, y: viewSize.height-(self.tipStyle.edgeInsets.bottom+contentSize.height))
+    @objc open func setTipContent(title:String? = nil,value:String) -> Void {
+        self.titleLabel.isHidden = title?.isEmpty ?? true
+        self.titleLabel.text = title
+        self.descLabel.text = value;
         if !self.showIng {
-            self.showLabel.transform = self.tipStyle.showInitialTransform;
-            self.showLabel.alpha = self.tipStyle.showInitialAlpha;
-            UIView.animate(withDuration: self.tipStyle.showDuration, delay: 0, usingSpringWithDamping: self.tipStyle.springDamping, initialSpringVelocity: self.tipStyle.springVelocity, options: .curveEaseInOut, animations: {
-                self.showLabel.transform = self.tipStyle.showFinalTransform
-                self.showLabel.alpha = 1.0;
+            self.showView.transform = CGAffineTransform.init(translationX: 0, y: -15)
+            self.showView.alpha = 0.0
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseInOut, animations: {
+                self.showView.transform = .identity
+                self.showView.alpha = 1.0;
             }, completion: nil)
         }
         self.showIng = true
@@ -101,7 +109,8 @@ public class SRTip: UIView {
         self.afterWorkItem = DispatchWorkItem.init {[weak self] in
             self?.tipDismiss(isTap:false)
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+self.showSec, execute: self.afterWorkItem!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+self.showSec, execute: self.afterWorkItem!)
     }
     
     open func dismiss(){

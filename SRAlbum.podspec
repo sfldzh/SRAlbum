@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "SRAlbum"
-  spec.version      = "0.2.8"
+  spec.version      = "0.2.9"
   spec.summary      = "相册和相机模块"
   spec.swift_version      = "5.0"
   spec.homepage     = "https://www.baidu.com/"
@@ -11,8 +11,8 @@ Pod::Spec.new do |spec|
   spec.source_files  = "Classes", "Classes/**/*.{h,m,swift}"
   spec.exclude_files = "Classes/Exclude"
   spec.resource     = 'Classes/SRAlbum.bundle'
-  spec.dependency "XibFrame", "~> 0.0.9"
-  spec.dependency "SRToast", "~> 0.0.8"
+  spec.dependency "XibFrame"
+  spec.dependency "SRToast"
   spec.dependency "Verge/Store", ">= 8.9.1"
   spec.dependency "TransitionPatch"
 end

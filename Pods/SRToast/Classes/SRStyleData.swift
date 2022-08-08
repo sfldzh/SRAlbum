@@ -11,5 +11,6 @@ import UIKit
 @objc public class SRStyleData: NSObject{
     @objc open var isTranslucent:Bool = false
     @objc open var backgroundColor:UIColor = UIColor.clear
+    @objc open var titleColor:UIColor = UIColor.white
     @objc open var tipColor:UIColor = UIColor.white
 }
