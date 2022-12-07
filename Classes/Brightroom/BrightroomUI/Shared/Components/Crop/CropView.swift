@@ -285,7 +285,7 @@ public final class CropView: UIView, UIScrollViewDelegate {
           
           guard let self = self else { return }
                                              
-          if let loaded = state._beta_map(\.loadedState) {
+            if let loaded = state.mapIfPresent(\.loadedState) {
             
             loaded.ifChanged(\.imageForCrop) { image in
               self.setImage(image)

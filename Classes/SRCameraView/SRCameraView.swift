@@ -245,7 +245,9 @@ class SRCameraView: UIView, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapt
     
     /// 开始运行
     open func startRunning(){
-        self.captureSession.startRunning()
+        DispatchQueue.global().async {
+            self.captureSession.startRunning()
+        }
         if self.isRectangleDetection {//开启矩形检测
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.22, repeats: true) {[weak self] time in
                 self?.borderDetectFrame = true;

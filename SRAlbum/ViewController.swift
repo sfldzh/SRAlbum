@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     private func openalbumOrCamera(type:Int){
         switch type {
         case 0:
-            self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true, maxSize: 200*1024) {[weak self] file in
+            self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true, eidtSize: CGSize.init(width: 100, height: 50), maxSize: 200*1024) {[weak self] file in
                 self?.fileshandel(file: file)
             }
             break

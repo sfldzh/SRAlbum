@@ -107,6 +107,15 @@ public class SRAlbumWrapper:NSObject{
     }
     
     @available(iOS 10, *)
+    @objc public class func openAlbum(tager:UIViewController, assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, eidtSize:CGSize = .zero, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ files:[SRFileInfoData])->Void)?)->Void{
+        tager.openAlbum(assetType: assetType, maxCount: maxCount, isEidt: isEidt, eidtSize: eidtSize, isSort: isSort, maxSize: maxSize, completeHandle: completeHandle)
+    }
+    @available(iOS 10, *)
+    @objc public class func openCamera(tager:UIViewController,cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, eidtSize:CGSize = .zero, maxSize:Int = 2*1024*1024, completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
+        tager.openCamera(cameraType: cameraType, isRectangleDetection: isRectangleDetection, isEidt: isEidt, eidtSize: eidtSize, maxSize: maxSize, completeHandle: completeHandle)
+    }
+    
+    @available(iOS 10, *)
     @objc public class  func openFaceTrack(faceTaskCount:Int = 2, tager:UIViewController,maxSize:Int = 2*1024*1024,completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
         tager.openFaceTrack(faceTaskCount:faceTaskCount, maxSize: maxSize, completeHandle: completeHandle)
     }
@@ -124,6 +133,20 @@ extension UIViewController{
     ///   - completeHandle: 回调结果
     @available(iOS 10, *)
     @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ files:[SRFileInfoData])->Void)?)->Void{
+        self.openAlbum(assetType: assetType, maxCount: maxCount,isEidt:isEidt, eidtSize: .zero, isSort:isSort,maxSize:maxSize, completeHandle: completeHandle)
+    }
+    
+    /// 打开相册
+    /// - Parameters:
+    ///   - assetType: .None：任意列席，.Photo：图片类型，.Video：视频类型；默认为.None
+    ///   - maxCount: 取图片或者视频的数量；默认为1
+    ///   - isEidt: 是否要编辑；默认为false
+    ///   - eidtSize: 编辑尺寸
+    ///   - isSort: 是否要排序输出图片；默认为false
+    ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
+    ///   - completeHandle: 回调结果
+    @available(iOS 10, *)
+    @objc public func openAlbum(assetType:SRAssetType = .None, maxCount:Int = 1, isEidt:Bool = false, eidtSize:CGSize = .zero,  isSort:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ files:[SRFileInfoData])->Void)?)->Void{
         self.checkCanOpenAlbums(callback: {[weak self] status in
             DispatchQueue.main.async {
                 if #available(iOS 14, *) {
@@ -133,6 +156,9 @@ extension UIViewController{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
+                        if !eidtSize.equalTo(.zero){
+                            SRAlbumData.sharedInstance.eidtSize = eidtSize
+                        }
                         SRAlbumData.sharedInstance.completeFilesHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
@@ -151,6 +177,9 @@ extension UIViewController{
                         is_eidt = isEidt
                         max_size = maxSize
                         is_sort = isSort
+                        if !eidtSize.equalTo(.zero){
+                            SRAlbumData.sharedInstance.eidtSize = eidtSize
+                        }
                         SRAlbumData.sharedInstance.completeFilesHandle = completeHandle
                         SRAlbumData.sharedInstance.isZip = maxSize>0;
                         let vc:SRAlbumController = SRAlbumController.init(nibName: "SRAlbumController", bundle:bundle)
@@ -177,12 +206,29 @@ extension UIViewController{
     /// - Returns: 空
     @available(iOS 10, *)
     @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, maxSize:Int = 2*1024*1024, completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
+        self.openCamera(cameraType:cameraType, isRectangleDetection:isRectangleDetection, isEidt:isEidt, eidtSize: .zero, maxSize:maxSize,completeHandle: completeHandle)
+    }
+    
+    /// 打开相机
+    /// - Parameters:
+    ///   - cameraType: .Photo 拍照，.Video 录像
+    ///   - isRectangleDetection: 是否矩形检测
+    ///   - isEidt: 是否编辑
+    ///   - eidtSize: 编辑尺寸
+    ///   - maxSize: 限制图片的M数，；默认为2*1024*1024，也就是2M
+    ///   - completeHandle: 回调结果
+    /// - Returns: 空
+    @available(iOS 10, *)
+    @objc public func openCamera(cameraType:SRCameraType = .Photo, isRectangleDetection:Bool = false, isEidt:Bool = false, eidtSize:CGSize = .zero, maxSize:Int = 2*1024*1024, completeHandle:((_ file:SRFileInfoData)->Void)?)->Void{
         self.checkCamera(cameraType: cameraType) {[weak self] authorization in
             if authorization {
                 camera_type = cameraType
                 is_eidt = isEidt
                 max_size = maxSize
                 is_rectangle_detection = isRectangleDetection
+                if !eidtSize.equalTo(.zero){
+                    SRAlbumData.sharedInstance.eidtSize = eidtSize
+                }
                 SRAlbumData.sharedInstance.completeHandle = completeHandle
                 SRAlbumData.sharedInstance.isZip = maxSize>0;
                 let vc:SRCameraViewController = SRCameraViewController.init(nibName: "SRCameraViewController", bundle:bundle)
@@ -348,6 +394,8 @@ class SRAlbumData: NSObject {
     var sList:Array<PHAsset> = Array<PHAsset>.init()
     //TODO: 是否压缩
     var isZip = false
+    //
+    var eidtSize:CGSize?
     //多个文件返回
     var completeFilesHandle:((_ files:[SRFileInfoData])->Void)?
     //单个文件返回

@@ -241,7 +241,7 @@ open class EditingStack: Hashable, StoreComponentType {
   ///   - modifyCrop: A chance to modify cropping. It runs in background-thread. CIImage is not original image.
   public init(
     imageProvider: ImageProvider,
-    colorCubeStorage: ColorCubeStorage = .default,
+    colorCubeStorage: PresetStorage = .default,
     presetStorage: PresetStorage = .default,
     options: Options = .init(),
     cropModifier: CropModifier = .init(modify: { _, c, completion in completion(c) })
@@ -253,7 +253,7 @@ open class EditingStack: Hashable, StoreComponentType {
       initialState: .init()
     )
 
-    filterPresets = colorCubeStorage.filters.map {
+      filterPresets = colorCubeStorage.presets.map {
       FilterPreset(
         name: $0.name,
         identifier: $0.identifier,
@@ -418,7 +418,7 @@ open class EditingStack: Hashable, StoreComponentType {
 
     commit { (modifyingState: inout InoutRef<State>) in
 
-      if let loadedState = state._beta_map(\.loadedState) {
+        if let loadedState = state.mapIfPresent(\.loadedState) {
         modifyingState.map(keyPath: \.loadedState!) { (nextState) -> Void in
 
           loadedState.ifChanged(\.thumbnailImage) { image in

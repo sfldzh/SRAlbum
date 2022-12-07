@@ -71,6 +71,7 @@ class SRCameraViewController: UIViewController{
                     if image != nil{
                         let imageProvider = ImageProvider(image: image!)
                         let cvc = PhotosCropViewController(imageProvider: imageProvider)
+                        cvc.gdSize = SRAlbumData.sharedInstance.eidtSize
                         cvc.modalPresentationStyle = .fullScreen
                         cvc.handlers.didCancel = { vc in
                             vc.dismiss(animated: true, completion: nil)
