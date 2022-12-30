@@ -49,10 +49,10 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
     
     private func initData(){
         var list:[SRFaceTaskData] = []
-        //笑一笑
+//        //笑一笑
         let smileFaceTask = SRFaceTaskData.init()
         smileFaceTask.faceType = 1
-        list.append(smileFaceTask)
+//        list.append(smileFaceTask)
         //眨眨眼
         let blinkFaceTask = SRFaceTaskData.init()
         blinkFaceTask.faceType = 2
@@ -66,8 +66,9 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         rollFaceTaskData.faceType = 4
         list.append(rollFaceTaskData)
         
-        let taskCount = min(faceTaskCount, list.count)
+        let taskCount = min(faceTaskCount-1, list.count)
         self.tasks = list.shuffled().suffix(taskCount)
+        self.tasks.append(smileFaceTask)
     }
     
     private func rectOfInterest() -> CGRect{
@@ -116,7 +117,6 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
                     
                 
                     let faceOutput:AVCaptureMetadataOutput = AVCaptureMetadataOutput.init()
-                    faceOutput.rectOfInterest = self.rectOfInterest()
                     faceOutput.setMetadataObjectsDelegate(self, queue: .main)
                     self.captureSession.addOutput(faceOutput)
                     faceOutput.metadataObjectTypes = [.face]
@@ -130,7 +130,6 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
                     self.captureSession.commitConfiguration()
                     
                     DispatchQueue.main.async {
-                        self.effectView.layer.mask = self.maskLayer()
                         finish()
                     }
                 }
@@ -155,6 +154,14 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         super.layoutSubviews()
         self.videoLayer.frame = self.bounds
         self.effectView.frame = self.bounds
+        self.effectView.layer.mask = self.maskLayer()
+        for out in self.captureSession.outputs {
+            if let faceOutput = out as? AVCaptureMetadataOutput, faceOutput.metadataObjectTypes.contains(.face){
+                faceOutput.rectOfInterest = self.rectOfInterest()
+                break
+            }
+        }
+        
         self.tipLabel.frame = CGRect.init(x: 0, y: self.showRect().minY - 50, width: self.bounds.width, height: 30)
     }
     
@@ -201,7 +208,7 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
             }
         }
         DispatchQueue.main.async {
-            self.tipLabel.text = "已完成"
+            self.tipLabel.text = "已完成,请正对屏幕"
         }
         return true
     }
@@ -240,9 +247,13 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
         if self.moveFaceTask.isFinish{
             if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer){
                 let image = CIImage.init(cvPixelBuffer: pixelBuffer)
-                if let features = self.faceDetector?.features(in: image, options:self.opt) as? [CIFaceFeature]{
-                    if features.count == 1{
-                        if self.checkTask() {
+                if let features = self.faceDetector?.features(in: image, options:self.opt) as? [CIFaceFeature], let faceFeature = features.first{
+                    if self.checkTask() {
+                        //取出左眼与脸颊的距离
+                        let leftJl = faceFeature.leftEyePosition.y - faceFeature.bounds.origin.y
+                        //取出右眼与脸颊的距离
+                        let rightJl = faceFeature.bounds.size.height + faceFeature.bounds.origin.y - faceFeature.rightEyePosition.y
+                        if !faceFeature.leftEyeClosed && !faceFeature.rightEyeClosed && faceFeature.hasFaceAngle && abs(leftJl-rightJl) < 20 {
                             self.stopRunning()
                             UIGraphicsBeginImageContext(CGSize.init(width: image.extent.size.height, height: image.extent.size.width))
                             UIImage.init(ciImage: image, scale: 1, orientation: .right).draw(in: CGRect.init(x: 0, y: 0, width: image.extent.size.height, height: image.extent.size.width))
@@ -251,17 +262,16 @@ class SRFaceView: UIView,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureM
                             DispatchQueue.main.async {
                                 self.delegate?.faceTrackFinish(image: img)
                             }
-                        }else{
-                            let faceFeature = features.first!
-                            if faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition && faceFeature.hasMouthPosition{
-                                if faceFeature.hasSmile{
-                                    if let smileFaceTask = self.getTaskData(type: 1){
-                                        smileFaceTask.isFinish = true
-                                    }
-                                }else if faceFeature.leftEyeClosed && faceFeature.rightEyeClosed{
-                                    if let blinkFaceTask = self.getTaskData(type: 2){
-                                        blinkFaceTask.isFinish = true
-                                    }
+                        }
+                    }else{
+                        if faceFeature.hasLeftEyePosition && faceFeature.hasRightEyePosition && faceFeature.hasMouthPosition{
+                            if faceFeature.hasSmile{
+                                if let smileFaceTask = self.getTaskData(type: 1){
+                                    smileFaceTask.isFinish = true
+                                }
+                            }else if faceFeature.leftEyeClosed && faceFeature.rightEyeClosed{
+                                if let blinkFaceTask = self.getTaskData(type: 2){
+                                    blinkFaceTask.isFinish = true
                                 }
                             }
                         }
