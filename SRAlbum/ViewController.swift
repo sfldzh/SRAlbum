@@ -26,12 +26,12 @@ class ViewController: UIViewController {
     private func openalbumOrCamera(type:Int){
         switch type {
         case 0:
-            self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true, eidtSize: CGSize.init(width: 100, height: 50), maxSize: 200*1024) {[weak self] file in
+            self.openCamera(cameraType: .Photo, isRectangleDetection: true, isEidt: true, eidtSize: CGSize.init(width: 100, height: 100), maxSize: 200*1024) {[weak self] file in
                 self?.fileshandel(file: file)
             }
             break
         case 1:
-            self.openAlbum(assetType: .None, maxCount: 3, isEidt: true, isSort: false, maxSize: 200*1024) {[weak self] files in
+            self.openAlbum(assetType: .None, maxCount: 1, isEidt: true, eidtSize: CGSize(width: 200, height: 200), isSort: false, maxSize: 200*1024) {[weak self] files in
                 self?.fileshandel(files: files)
             }
             break

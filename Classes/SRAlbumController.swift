@@ -137,45 +137,48 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
             if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                 isAdd = true
                 _ = data.requestOriginalImage { [weak self] imageData, info in
-                    let image = UIImage.init(data: imageData!)
-                    let imageProvider = ImageProvider(image: image!)
-                    let cvc = PhotosCropViewController(imageProvider: imageProvider)
-                    cvc.gdSize = SRAlbumData.sharedInstance.eidtSize
-                    cvc.modalPresentationStyle = .fullScreen
-                    cvc.handlers.didCancel = { vc in
-                        vc.dismiss(animated: true, completion: nil)
-                    }
-                    cvc.handlers.didFinish = { vc in
-                        try! vc.editingStack.makeRenderer()
-                          .render { (result) in
-                            switch result {
-                            case .success(let rendered):
-                                let img = rendered.uiImage
-                                if SRAlbumData.sharedInstance.isZip {
-                                    let hub = self?.view.showHub(value: "处理中")
-                                    DispatchQueue.global().async {
-                                        let imgedata = SRHelper.imageZip(sourceImage:img,  maxSize: max_size)
-                                        DispatchQueue.main.async {
-                                            hub?.remove()
-                                            SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Data, nil, imgedata, nil)])
-                                            vc.dismiss(animated: false)
-                                            self?.cancelAction()
+                    if let image = UIImage.init(data: imageData!) {
+                        let eidtAsset = EditorAsset.init(type: EditorAsset.AssetType.image(image), result: nil)
+                        var config: EditorConfiguration = .init()
+                        if !SRAlbumData.sharedInstance.eidtSize.equalTo(.zero){
+                            config.cropSize.aspectRatio = SRAlbumData.sharedInstance.eidtSize
+                            config.cropSize.isFixedRatio = true
+                            config.cropSize.aspectRatios = []
+                        }
+                        config.toolsView.toolOptions.remove(at: 2)
+                        
+                        let vc = EditorViewController(eidtAsset, config: config)
+                        vc.modalPresentationStyle = .fullScreen
+                        vc.finishHandler = {[weak self] (eidtAsset, editorViewController) in
+                            if eidtAsset.contentType == .image {
+                                switch eidtAsset.type {
+                                case .image(let image):
+                                    if SRAlbumData.sharedInstance.isZip {
+                                        let hub = self?.view.showHub(value: "处理中")
+                                        DispatchQueue.global().async {
+                                            data.editedPic = image;
+                                            DispatchQueue.main.async {
+                                                hub?.remove()
+                                                SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, image, nil, nil)])
+                                                vc.dismiss(animated: false)
+                                                self?.cancelAction()
+                                            }
                                         }
+                                    }else{
+                                        data.editedPic = image
+                                        SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, image, nil, nil)])
+                                        vc.dismiss(animated: false)
+                                        self?.cancelAction()
                                     }
-                                }else{
-                                    data.editedPic = img
-                                    SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, img, nil, nil)])
-                                    vc.dismiss(animated: false)
-                                    self?.cancelAction()
+                                    break
+                                default:
+                                    break
                                 }
-                                break
-                            case .failure(let error):
-                                SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
-                                break
                             }
                         }
+//                        vc.delegate = self
+                        self?.present(vc, animated: true, completion: nil)
                     }
-                    self?.present(cvc, animated: true)
                 }
             }else{
                 if SRAlbumData.sharedInstance.sList.count >= max_count {
@@ -414,45 +417,47 @@ class SRAlbumController: UIViewController, UICollectionViewDelegate,UICollection
             }else{
                 if is_eidt && max_count == 1 && data.isPhoto() {//限制一张图片并且要求编辑的，则直接编辑图片
                     _ = data.requestOriginalImage { [weak self] imageData, info in
-                        let image = UIImage.init(data: imageData!)
-                        let imageProvider = ImageProvider(image: image!)
-                        let cvc = PhotosCropViewController(imageProvider: imageProvider)
-                        cvc.gdSize = SRAlbumData.sharedInstance.eidtSize
-                        cvc.modalPresentationStyle = .fullScreen
-                        cvc.handlers.didCancel = { vc in
-                            vc.dismiss(animated: true, completion: nil)
-                        }
-                        cvc.handlers.didFinish = { vc in
-                            try! vc.editingStack.makeRenderer()
-                              .render { (result) in
-                                switch result {
-                                case .success(let rendered):
-                                    let img = rendered.uiImage
-                                    if SRAlbumData.sharedInstance.isZip {
-                                        let hub = self?.view.showHub(value: "处理中")
-                                        DispatchQueue.global().async {
-                                            data.editedPic = img;
-                                            DispatchQueue.main.async {
-                                                hub?.remove()
-                                                SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, img, nil, nil)])
-                                                vc.dismiss(animated: false)
-                                                self?.cancelAction()
+                        if let image = UIImage.init(data: imageData!) {
+                            let eidtAsset = EditorAsset.init(type: EditorAsset.AssetType.image(image), result: nil)
+                            var config: EditorConfiguration = .init()
+                            if !SRAlbumData.sharedInstance.eidtSize.equalTo(.zero){
+                                config.cropSize.aspectRatio = SRAlbumData.sharedInstance.eidtSize
+                                config.cropSize.isFixedRatio = true
+                                config.cropSize.aspectRatios = []
+                            }
+                            config.toolsView.toolOptions.remove(at: 2)
+                            let vc = EditorViewController(eidtAsset, config: config)
+                            vc.modalPresentationStyle = .fullScreen
+                            vc.finishHandler = {[weak self] (eidtAsset, editorViewController) in
+                                if eidtAsset.contentType == .image {
+                                    switch eidtAsset.type {
+                                    case .image(let image):
+                                        if SRAlbumData.sharedInstance.isZip {
+                                            let hub = self?.view.showHub(value: "处理中")
+                                            DispatchQueue.global().async {
+                                                data.editedPic = image;
+                                                DispatchQueue.main.async {
+                                                    hub?.remove()
+                                                    SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, image, nil, nil)])
+                                                    vc.dismiss(animated: false)
+                                                    self?.cancelAction()
+                                                }
                                             }
+                                        }else{
+                                            data.editedPic = image
+                                            SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, image, nil, nil)])
+                                            vc.dismiss(animated: false)
+                                            self?.cancelAction()
                                         }
-                                    }else{
-                                        data.editedPic = img
-                                        SRAlbumData.sharedInstance.completeFilesHandle?([SRFileInfoData.init(fileType: .Image, img, nil, nil)])
-                                        vc.dismiss(animated: false)
-                                        self?.cancelAction()
+                                        break
+                                    default:
+                                        break
                                     }
-                                    break
-                                case .failure(let error):
-                                    SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
-                                    break
                                 }
                             }
+//                            vc.delegate = self
+                            self?.present(vc, animated: true, completion: nil)
                         }
-                        self?.present(cvc, animated: true)
                     }
                     isAdd = true
                 }else{

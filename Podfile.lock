@@ -16,8 +16,9 @@ SPEC REPOS:
   https://gitee.com/sr_lele/Specs:
     - SRToast
     - TransitionPatch
-    - Verge
     - XibFrame
+  https://github.com/CocoaPods/Specs.git:
+    - Verge
 
 SPEC CHECKSUMS:
   SRToast: ee8e4509b561bfc8e60cc2587db8b9459cc3f29b
@@ -25,6 +26,6 @@ SPEC CHECKSUMS:
   Verge: 9e64bebe2b23440651213983ebc9e6f0fb78d8f4
   XibFrame: 153e47c762c49e4f081a2a18b97fdc594221e2bf
 
-PODFILE CHECKSUM: 36b93ec6eb22e4903a9ab081ad0d61c6318418e9
+PODFILE CHECKSUM: 5dd2db6fb1abceb8c5d6062bc78cd7d5fe84b15c
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

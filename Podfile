@@ -1,5 +1,5 @@
-#source 'https://github.com/CocoaPods/Specs.git'
-source 'https://gitee.com/sr_lele/Specs'
+source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://gitee.com/sr_lele/Specs'
 
 platform:ios,'12.0'
 inhibit_all_warnings!
@@ -11,8 +11,8 @@ workspace 'SRAlbum'
 target 'SRAlbum' do
   pod 'XibFrame'
   pod 'SRToast'
-  pod 'Verge/Store', ">= 8.9.1"
-  pod 'TransitionPatch'
+#  pod 'Verge/Store', "8.9.1"
+#  pod 'TransitionPatch'
 #  pod 'Brightroom/Engine'
 #  pod 'Brightroom/UI-Classic'
 #  pod 'Brightroom/UI-Crop'

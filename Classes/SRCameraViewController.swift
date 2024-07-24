@@ -64,59 +64,56 @@ class SRCameraViewController: UIViewController{
         }else if self.cameraView.flashMode == .off {
             self.flashBtn.setImage(UIImage.init(named: "sr_camera_flash_close_icon", in: bundle, compatibleWith: nil), for: .normal)
         }
-        self.cameraView.imageResult = {[weak self](image:UIImage?, _error:Error?) in
-            if image != nil {
+        self.cameraView.imageResult = {[weak self](orgimage:UIImage?, _error:Error?) in
+            if orgimage != nil {
                 if is_eidt {
                     self?.cameraView.stopRunning()
-                    if image != nil{
-                        let imageProvider = ImageProvider(image: image!)
-                        let cvc = PhotosCropViewController(imageProvider: imageProvider)
-                        cvc.gdSize = SRAlbumData.sharedInstance.eidtSize
-                        cvc.modalPresentationStyle = .fullScreen
-                        cvc.handlers.didCancel = { vc in
-                            vc.dismiss(animated: true, completion: nil)
-                            self?.cameraView.startRunning()
-                        }
-                        cvc.handlers.didFinish = { vc in
-                            try! vc.editingStack.makeRenderer()
-                              .render { (result) in
-                                switch result {
-                                case .success(let rendered):
-                                    let image = rendered.uiImage
-                                    if SRAlbumData.sharedInstance.isZip{
-                                        let hub = self?.view.showHub(value: "处理中")
-                                        DispatchQueue.global().async {//图片压缩
-                                            let imgData = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
-                                            DispatchQueue.main.async {
-                                                hub?.remove()
-                                                vc.dismiss(animated: false)
-                                                let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
-                                                SRAlbumData.sharedInstance.completeHandle?(infoData)
-                                                self?.dismiss(animated: true, completion: nil)
-                                            }
-                                        }
-                                    }else{
+                    let eidtAsset = EditorAsset.init(type: EditorAsset.AssetType.image(orgimage!), result: nil)
+                    var config: EditorConfiguration = .init()
+                    if !SRAlbumData.sharedInstance.eidtSize.equalTo(.zero){
+                        config.cropSize.aspectRatio = SRAlbumData.sharedInstance.eidtSize
+                        config.cropSize.isFixedRatio = true
+                        config.cropSize.aspectRatios = []
+                    }
+                    config.toolsView.toolOptions.remove(at: 2)
+                    let vc = EditorViewController(eidtAsset, config: config)
+                    vc.finishHandler = {[weak self] (eidtAsset, editorViewController) in
+                        if eidtAsset.contentType == .image {
+                            switch eidtAsset.type {
+                            case .image(let image):
+                                if SRAlbumData.sharedInstance.isZip{
+                                    let hub = self?.view.showHub(value: "处理中")
+                                    DispatchQueue.global().async {//图片压缩
+                                        let imgData = SRHelper.imageZip(sourceImage:image, maxSize: max_size)
                                         DispatchQueue.main.async {
+                                            hub?.remove()
                                             vc.dismiss(animated: false)
-                                            let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+                                            let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
                                             SRAlbumData.sharedInstance.completeHandle?(infoData)
                                             self?.dismiss(animated: true, completion: nil)
                                         }
                                     }
-                                    break
-                                case .failure(let error):
-                                    SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
-                                    break
+                                }else{
+                                    DispatchQueue.main.async {
+                                        vc.dismiss(animated: false)
+                                        let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+                                        SRAlbumData.sharedInstance.completeHandle?(infoData)
+                                        self?.dismiss(animated: true, completion: nil)
+                                    }
                                 }
+                                break
+                            default:
+                                break
                             }
                         }
-                        self?.present(cvc, animated: true)
                     }
+    //                vc.delegate = self
+                    self?.present(vc, animated: true, completion: nil)
                 }else{
                     if SRAlbumData.sharedInstance.isZip{
                         let hub = self?.view.showHub(value: "处理中")
                         DispatchQueue.global().async {//图片压缩
-                            let imgData:Data = SRHelper.imageZip(sourceImage:image!, maxSize: max_size)
+                            let imgData:Data = SRHelper.imageZip(sourceImage:orgimage!, maxSize: max_size)
                             DispatchQueue.main.async {
                                 hub?.remove()
                                 let infoData = SRFileInfoData.init(fileType: .Data, nil, imgData, nil)
@@ -124,7 +121,7 @@ class SRCameraViewController: UIViewController{
                             }
                         }
                     }else{
-                        let infoData = SRFileInfoData.init(fileType: .Image, image, nil, nil)
+                        let infoData = SRFileInfoData.init(fileType: .Image, orgimage, nil, nil)
                         SRAlbumData.sharedInstance.completeHandle?(infoData)
                     }
                 }

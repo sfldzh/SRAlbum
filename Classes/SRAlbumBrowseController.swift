@@ -167,32 +167,33 @@ class SRAlbumBrowseController: UIViewController, UICollectionViewDelegate, UICol
     @IBAction func eidtAction(_ sender: Any) {
         let asset = self.collection != nil ? self.collection!.assets[self.indexPath!.row] : SRAlbumData.sharedInstance.sList[self.indexPath!.row]
         _ = asset.requestOriginalImage { [weak self] imageData, info in
-            let image = UIImage.init(data: imageData!)
-            let imageProvider = ImageProvider(image: image!)
-            let cvc = PhotosCropViewController(imageProvider: imageProvider)
-            cvc.gdSize = SRAlbumData.sharedInstance.eidtSize
-            cvc.modalPresentationStyle = .fullScreen
-            cvc.handlers.didCancel = { vc in
-                vc.dismiss(animated: true, completion: nil)
-            }
-            cvc.handlers.didFinish = { vc in
-                try! vc.editingStack.makeRenderer()
-                  .render { (result) in
-                    switch result {
-                    case .success(let rendered):
-                        let img = rendered.uiImage
-                        vc.dismiss(animated: false)
-                        asset.editedPic = img
-                        self?.collectionView.reloadData();
-                        self?.delegate?.eidtFinish(data: asset)
-                        break
-                    case .failure(let error):
-                        SRAlbumTip.sharedInstance.show(content: "编辑出错！(\(error.localizedDescription)")
-                        break
+            if let image = UIImage.init(data: imageData!) {
+                let eidtAsset = EditorAsset.init(type: EditorAsset.AssetType.image(image), result: nil)
+                var config: EditorConfiguration = .init()
+                if !SRAlbumData.sharedInstance.eidtSize.equalTo(.zero){
+                    config.cropSize.aspectRatio = SRAlbumData.sharedInstance.eidtSize
+                    config.cropSize.isFixedRatio = true
+                    config.cropSize.aspectRatios = []
+                }
+                config.toolsView.toolOptions.remove(at: 2)
+                let vc = EditorViewController(eidtAsset, config: config)
+                vc.modalPresentationStyle = .fullScreen
+                vc.finishHandler = {[weak self] (eidtAsset, editorViewController) in
+                    if eidtAsset.contentType == .image {
+                        switch eidtAsset.type {
+                        case .image(let image):
+                            asset.editedPic = image
+                            self?.collectionView.reloadData();
+                            self?.delegate?.eidtFinish(data: asset)
+                            break
+                        default:
+                            break
+                        }
                     }
                 }
+//                vc.delegate = self
+                self?.present(vc, animated: true, completion: nil)
             }
-            self?.present(cvc, animated: true)
         }
     }
     

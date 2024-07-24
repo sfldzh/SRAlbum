@@ -395,7 +395,7 @@ class SRAlbumData: NSObject {
     //TODO: 是否压缩
     var isZip = false
     //
-    var eidtSize:CGSize?
+    var eidtSize:CGSize = .zero
     //多个文件返回
     var completeFilesHandle:((_ files:[SRFileInfoData])->Void)?
     //单个文件返回

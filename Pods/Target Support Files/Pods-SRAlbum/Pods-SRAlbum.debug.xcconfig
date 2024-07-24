@@ -4,7 +4,7 @@ FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SRToast" 
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SRToast/SRToast.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch/TransitionPatch.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Verge/Verge.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame/XibFrame.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
-LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
+LIBRARY_SEARCH_PATHS = $(inherited) "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SRToast/SRToast.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch/TransitionPatch.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Verge/Verge.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame/XibFrame.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SRToast" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/TransitionPatch" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Verge" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/XibFrame"
 OTHER_LDFLAGS = $(inherited) -framework "Foundation" -framework "SRToast" -framework "TransitionPatch" -framework "Verge" -framework "XibFrame" -weak_framework "Combine" -weak_framework "SwiftUI"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
