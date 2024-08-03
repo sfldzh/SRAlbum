@@ -1,0 +1,980 @@
+{
+  "" : {
+    "const-values" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master.swiftconstvalues",
+    "dependencies" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master.d",
+    "diagnostics" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master.dia",
+    "emit-module-dependencies" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master-emit-module.dia",
+    "swift-dependencies" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum-master.swiftdeps"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Config/PhotoDebugLogsConfig.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoDebugLogsConfig.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoDebugLogsConfig.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoDebugLogsConfig.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Config/PhotoHUDConfig.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDConfig.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDConfig.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDConfig.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Config/PhotoHUDProtocol.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDProtocol.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDProtocol.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoHUDProtocol.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Config/SelectBoxConfiguration.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxConfiguration.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxConfiguration.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxConfiguration.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Controller/HXBaseViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXBaseViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXBaseViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXBaseViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+AVAsset.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+AVAsset.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+AVAsset.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+AVAsset.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+Bundle.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Bundle.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Bundle.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Bundle.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+CALayer.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CALayer.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CALayer.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CALayer.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+CGFloat.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CGFloat.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CGFloat.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+CGFloat.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+Data.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Data.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Data.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Data.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+Dictionary.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Dictionary.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Dictionary.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+Dictionary.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+FileManager.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+FileManager.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+FileManager.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+FileManager.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+NSObject.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+NSObject.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+NSObject.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+NSObject.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+String.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+String.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+String.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+String.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIApplication.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIApplication.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIApplication.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIApplication.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UICollectionView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UICollectionView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UICollectionView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UICollectionView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIColor.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIColor.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIColor.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIColor.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIDevice.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIDevice.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIDevice.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIDevice.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIFont.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIFont.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIFont.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIFont.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIImage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIImageView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImageView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImageView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIImageView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UILabel.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UILabel.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UILabel.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UILabel.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UITableView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UITableView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UITableView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UITableView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+UIViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+UIViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Extension/Core+URL.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+URL.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+URL.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Core+URL.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/HXPhotoPicker.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXPhotoPicker.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXPhotoPicker.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXPhotoPicker.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/AppearanceStyle.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppearanceStyle.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppearanceStyle.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppearanceStyle.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/CustomLanguage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/CustomLanguage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/CustomLanguage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/CustomLanguage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/ExportPreset.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExportPreset.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExportPreset.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExportPreset.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/HXLog.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXLog.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXLog.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/HXLog.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/ImageContentType.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageContentType.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageContentType.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageContentType.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/IndicatorType.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/IndicatorType.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/IndicatorType.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/IndicatorType.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/LanguageType.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/LanguageType.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/LanguageType.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/LanguageType.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Model/PhotoPanGestureRecognizer.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoPanGestureRecognizer.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoPanGestureRecognizer.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoPanGestureRecognizer.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/AssetPermissionsUtil.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetPermissionsUtil.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetPermissionsUtil.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetPermissionsUtil.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/AssetSaveUtil.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetSaveUtil.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetSaveUtil.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetSaveUtil.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/ImageResource.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageResource.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageResource.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageResource.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoManager+Download.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Download.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Download.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Download.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoManager+Language.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Language.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Language.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager+Language.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoManager.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoManager.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoTools+Alert.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Alert.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Alert.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Alert.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoTools+Camera.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Camera.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Camera.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+Camera.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoTools+File.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+File.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+File.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools+File.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/PhotoTools.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoTools.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/Util/TextManager.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TextManager.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TextManager.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TextManager.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/GIFImageView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GIFImageView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GIFImageView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GIFImageView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ImageView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ProgressHUD/ProgressCircleView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCircleView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCircleView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCircleView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ProgressHUD/ProgressCricleJoinView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCricleJoinView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCricleJoinView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressCricleJoinView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ProgressHUD/ProgressHUD.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressHUD.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressHUD.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressHUD.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ProgressHUD/ProgressImageView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressImageView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressImageView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressImageView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/ProgressHUD/ProgressIndefiniteView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressIndefiniteView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressIndefiniteView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ProgressIndefiniteView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/SelectBoxView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SelectBoxView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/VideoPlayer/PlayButton.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PlayButton.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PlayButton.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PlayButton.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/VideoPlayer/SliderView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SliderView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SliderView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SliderView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/VideoPlayer/VideoPlaySliderView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlaySliderView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlaySliderView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlaySliderView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Core/View/VideoPlayer/VideoPlayerView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlayerView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlayerView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoPlayerView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Extension/EditorView+AVAsset.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AVAsset.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AVAsset.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AVAsset.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Extension/EditorView+CGFloat.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CGFloat.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CGFloat.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CGFloat.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Extension/EditorView+CIImage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CIImage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CIImage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+CIImage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Extension/EditorView+UIImage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIImage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIImage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIImage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Extension/EditorView+UIView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+UIView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/ImageEditedResult.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageEditedResult.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageEditedResult.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ImageEditedResult.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Model/EditorModels.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorModels.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorModels.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorModels.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Model/EditorTypes.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTypes.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTypes.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTypes.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Model/EditorVideoCompositor.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoCompositor.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoCompositor.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoCompositor.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Util/EditorDrawTool.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawTool.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawTool.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawTool.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Util/EditorVideoTool.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoTool.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoTool.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoTool.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/Util/EditorView+PhotoTools.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+PhotoTools.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+PhotoTools.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+PhotoTools.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/VideoEditedResult.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditedResult.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditedResult.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditedResult.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+ContentView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ContentView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ContentView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ContentView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+Croper.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Croper.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Croper.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Croper.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+Edit.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Edit.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Edit.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Edit.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+FrameView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+FrameView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+FrameView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+FrameView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+Mirror.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Mirror.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Mirror.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Mirror.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+Rotate.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Rotate.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Rotate.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Rotate.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+ScreenRotation.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScreenRotation.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScreenRotation.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScreenRotation.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+ScrollView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScrollView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScrollView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+ScrollView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView+Video.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Video.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Video.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView+Video.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAdjusterViewProtocol.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterViewProtocol.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterViewProtocol.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAdjusterViewProtocol.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorAudioAnimationView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAudioAnimationView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAudioAnimationView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAudioAnimationView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorCanvasView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCanvasView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCanvasView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCanvasView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorContentView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorContentView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorContentView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorContentView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorControlView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorControlView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorControlView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorControlView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorDrawView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorDrawView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorFrameView+Control.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+Control.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+Control.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+Control.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorFrameView+VideoPlay.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+VideoPlay.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+VideoPlay.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView+VideoPlay.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorFrameView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFrameView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorMaskView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorMosaicView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorStickersContentView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersContentView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersContentView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersContentView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorStickersItemView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersItemView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersItemView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersItemView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorStickersTrashView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersTrashView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersTrashView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersTrashView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorStickersView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickersView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorVideoPlayerView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoPlayerView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoPlayerView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoPlayerView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorView+AdjusterView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AdjusterView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AdjusterView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+AdjusterView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorView+GestureRecognizer.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+GestureRecognizer.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+GestureRecognizer.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+GestureRecognizer.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorView+Public.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+Public.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+Public.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+Public.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorView+ScrollView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+ScrollView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+ScrollView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView+ScrollView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor+View/View/EditorViewProtocol.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewProtocol.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewProtocol.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewProtocol.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Config/EditorConfiguration.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorConfiguration.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorConfiguration.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorConfiguration.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorChartletViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorMaskListViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorMusicListViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicListViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicListViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicListViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorStickerTextViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Action.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Action.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Action.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Action.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Await.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Await.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Await.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Await.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Brush.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Brush.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Brush.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Brush.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Chartlet.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Chartlet.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Chartlet.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Chartlet.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+EditorView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+EditorView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+EditorView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+EditorView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Filters.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Filters.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Filters.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Filters.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+LoadAsset.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+LoadAsset.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+LoadAsset.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+LoadAsset.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Mosaic.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Mosaic.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Mosaic.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Mosaic.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Music.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Music.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Music.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Music.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Processing.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Processing.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Processing.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Processing.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Ratio.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Ratio.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Ratio.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Ratio.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+Text.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Text.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Text.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+Text.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+ToolsView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+ToolsView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+ToolsView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+ToolsView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+UINavigationController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+UINavigationController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+UINavigationController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+UINavigationController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController+VideoControl.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+VideoControl.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+VideoControl.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController+VideoControl.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Controller/EditorViewControllerDelegate.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewControllerDelegate.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewControllerDelegate.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorViewControllerDelegate.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/EditedResult.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditedResult.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditedResult.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditedResult.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/EditorAsset.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAsset.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAsset.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorAsset.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Extension/Editor+CIImage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+CIImage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+CIImage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+CIImage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Model/EditorChartlet.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartlet.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartlet.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartlet.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Model/EditorPlayAuido.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorPlayAuido.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorPlayAuido.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorPlayAuido.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Model/EditorType.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorType.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorType.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorType.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Model/PhotoEditorFilter.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoEditorFilter.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoEditorFilter.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/PhotoEditorFilter.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Model/VideoEditorMusic.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditorMusic.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditorMusic.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/VideoEditorMusic.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Protocol/EditorChartletListProtocol.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletListProtocol.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletListProtocol.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletListProtocol.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Protocol/EditorMaskListProtocol.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListProtocol.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListProtocol.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListProtocol.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Transition/EditorTransition.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTransition.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTransition.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorTransition.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/Util/Editor+PhotoTools.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+PhotoTools.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+PhotoTools.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/Editor+PhotoTools.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Brush/EditorBrushBlockView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushBlockView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushBlockView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushBlockView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Brush/EditorBrushColorView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushColorView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushColorView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushColorView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Brush/EditorBrushSizeView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushSizeView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushSizeView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorBrushSizeView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Chartlet/EditorChartletPreviewView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletPreviewView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletPreviewView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletPreviewView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Chartlet/EditorChartletViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Chartlet/EditorChartletViewListCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewListCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewListCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorChartletViewListCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/CropSize/EditorMaskListViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMaskListViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/CropSize/EditorRatioToolView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/CropSize/EditorRatioToolViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorRatioToolViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/CropSize/EditorScaleView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorScaleView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorScaleView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorScaleView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/EditorCollectionView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCollectionView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCollectionView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorCollectionView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/EditorToolsView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorToolsView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorToolsView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorToolsView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/ExpandButton.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExpandButton.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExpandButton.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ExpandButton.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Filter/EditorFilterEditView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterEditView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterEditView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterEditView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Filter/EditorFilterParameterView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterParameterView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterParameterView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFilterParameterView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Filter/EditorFiltersView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFiltersView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFiltersView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorFiltersView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Mosaic/EditorMosaicToolView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicToolView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicToolView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMosaicToolView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Text/EditorStickerTextView+CollectionView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+CollectionView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+CollectionView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+CollectionView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Text/EditorStickerTextView+Delegate.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Delegate.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Delegate.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Delegate.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Text/EditorStickerTextView+Draw.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Draw.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Draw.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView+Draw.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Text/EditorStickerTextView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorStickerTextView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorMusicLyricViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicLyricViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicLyricViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicLyricViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorMusicView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorMusicViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorMusicViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorVideoControlMaskView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlMaskView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlMaskView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlMaskView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorVideoControlView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorVideoControlViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVideoControlViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/Editor/View/Video/EditorVolumeView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVolumeView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVolumeView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/EditorVolumeView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/FaceCamera/SRFaceController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/FaceCamera/SRFaceTaskData.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceTaskData.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceTaskData.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceTaskData.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/FaceCamera/SRFaceView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFaceView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/FaceCamera/SRRollFaceTaskData.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRRollFaceTaskData.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRRollFaceTaskData.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRRollFaceTaskData.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/FaceCamera/SRYawFaceTaskData.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRYawFaceTaskData.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRYawFaceTaskData.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRYawFaceTaskData.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbum.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbum.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumBrowseController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumBrowseController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumBrowseController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumBrowseController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/GroupView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GroupView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GroupView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GroupView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/SRAlbumImageCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumImageCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumImageCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumImageCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/SRAlbumSelect.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumSelect.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumSelect.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumSelect.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/SRAlbumTip.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumTip.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumTip.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAlbumTip.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/SRAldumGroupTableViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAldumGroupTableViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAldumGroupTableViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRAldumGroupTableViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/SRBrowseImageCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRBrowseImageCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRBrowseImageCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRBrowseImageCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRAlbumView/TopSwitchButton.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TopSwitchButton.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TopSwitchButton.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/TopSwitchButton.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRBase/SRFileInfoData.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFileInfoData.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFileInfoData.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRFileInfoData.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRBase/SRNavigationController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRNavigationController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRNavigationController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRNavigationController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRCameraView/SRCameraView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRCameraView/SRPlayerView.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRPlayerView.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRPlayerView.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRPlayerView.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRCameraViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRCameraViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRExtension/AssetCollection.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetCollection.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetCollection.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetCollection.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRExtension/AssetImage.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetImage.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetImage.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AssetImage.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/Classes/SRHelper.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRHelper.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRHelper.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SRHelper.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/SRAlbum/AppDelegate.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/SRAlbum/ResultViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ResultViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ResultViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ResultViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/SRAlbum/SceneDelegate.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SceneDelegate.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SceneDelegate.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/SceneDelegate.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/SRAlbum/ShowTableViewCell.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ShowTableViewCell.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ShowTableViewCell.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ShowTableViewCell.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/SRAlbum/ViewController.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ViewController.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ViewController.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/ViewController.o"
+  },
+  "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/shifenglei/Documents/GitHub/SRAlbum/build/SRAlbum.build/Release-iphoneos/SRAlbum.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}
