@@ -115,21 +115,21 @@ public final class PhotoManager: NSObject {
     func createBundle() -> Bundle? {
         if self.bundle == nil {
             #if HXPICKER_ENABLE_SPM
-            if let path = Bundle.module.path(forResource: "HXPhotoPicker", ofType: "bundle") {
+            if let path = Bundle.module.path(forResource: "SRAlbum", ofType: "bundle") {
                 self.bundle = Bundle(path: path)
             }else {
                 self.bundle = Bundle.main
             }
             #else
             let bundle = Bundle(for: HXPhotoPicker.self)
-            var path = bundle.path(forResource: "HXPhotoPicker", ofType: "bundle")
+            var path = bundle.path(forResource: "SRAlbum", ofType: "bundle")
             if path == nil {
                 let associateBundleURL = Bundle.main.url(forResource: "Frameworks", withExtension: nil)
                 if let url = associateBundleURL?
-                    .appendingPathComponent("HXPhotoPicker")
+                    .appendingPathComponent("SRAlbum")
                     .appendingPathExtension("framework") {
                     let associateBunle = Bundle(url: url)
-                    path = associateBunle?.path(forResource: "HXPhotoPicker", ofType: "bundle")
+                    path = associateBunle?.path(forResource: "SRAlbum", ofType: "bundle")
                 }
             }
             if let path = path {
