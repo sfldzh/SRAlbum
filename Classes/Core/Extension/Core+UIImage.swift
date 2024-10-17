@@ -23,7 +23,8 @@ extension UIImage {
         let bundle = PhotoManager.shared.bundle
         var image: UIImage?
         if bundle != nil {
-            var path = bundle?.path(forResource: "images", ofType: nil)
+//            var path = bundle?.path(forResource: "images", ofType: nil)
+            var path = bundle?.resourcePath
             if path != nil {
                 path! += "/" + named!
                 image = self.init(named: path!)
